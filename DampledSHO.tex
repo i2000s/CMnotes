@@ -1,0 +1,524 @@
+\chapter{Damped simple harmonic oscillations}\label{chap:dampledosc}
+\section{Damped SHO equation and general damping equations}
+Solve the equation of damped a simple harmonic oscillation given by
+\begin{equation}
+m\frac{d^2 x}{dt^2}=-T\dt{x}-kx+A \cos\omega t.
+\end{equation}
+
+\section{Laplace transformation method}\label {Sec:Laplace}
+%\newline 
+$\rightarrow\quad$ $f(t) \rightarrow \tilde{f}(s)=\int_0^\infty dt f(t) e^{-st}$.
+
+General shape/form of equations in mechanics:
+\begin{itemize}
+\item with high power terms such as $\left( \dt{x}\right)^7$...
+\item for continuous system...
+\item \begin{align*}
+        &\text{2nd order differential equations} \\
+        &\leftarrow
+        \left\{
+         \begin{array}{cl} &\text{Newton's formulation:} m \frac{d^2 x}{dt^2}=\cdots \\
+            &\text{what if the force cannot be identified?} \rightarrow \text{Lagrangian/Hamiltatian formalism.}
+         \end{array}
+        \right.
+        \end{align*}
+\item  $6$-dimension $(\vec{x},\vec{v},t)$.
+\end{itemize}
+
+\section{Behaviors of $m \frac{d^2 x}{dt^2}=g\left(\dt{x}\right)$ and variable replacements}\label{sec:vreplace}
+
+$\Leftrightarrow m\dt{v}=g(v) \Rightarrow t+const=\int\frac{dv}{g(v)}$.
+
+e.g. $m\dt{v}=-\Gamma v \rightarrow v(t)=v_0e^{-\frac{\Gamma}{m}t}.$ The solution is that the object tends to stop yet never stops.
+
+Q: what if $v^2,\, v^7\cdots$
+
+In general, let us analyze
+$\dt{v}=-av^r$
+\begin{align}
+\Rightarrow & \int{dv\cdot v^{-r}}=-at + const\\
+\Rightarrow & \frac{v^{1-r}}{1-r}=-at + const\\
+\Rightarrow & \frac{v^{1-r}(t)}{1-r}=-at + \frac{v^{1-r}_0}{1-r}\\
+\Rightarrow & v(t)=\left\{ (1-r)\left[ -at + \frac{v^{1-r}_0}{1-r}\right] \right\}^{\frac{1}{1-r}}.
+\end{align}
+I have used $v_0=v(t=0)$ as the initial condition.
+
+% several cases
+%\begin{homeworkProblem}
+\begin{subsubsection}
+  {\textbf{Case 1: $r=1$.}} The function of $v(t)$ is given by
+   \begin{equation}
+     v(t)=v_0 e^{-at}.
+   \end{equation}
+   The function is plotted in Fig.\ref{../Figs/Plot1_1} in the solid line.
+   \scalefig{../Figs/Plot1_1}{0.618}{Plots of $v=v(t)$ with $a=0.5$, $v0=1$.}
+
+   Let us look at some extreme cases.
+
+   \begin{enumerate}
+    \item $t=0, \, v(t=0)=v_0$.
+    \item $t\rightarrow \infty$, $v(t\rightarrow \infty) \rightarrow 0$. Notice that $v(t\rightarrow \infty)$ tends to $0$ yet cannot reach $0$.
+   \end{enumerate}
+
+ \end{subsubsection}
+
+ \begin{subsubsection}
+  {\textbf{Case 2: $r=3$.}} The function of $v(t)$ is given by
+   \begin{equation}
+     v(t)=\left(2at+\frac{1}{v_0^2}\right)^{-1/2}.
+   \end{equation}
+   The function is plotted in Fig.\ref{../Figs/Plot1_1} in the dashed line.
+
+   Let us look at some extreme cases.
+
+   \begin{list}{\labelitemi}{\leftmargin=1cm}
+    \item[1.] $t=0$, $v(t=0)=v_0$.
+    \item[2.] $t\rightarrow \infty$, $v(t\rightarrow \infty) \rightarrow 0$. Notice that $v(t\rightarrow \infty)$ tends to $0$ yet cannot reach $0$.
+    \item[3.] If $a<0$, at some $t$, $v$ can be a complex number. This is one of the differences from case 1.
+   \end{list}
+
+
+ \end{subsubsection}
+
+ \begin{subsubsection}
+  {\textbf{Case 3: $r=\frac{1}{2}$.}} The function of $v(t)$ is given by
+   \begin{equation}
+     v(t)=\left( -\frac{a}{2}t+v_0^{1/2}\right)^2.
+   \end{equation}
+   The function is plotted in Fig.\ref{../Figs/Plot1_1} in the dotted line.
+
+      Let us look at some extreme cases.
+
+   \begin{list}{\labelitemi}{\leftmargin=1cm}
+   \item[1.] $t=0$, $v(t=0)=v_0$.
+   \item[2.] $t\rightarrow \infty$, $v(t\rightarrow \infty) \rightarrow \infty$. Notice that $v(t\rightarrow \infty)$ tends to $+\infty$ rather than $0$. This is one main difference from cases 1 \& 2.
+   \item[3.] When $t=\frac{2}{a}v_0^{\frac{1}{2}}$, $v(t)=0$, which means the object stops at $t=\frac{2}{a}v_0^{\frac{1}{2}}$ point. This is another main difference from cases 1 \& 2.
+   \end{list}
+  \end{subsubsection}
+
+  \begin{subsubsection}
+    {\textbf{Case 4: $r=-\frac{1}{2}$.}} The function of $v(t)$ is given by
+   \begin{equation}
+     v(t)=\left( -\frac{3a}{2}t+v_0^{3/2}\right)^{\frac{2}{3}}.
+   \end{equation}
+   The function is plotted in Fig.\ref{../Figs/Plot1_1} in the dash-dot line.
+
+      Let us look at some extreme cases.
+
+   \begin{list}{\labelitemi}{\leftmargin=1cm}
+   \item[1.] $t=0$, $v(t=0)=v_0$.
+   \item[2.] $t\rightarrow \infty$, $v(t\rightarrow \infty) \rightarrow -\infty$. Notice that $v(t\rightarrow \infty)$ becomes negative. This is the main difference from the cases above.
+   \item[3.] When $t=\frac{2}{3a}v_0^{\frac{3}{2}}$, $v(t)=0$.
+   \end{list}
+ \end{subsubsection}
+
+ \begin{subsubsection}
+    {\textbf{Case 5: $r=0$.}} The function of $v(t)$ is given by
+   \begin{equation}
+     v(t)= v_0 -at .
+   \end{equation}
+   Obviously, the object maintains a uniform linear motion at $v(t)=v_0$. The $v=v(t)$ curve should be a straightly horizontal line if plotted in Fig.~\ref{../Figs/Plot1_1} (not shown in the figure).
+ \end{subsubsection}
+
+ In sum, $r=1$ is the critical value of $r$ to judge whether the object can suddenly stop at some time point: if $r\geq 1$, the object does not stop; if $r<1$, the object may suddenly stop. Moreover, $r=0$ is the critical value to judge whether the object can have a negative velocity: if $r>0$, the object always has positive velocity; if $r=0$, the object maintains a uniform linear motion; if $r<0$, the object can move towards the negative direction to the initial velocity.
+%\end{homeworkProblem}
+
+\subsubsection{Restrict to linear case}
+In the case of linear damping,
+$\dt{v}=-\alpha(t)v,$ where the damping factor $\alpha=\frac{\Gamma}{m}$. The forms of $\alpha(t)$ may be as of plotted in Fig.~\ref{../Figs/Plot1_2}, that is
+\begin{equation}
+\alpha(t)= \left\{ \begin{array}{cc}
+                        e^{-at},& \text{case 1;}\\
+                        1-e^{-at},& \text{case 2.}
+                   \end{array}\right.
+\end{equation}
+\scalefig{../Figs/Plot1_2}{0.618}{Plots of $\alpha=\alpha(t)$ with $a=0.5$, $v0=1$. }
+
+Now the equation can be rewritten as
+\begin{align}
+\Rightarrow & \frac{dv}{v}=-\alpha(t)dt=d\tau\\
+\Rightarrow & \frac{dv}{d\tau}=-v.
+\end{align}
+
+In case one, the solution of $v(t)$ gives
+\begin{equation}
+v(t)=v_0e^{\frac{1}{a}e^{-at}+c}.
+\end{equation}
+Using the initial condition that $v(t=0)=v_0$, one can obtain
+\begin{equation}
+v(t)=v_0e^{\frac{1}{a}e^{-at}-\frac{1}{a}}.
+\end{equation}
+The result is plotted as the solid line in Fig.~\ref{../Figs/Plot1_2_1}. When $t\rightarrow \infty$, $v(t)\rightarrow v_0e^{-\frac{1}{a}}$. Therefore, the value of $a$ determines the behavior of $v(t)$ when $t$ is large. If $a>0$, $v(t\rightarrow \infty)<v_0$; if $a<0$, $v(t\rightarrow \infty)>v_0$.
+\scalefig{../Figs/Plot1_2_1}{0.618}{Plots of $v=v(t)$ with $a=0.5$, $v_0=1$.}
+
+
+In case two, the solution of $v(t)$ gives
+\begin{equation}
+v(t)=v_0e^{-\frac{1}{a}e^{-at}-t+c}.
+\end{equation}
+Using the initial condition that $v(t=0)=v_0$, one can obtain
+\begin{equation}
+v(t)=v_0e^{-\frac{1}{a}e^{-at}-t+\frac{1}{a}}.
+\end{equation}
+The result is plotted in the dashed line in Fig.~\ref{../Figs/Plot1_2_1}. When $t\rightarrow \infty$, $v(t)\rightarrow 0$.
+
+As shown in Fig.~\ref{../Figs/Plot1_2_1}, the main differences between case 1 and 2 are the shape of the velocity curve and the value of $v(t\rightarrow \infty)$. In case 2, the velocity approximate to $0$, but case 1 does not.
+
+\section{Energy method for $ \sdt{x}=f(x) $}\label{sec:energymethod}
+For equation $m\sdt{x}=A\cos\omega t -B\dt{x}-kx$, there exists a case that
+\begin{equation}
+\sdt{x}=f(x),
+\end{equation}
+where $f(x)$ is time-independent. We can rewrite the equation above to be
+\begin{equation}
+\dt{x}\cdot \sdt{x}=\dt{x}\cdot \underbrace{f(x)}_{no time-dependence},
+\end{equation}
+\begin{align}
+\Longleftrightarrow & \dt{\left[ \frac{1}{2}\left( \dt{x}\right)^2\right]}= \dt{ \overbrace{\left[ \int{f(x)dx}\right]}^{\text{birth of potential energy}}}\\
+\Rightarrow & \frac{1}{2}\left( \dt{x}\right)^2 = \int{f(x)dx} +c \\
+\Leftrightarrow & \underbrace{\frac{m}{2}\left( \dt{x}\right)^2}_{\text{kinetic energy}} +\underbrace{[-m\int{f(x)dx}]}_{\text{potential energy}}=\underbrace{const\vphantom{\int}}_{\text{total energy}}.
+\end{align}
+
+2 practical procedures to solve the movement of an object governed by an ODE with time-independent zero-order terms:
+\begin{itemize}
+\item[1.] \begin{align}
+            &\frac{1}{2}\left( \dt{x}\right)^2 + \underbrace{U(x)}_{potential energy term}=E \rightarrow \text{first order procedure}\\
+            \Rightarrow & \dt{x}=\sqrt{2[E-U(x)]}\\
+            \Rightarrow & \int{\frac{dx}{\sqrt{2[E-U(x)]}}}=t+const.
+         \end{align}
+\item[2.] draw picture of $U(x)$ $\rightarrow$ movement of object (escaping and oscillating zones).
+\end{itemize}
+
+e.g. spring force $f(x)=-\frac{kx}{m}$. $U(x)=\frac{k}{2m}x^2$.
+\begin{align}
+\int{\frac{dx}{\sqrt{2[E-U(x)]}}}=\int{\frac{dx}{\sqrt{2E-\frac{k}{m}x^2}}}=\sin^{-1}(*)=t+const.
+\end{align}
+
+\section{Elliptic Equation}\label{sec:ellipticequ}
+Intro: following the equation discussed in the last section, let us make some revisions:
+\begin{align}
+m\sdt{x}=\xcancel{A\cos\omega t} -\xcancel{B\dt{x}}-k\cancelto{\text{make it nonlinear}}{x}
+\end{align}
+ e.g. physics pendulum.
+
+\begin{align}
+\text{simple pendulum: } & \sdt{x}=f(x) \rightarrow f(x)=-const\cdot x\\
+\text{physics pendulum: } & \sdt{x}=f(x) \rightarrow f(x)=-const\cdot \sin x
+\end{align}
+%\begin{align}
+\begin{empheq}[box={\fboxsep=10pt\colorbox{cyan}}]{align}
+t &=\int_0^x\frac{dz}{\sqrt{1-z^2}}, x=\sin t, (z=sin\theta)\\
+&= \int \frac{\cancel{cos\theta}d\theta}{\cancel{\cos \theta}} \Rightarrow x=\sin t.
+\end{empheq}
+%\end{align}
+
+
+\textbf{Pretend Game 1}: %\todo{Skipped game 1.}:
+
+\begin{align}
+\frac{dt}{dx}=\frac{1}{\sqrt{1-x^2}} \Rightarrow \dt{x}=\sqrt{1-x^2},\, \frac{d}{dt} \sin t=\sqrt{1-\sin ^2 t}.
+\end{align}
+define $\sqrt{1-\sin ^2 t}$ as $\cos t \Leftrightarrow \sin^2t+\cos ^2 t=1,\, \dt{\sin t}=\cos t$.
+
+\textbf{Pretend Game 2}:
+
+examine $t=\int^x_0 \frac{dz}{1-z^2}=\frac{1}{2}\int^x_0 (\frac{1}{1-z}+ \frac{1}{1+z})dz=\frac{1}{2}\ln \frac{1+k}{1-k}.$
+
+Let us set $z=\tanh\theta$, show that it works.
+
+$x=\tanh t.$
+\begin{itemize}
+\item $\left[ \frac{1}{1-z^2}\right]^{1/2}\rightarrow \sin t$ %\todo{skipped the drawing in PDF.}
+\item $\left[ \frac{1}{1-z^2}\right]^{1}\rightarrow \tanh t$ (stretched from $\sin t$.)%\todo{skipped the drawing in PDF.}
+\item Similarly, $\cos t \rightarrow sech t.$
+\end{itemize}
+
+\[
+\begin{array}{ccc}
+\frac{1}{\sqrt{1-z^2}} & \text{intro intermediate}  \\
+\updownarrow & \frac{1}{\sqrt{1-z^2}\sqrt{1-k^2z^2}} &  \fbox{$\Leftrightarrow                                                                            t=\int^x_0 \frac{dz}{\sqrt{1-z^2}\sqrt{1-k^2z^2}}$}  \\
+\frac{1}{1-z^2} &  \underbrace{\underbrace{0}_{sin}\leq k \leq \underbrace{1}_{\tanh}}_{\text{in-between, elliptic func}} & x=sn(t,k)\rightarrow \textbf{elliptic function}.
+\end{array}
+\]
+$k$ is called elliptic modulus $\Leftrightarrow m=k^2$ is called elliptic parameter.
+
+\subsection{Properties of elliptic functions}
+Differential equations of elliptic functions:~\footnote{Refs: Abramowitz and Stegun's book for special functions; Byrd's book for elliptic function.}
+
+\begin{align*}
+\begin{array}{cl}
+\dt{\sn} = \cn \cdot \dn &\rightarrow\left\{ \begin{array}{c}
+                                            \dt {\cn} =?\\
+                                            \dt {\dn} =?
+                                            \end{array}\right.\rightarrow \sdt {\sn} =? \\
+\underbrace{\dt{x} =\sqrt{1-z^2}\sqrt{1-k^2z^2}}_{\text{from the integral}} & \left\{ \begin{array}{cc}
+                                            \cn(t,k) =\sqrt{1-\sn^2(t,k)}, & \text{elliptic $\cos$}\\
+                                            \dn(t,k) = \sqrt{1-k^2\sn^2(t,k)}.
+                                            \end{array}\right.
+\end{array}
+\end{align*}
+
+
+What if $k>1$?
+
+\begin{align}
+ \begin{array}{cll}
+ t=\int^x_0 \frac{dz}{\sqrt{1-z^2}\sqrt{1-k^2z^2}} \rightarrow & \left\{
+        \begin{array}{cc}
+        0\leq k \leq 1,& x=\sn(t,k);\\
+        k>1, & \left\{ \begin{array}{l}
+                 y=kz \rightarrow z=\frac{1}{k} y, \\
+                 dz=\frac{1}{k} dy \rightarrow
+                    \int^{y=kx}_{y=0}\frac{1}{k}\frac{dy}{\sqrt{1-\frac{y^2}{k^2}}\sqrt{1-y^2}}\\
+                 \chi=\frac{1}{k} \rightarrow \frac{t}{\chi}
+                    =\int^{x/k}_{y=0}\frac{dy}{\sqrt{1-y^2}\sqrt{1-k^2y^2}}\\
+                 \Rightarrow \frac{x}{\chi}= \sn(\frac{t}{\chi},\chi)
+                \end{array} \right.
+        \end{array}\right.
+ \end{array}
+\end{align}
+$\Rightarrow x=\frac{1}{k}\sn(kt,\frac{1}{k})\quad (k>1)$.
+
+For $\cn \, \& \, \dn$?
+
+More properties of elliptic functions have been studied in the Problem Set \#2. A set of numerical calculation of three elliptic functions have been shown in Fig.~\ref{../Figs/PlotHW2_2}.
+\scalefig{../Figs/PlotHW2_2}{0.9}{\textbf{Elliptic functions with $K=[0,\,0.5,\, 0.9,\, 0.99,\, 0.9999,\,1]$.} The red-solid lines show the $ \sn(t,k) $ function; the blue-dot-dashed lines show the $ \cn(t,k) $ function; the green-dotted lines show the $ \dn(t,k) $ function.}
+
+\section{Physical pendulum and nonlinear effects}
+Equation of motion:
+\begin{align}
+-mg \sin{\theta} &=ml\frac{d^2}{dT^2}\theta\\
+\Rightarrow \frac{d^2\theta}{dT^2}+\frac{g}{l} \sin{\theta} &= 0.
+\end{align}
+Through redefining $ t=\frac{g}{l}T $ and $ x=\theta $ with the factor of $ \frac{g}{l} $, one can get
+\begin{empheq}[box={\fboxsep=10pt\colorbox{cyan}}]{align}
+\sdt{x}+\sin{x}=0,
+\end{empheq}
+where we have chosen $ x $ as a dimensionless quantity. 
+
+To solve it, we can use energy method to give
+\begin{equation}
+\dt{\left[ \frac{1}{2}\left( \dt{x}\right )^2\right]} + \underbrace{\left( \dt{x}\right)\sin{x}}_{\dt{\int sinx dx}}=0
+\rightarrow \dt{\overbrace{\left[ \frac{1}{2}\left( \dt{x}\right )^2 + (1-\cos{x})\right]}^{E}}=0.
+\end{equation}
+\begin{align}
+\rightarrow & \left( \dt{x} \right)^2 =2\left[ E-(1-\cos{x})\right]\\
+\rightarrow & t + const.=\int \frac{dx}{\sqrt{2[E-(1-\cos{x})]}}.
+\end{align}
+Now, we can discuss the movement of a physics pendulum. Suppose the initial condition gives $ v_0=\left( \dt{x}\right)|_{t=0},\, x(t=0)=0 $. Specifically, 
+\begin{align}
+\xrightarrow[x(t=0)=0]{\cos{x}=1} & E=\frac{1}{2}v_0^2\\
+\Rightarrow & t=\int_{0}^{x}\frac{dy}{\sqrt{v_0^2-4\sin^2{y/2}}}=\int_{0}^{x}\frac{dy}{2\sqrt{(v_0/2)^2-\sin^2{y/2}}}\\
+\Rightarrow & v_0 t =\int_{0}^{x}\frac{dy}{\sqrt{1-\left(\frac{v_0}{2}\right)^2\sin^2{y/2}}}.
+\end{align}
+Now, let us connect the equation above to the elliptic functions. 
+We let $z=\sin(\frac{y}{2})$, therefore, $ dz=\frac{1}{2}\cos{y/2}dy=\frac{1}{2}\sqrt{1-z^2}dy $, $ dy=\frac{dz}{\frac{1}{2}\sqrt{1-z^2}} $.
+
+Now that 
+\begin{equation}
+v_0 t = \int_{y=0}^{y=x}\frac{dz}{\frac{1}{2}\sqrt{1-z^2}\sqrt{1-\left(\frac{2}{v_0}\right)^2z^2}},
+\end{equation}
+or
+\begin{equation}
+\frac{v_0 t}{2} = \int_{z=0}^{z=\sin\frac{x}{2}}\frac{dz}{\sqrt{1-z^2}\sqrt{1-\left(\frac{2}{v_0}\right)^2z^2}}.
+\end{equation}
+\begin{align}
+\Rightarrow \sin{\frac{x}{2}} &= \sn(\frac{v_0 t}{2},\frac{2}{v_0})\\
+\Rightarrow x &= 2 \sin^{-1}\left[ \sn(\frac{v_0 t}{2},\frac{2}{v_0})\right].
+\end{align}
+
+If $ \frac{v_0}{2} \ll 1 $, $ \frac{x}{2} \approx \sin{\frac{x}{2}}=\frac{v_0}{2} \sn{t,\frac{v_0}{2}} \approx \frac{v_0}{2} \sin t$, or $ x\approx v_0 \sin t $. 
+
+To get the velocity, we can use the relationship that
+\begin{equation}
+\frac{1}{2} \underbrace{\cos{\frac{x}{2}}}_{\sqrt{1-\sin^2\frac{x}{2}}}\cdot \underbrace{\dt{x}}_{v(t)}= \frac{v_0}{2} \underbrace{\cn(\frac{v_0t}{2},\frac{2}{v_0})}_{\sqrt{1-\sn^2(\frac{v_0t}{2},\frac{2}{v_0})}}\cdot \dn(\frac{v_0 t}{2},\frac{2}{v_0}).
+\end{equation}
+\begin{equation}
+\Rightarrow v=\dt{x}=\frac{v_0}{2} \cn(\frac{v_0 t}{2},\frac{2}{v_0})=v_0 \cn(t,\frac{v_0}{2}).
+\end{equation}
+
+
+Some other useful properties of elliptic functions are shown below. 
+
+Analogy to 
+\begin{align}
+\mathrm{sin}\left(u+\nu \right) =\frac{\mathrm{sin}u\mathrm{cos}\nu +\mathrm{cos}u\mathrm{sin}\nu }{1},
+\end{align} we have the Additional theorem for the elliptic functions as below~\footnote{From Milton Abramowitz's book on \textit{Handbook of Mathematical Functions with Graphs, Formulas, and Mathematical tables}.}.
+\begin{align}
+\mathrm{\sn}\left(u+\nu ,k\right) &=\frac{\sn\left(u,k\right) {\cn} \left(\nu ,k\right)\dn\left(\nu ,k\right)+\sn\left(\nu ,k\right)\cn\left(u,k\right)\dn\left(u,k\right)}{1-{k}^{2}\sn^{2}\left(u,k\right)\sn^{2}{\left(\nu ,k\right)}},\\
+\mathrm{\cn}\left(u+\nu ,k\right) &=\frac{\cn\left(u,k\right) {\cn} \left(\nu ,k\right)-\sn\left(u ,k\right)\dn\left(u,k\right)\sn\left(\nu,k\right)\dn\left(\nu,k\right)}{1-{k}^{2}\sn^{2}\left(u,k\right)\sn^{2}{\left(\nu ,k\right)}},\\
+\mathrm{\dn}\left(u+\nu ,k\right) &=\frac{\dn\left(u,k\right) {\dn} \left(\nu ,k\right)- k^2 \sn\left(u ,k\right)\cn\left(u,k\right)sn\left(\nu,k\right)\cn\left(\nu,k\right)}{1-{k}^{2}\sn^{2}\left(u,k\right)\sn^{2}{\left(\nu ,k\right)}}.
+\end{align}
+
+\subsection{Physics pendulums and the potential of velocity}\label{sec:pendulum}
+Back to the physics pendulum problem. We assume
+\begin{align}
+\sdt{x}+\sin x &=0, \label{sinxd}\\
+x(0)=0, \, & v(0)=\left( \dt{x}\right) = v_0.
+\end{align}
+The solution can be
+\begin{align}
+\sin\frac{x}{2} &= \sn(\frac{v_0 t}{2},\frac{2}{v_0})=\frac{v_0}{2} \sn(t,\frac{v_0}{2}),\\
+v &=v_0 \dn(\frac{v_0 t}{2} , \frac{2}{v_0})= v_0 \cn(t,\frac{v_0}{2}).
+\end{align}
+
+According to the condition of $ k\leq 1 $, we have $v_0=2$ is the
+transition point (see Fig.~\ref{../Figs/handdraw01.jpg}).
+\scalefig{../Figs/handdraw01.jpg}{0.9}{Evolution of elliptic functions and their integration.}
+
+Evolution of $\cn$ function (see Fig.~\ref{../Figs/handdraw02.jpg}).
+\scalefig{../Figs/handdraw02.jpg}{0.9}{Evolution of cn(t,k) function and similar functions.}
+
+\begin{align}
+\dot{x}\ddot{x} + (\sin x) \dot{x} &=0,\\
+\frac{1}{2} \left( \dot{x} \right)^2 +[-\cos x] &= c,\\
+\left( \dot{x} \right)^2 &= 2[c +\cos x].
+\end{align}
+
+Define differential from Equ.~\ref{sinxd}:
+
+\begin{align}
+\dddot{x} + (\cos x)\dot{x} =0 . \label{eq:thirdorderxcos}
+\end{align}
+Integrate to give
+\begin{align}
+\frac{\dot{x}^2}{2}-c - \cos x &=0,\\
+\textrm{or}\quad \quad \cos x= \frac{\dot{x}^2}{2}-c.
+\end{align}
+Substituting the equation above into Equ.~\ref{eq:thirdorderxcos}, we obtain
+\begin{align}
+\dddot{x}+[\frac{\dot{x}^2}{2}-c] \dot{x} &=0,\\
+\ddot{v}+ [\frac{v^2}{2}-c] &=0,\\
+%\fbox
+\ddot{v}+A v^3 - Bv=0,
+\end{align}
+where $A=\frac{1}{2}$, $B=c$.
+We have (inadvertently) converted a $2^{nd}$ order differential equation in $x$ with  a $2^{nd}$ order differential equation in $v$. Now we obtain the second-order equation of velocity:
+\begin{align}
+\ddot{v}= g(v)= -A v^3+Bv.
+\end{align}
+What is the ``velocity potential''? Answer: 
+\begin{align}
+A\frac{v^4}{4} -B\frac{v^2}{2}.
+\end{align}
+This is a double well. $ v $ can become trapped in one of the wells, in which cases $x$ becomes
+unbounded. See Fig.~\ref{../Figs/handdraw03}
+\scalefig{../Figs/handdraw03}{0.9}{Potential of $ x $ and $ v $.}
+
+What learned:
+\begin{itemize}
+\item There is no law to confine physics. All kinds of equations are valid.
+\item Do we need more initial condition? -- We need to know the relationship between $x$ and $v$.
+\end{itemize}
+
+\subsection{Coupled multiple level quantum system and physics pendulums}\label{sec:quantumlevels}
+\textbf{Sep 11}.
+
+Something about Quantum mechanics:
+\begin{equation}
+\bra{m}i\hbar \frac{\partial}{\partial t} \ket{\Psi(t)}=\bra{m}H\ket{\Psi(t)}.\label{Schrod}
+\end{equation}
+\begin{equation}
+H=H_0 + V.
+\end{equation}
+\begin{equation}
+H_0 \ket{m} = E_m \ket{m}.
+\end{equation}
+\begin{align}
+C_m(t)&=\bra{m}\Psi(t)\rangle,\\
+V_{mn} &= \bra{m}V\ket{n}.
+\end{align}
+
+Equ.~\ref{Schrod} is equivalent to 
+\begin{equation}
+i \dt{C_m}= E_m C_m + \sum_n {V_{mn}C_n}. 
+\end{equation}
+Equ.~\ref{Schrod}
+\begin{equation}
+\rightarrow i\frac{\partial p}{\partial t}=\underbrace{[H,p]}_{L_p},
+\end{equation}
+where $ p=\ket{\Psi (t)}\bra{m} $. 
+
+We want to use $ \bra{m} \rho \ket{n} = \rho_{mn}=C_m^* C_n$, so that the equation above can be written as 
+\begin{equation}
+i\dt{\rho_{mn}}=(E_m-E_n)\rho_{mn}+ \sum_s{\left( V_{ms}\rho_{sn}-\rho_{ms} V_{sn} \right)}.
+\end{equation}
+For any operator, the expectation value can be written as
+\begin{equation}
+\bra{\Psi}{\hat{O}}\ket{\Psi}=Tr(\hat{\rho}\hat{O}).
+\end{equation}
+
+Once all the electrons in a crystal, for example, are in the same level,
+\begin{equation}
+E_m =E^0, \quad \text{for all m.}
+\end{equation}
+
+%\missingfigure{911-1}.
+\scalefig{../Figs/handdraw911_1}{0.8}{Transition among states.}
+
+If the energy is proportional to the probability of the electron staying in one level,
+\begin{equation}
+E_m=E^0 - \chi |C_m | ^2 = E^0 -\chi \rho_{mm}. 
+\end{equation}
+\begin{align}
+i\dt{C_{m}} &=-\chi |C_m|^2 C_{m}+ \sum_n{\left( V_{mn}C_{n} \right)},\\
+i\dt{\rho_{mn}} &=-\chi  (\rho_{mm}-\rho_{nn})\rho_{mn} + \sum_s{\left( V_{ms}\rho_{sn}-\rho_{ms} V_{sn} \right)}.
+\end{align}
+These two equations are called discrete nonlinear Schrodinger equation. These equations have not been fully solved!
+When $ \chi=0 $, the equations become linear.
+
+To solve these nonlinear equations, one can find a way to simplify it. One way is to look at the two-coefficient case and simplify it as
+\begin{align}
+i\dt{C_{1}} &=-\chi |C_1|^2 C_{1}+  V {C_2} \quad \&\, C_2 \,{\text eq}\\
+i\dt{\rho_{11}} &=V(\rho_{21}-\rho_{12}),\\
+i\dt{\rho_{12}} &=V(\rho_{22}-\rho_{11})-\chi (\rho _ {11}- \rho _{22})\rho_{12}.
+\end{align} 
+Now that $ \chi=0 $,
+\begin{align}
+i\dt{C_1} &=V {C_2}\quad  \& \quad i\dt{C_2}=VC_1,\\
+\text{multiply } & i\dt, \\
+\Rightarrow & \underbrace{-\sdt{C_1} = V i\dt{C_2}=V V C_1.}_{ \sdt{C_1}+V^2C_1=0}
+\end{align}
+$C_1$ can be solved as an oscillator. 
+%\missingfigure{911-2.}
+\scalefig{../Figs/handdraw911_2}{0.8}{$ C_1 $ can describe the movement of an oscillator.}
+
+Introduce 2 real quantities
+\begin{align}
+p &=\rho_{11}-\rho_{22},\\
+q &= i (\rho _{12}-\rho_{21}),\\
+r &=  \rho _{12}+\rho_{21}.
+\end{align}
+Now, we can get the equation in the form of
+\begin{equation}
+\frac{d}{dt}\left({\begin{array}{c}
+p \\ q \\ r
+\end{array}}\right)= \left(\begin{array}{c}
+-q \\ -p_+i \chi r q\\ -\sin\chi rq 
+\end{array}
+\right)\quad (\text{for example...})
+\end{equation}
+In quantum mechanics, we usually have $ p^2 + q^2 + r^2=1 $ as well.
+
+Homework: solve the $p,q,r$ equations. Then eliminate $ q \& r $ to get an equation solely depends on $ p $. That can be 
+\begin{equation}
+\sdt{p}=Ap-Bp^3 ,
+\end{equation} 
+which is the equation of velocity for a physical pendulum. The probability difference will behave as velocity of pendulum does. 
+
+\begin{equation}
+\frac{\chi}{4v}\rightarrow k.
+\end{equation} 
+
+%\missingfigure{913-1}.
+\scalefig{../Figs/handdraw913_1}{0.8}{$ \cn $ function and its limit.}
+
+Velocity as a function of $ t $. Two cases: when the nonlinearity is small, or is large. The details will be studied in the homework (HW2).
+%\missingfigure{913-2}.
+\scalefig{../Figs/handdraw913_2}{0.8}{One possible diagram of probability distribution based on $ \cn $ and $ \dn $ function.}
+
+%Q: What is 
+%\begin{equation}
+%\boxed{\cos^3 t}
+%\end{equation}
+%in terms of $ \cos t \, \& \, \cos 3t$ (as a sum)?

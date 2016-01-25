@@ -1,0 +1,188 @@
+\chapter{Singular perturbation theory}\label{chap:singularperturbation}
+\section{Solving a high-order differential equation using perturbation method}
+\textbf{Sep 13}.
+
+Equations with nonlinear terms, for example, 
+\begin{equation}
+\sdt{x}+ \alpha \dt{x} + \omega^2 x = 0
+\end{equation}
+can be modified as
+\begin{equation}
+\sdt{x}+ \alpha \left(\dt{x}\right)^{17} + \omega^2 x = 0.
+\end{equation}
+Can we solve it analytically? This is the technique to learn in this section. One technique to be introduced is called singular perturbation method.
+
+Suppose we have an equation of 
+\begin{equation}
+\frac{d^2y}{dT^2}+ A \left(\frac{dy}{dT}\right)^{2n+1} + \omega^2 y = 0.
+\end{equation}
+PS: one can introduce a quantity of $ x=y/y_0 $ and/or a quantity of $ t=T/T_0 $ to make a differential equation to be dimensionless so that one do not need to worry about the dimensions. One dimensionless equation can be 
+\begin{equation}
+\frac{d^2x}{dt^2}+ \alpha \left(\frac{dx}{dt}\right)^{2n+1} + \omega^2 x = 0,\quad n=0,\,1,\,\cdots 
+\end{equation}
+
+Suppose the initial condition gives
+\begin{equation}
+x(0)=0,\quad \dot{x}(0)=B.
+\end{equation}
+Now, if $ \alpha=0 $, $ x(t)=B\sin t $. If $ \alpha\neq 0 $, we can set $ x=x_0 +\alpha x_1+ \alpha^2 x_2 + \cdots $ using the normal perturbation method. 
+
+\textit{e.g.} $n=1$, so that 
+\begin{equation}
+\sdt{x} + \alpha \left( \dt{x}\right)^3 + x =0.\label {alphasdt}
+\end{equation}
+Using perturbation method, we have
+\begin{equation}
+\frac{d^2}{dt^2}(x_0 + \alpha x_1 + \cdots)+ \alpha \left[ \dt{x_0} + \alpha \dt{x_1} + \cdots \right]^3 +(x_0 + \alpha x_1 + \cdots)=0.
+\end{equation}
+\begin{align}
+\sdt{x_0} + x_0 &=0, \label{pert1}\\
+\sdt{x_1} + \left( \dt{x_0}\right)^3 + x_1 &= 0 \label {pert2},
+\end{align}
+which are the outcome of the perturbation theory we usually use. 
+
+Equ.~\eqref{pert1} gives
+\begin{equation}
+x_0(t) = B\sin t.
+\end{equation}
+Equ.~\eqref{pert2} gives
+\begin{equation}
+\left(\dt{x_0}\right)^3 = B^3 cos^3 t= \frac{B^3}{4}(cos 3t + 3 cos t),
+\end{equation}
+using  $ \cos^3 t= \frac{cos 3t + 3 cos t}{4}$. 
+
+Now, Equ.~\eqref{pert2} gives
+\begin{equation}
+\sdt{x_1}+ x_1 = -\frac{B^3}{4} \cdot \underbrace{\left[\cos 3t + 3 \cos t\right] }_{\text{one fast oscillating term $ + $ an important term}}.
+\end{equation}
+This equation gives an oscillation that it oscillates normally at the beginning, but will blow off consequently. The terms in the brace are called secular terms. 
+
+
+
+It can be shown that the normal perturbation method fails for any $ n $. 
+
+\section{Singular perturbation method}
+\textbf{Sep 18}.
+
+A better method: singular perturbation method. This method is based on treating the equations above as partial differential equations with two time scales, which include a fast time scale $ \tau $ and a slow time scale $ t $. With these two time scales, one can convert an ODE $ (t) $ to a PDE $ (t,\tau) $. 
+
+An example,
+\begin{equation}
+\sdt{x}+ \beta \dt{x}+\omega^2 x=0
+\end{equation}
+gives
+\begin{align}
+\epsilon^2 \tilde{x} -\epsilon x_0 - \dot{x_0}+\beta (\epsilon \tilde{x}-x_0)+ \omega^2 \tilde{x}&=0,\\
+(\epsilon^2+ \beta \epsilon + \omega^2)\tilde{x}&=\dot{x_0}+ (\epsilon + \beta)x_0
+\end{align}
+\begin{align}
+\Rightarrow \tilde {x}= \frac{\dot{x_0}}{\epsilon^2+\beta \epsilon + \omega^2}
+\end{align}
+
+\begin{align}
+\tilde{x}= \frac{B}{(\epsilon +\beta/2)^2 + (\omega^2-\beta^2/4)}=\frac{B}{\Omega}\left( \frac{\Omega}{(\epsilon+ \beta/2)^2+\Omega^2}\right),
+\end{align}
+where $ \Omega = \sqrt{\omega^2 - \frac{\beta^2}{4}} $.  $ \Omega \approx \omega $ in most cases, and 
+\begin{align}
+x(t)= \frac{B}{\Omega}e^{-\frac{\beta t}{2}}\sin \Omega t.\label {xtdamping} 
+\end{align}
+This solution has the main feature that $ x(t)=B \frac{\sin t}{\sqrt{\cdots t}} $. The result can be plotted in the figure below. 
+\scalefig{../Figs/handdraw918_1}{0.5}{Diagram a damping oscillation described in Equ.~\eqref{xtdamping}.}
+%\missingfigure{918-1.}
+
+Let make $ \tau =\delta t = \epsilon t $, where $ \epsilon  $ is small. We go back to solve Equ.~\eqref{alphasdt}. Now, 
+\begin{align}
+\dt{x } = \frac{\partial x}{\partial t}+ \frac{\partial x}{\partial \tau}\frac{d\tau}{dt}= \frac{\partial x}{\partial t}+ \epsilon \frac{\partial x}{\partial \tau}\label {singularp1}
+\end{align}
+\begin{align}
+\sdt{x} &= \frac{\partial ^2 x}{\partial t^2}+ \epsilon \frac{\partial ^2 x}{\partial t \partial \tau} + \epsilon \left[ \frac{\partial ^2 x}{\partial t \partial \tau}+ \epsilon \frac{\partial ^2 x}{\partial \tau ^2}\right] \\
+%\end{align}
+%\begin{align}
+&=\frac{\partial ^2 x}{\partial t^2} + 2\epsilon \frac{\partial ^2 x}{\partial t \partial \tau}+ \epsilon^2  \frac{\partial ^2 x}{\partial \tau^2}.\label{singularp2}
+\end{align}
+We can substitute the equations above to Equ.~\eqref{alphasdt} to give
+\begin{align}
+\frac{\partial ^2 x}{\partial t^2}+ \ldots 
+\end{align}
+We can regard $\epsilon \sim \alpha $ (in the same order). 
+
+Now let us expand $ x $ in terms of $ \epsilon $ as 
+\begin{align}
+x=x_0 + \epsilon x_1 + \epsilon^2 x_2^2 + \ldots .
+\end{align}
+The partial differential equation will give 
+\begin{align}
+\frac{\partial ^2 x_0 }{\partial t^2}+ x_0 &= 0,\label {partialpert1}
+\end{align}
+but you will not get $ x_0(t)=B\sin t $, rather $ x_0 (t)= B(\tau) \sin t $. 
+
+PS: Finally, one should obtain $ x_0(t)=\frac{\sin t}{\sqrt{\cdots t}} $. The zero order solution can characterize the main feature of the exact solution of the equation!
+
+The first order perturbation equation is
+\begin{align}
+\frac{\partial ^2 x_1}{\partial t^2} +x_1 = -2 \frac{\partial ^2 x_0}{\partial t \partial \tau} - \frac{\alpha}{\epsilon} \left( \frac{\partial x_0}{\partial t}\right) . \label {partialpert2}
+\end{align}
+...
+
+Return to the linear problem which is 
+\begin{align}
+\sdt{x} + \alpha \dt{x} + \omega^2 x=0.\label {sdewithomega}
+\end{align}
+Divided by $ \alpha $ to give
+\begin{align}
+\left( \dfrac{1}{\alpha}\right)\sdt{x} + \dt {x} + \frac{\omega^2}{\alpha}x &=0 \\
+\Rightarrow \dt{x} + \Gamma x &= -\frac{1}{\alpha } \sdt{x}.
+\end{align}
+In some sense $ \alpha \rightarrow \infty $ (Arrestotal approximation), the equation above gives
+\begin{align}
+\dt{x} +\Gamma x=0.  \label {Gammaapprox}
+\end{align}
+
+The solution gives a damping oscillation with two terms as shown in the figure below.
+\scalefig{../Figs/handdraw918_2}{0.95}{Solution of a damping oscillation.}
+%\missingfigure{918-2.}
+If one term is ignored, it will become a pure damping movement. 
+
+   
+\textbf{Sep 20}
+
+A summary of singular perturbation theory: For Equ.~\eqref{alphasdt}, using normal perturbation theory, one has
+\begin{equation}
+x(t)= x_0(t)+ \alpha x_1(t) +\alpha^2 x_2(t).
+\end{equation}
+
+\begin{equation}
+\rightarrow \left\{ \begin{array}{c}
+\sdt{x_0} + x_0 =0\Rightarrow x_0=B\sin t\\
+\sdt{x_1}+ x_1 =\text{dangerous terms}
+\end{array}\right.
+\end{equation}
+There is a dangerous term. Let us see how to avoid this dangerous term in the improved singular perturbation theory. 
+
+Using the singular perturbation theory, we make $ x=x(\tau=\epsilon t,t) $ with perturbation coefficient $ \epsilon $ and/or $ \alpha $. 
+The coupled partial differential Equs.~\eqref{singularp1} and~\eqref{singularp2} lead to 
+Equs.~\eqref{partialpert1} and~\eqref{partialpert2}. 
+
+Back to the result:
+\begin{align}
+\frac{\partial^2 x_1}{\partial t^2}+x_1 = -2 \frac{dB(\tau)}{d\tau}\cdot \cos t - \frac{\alpha}{\epsilon} B^3(\tau) \underbrace{\cos^3 t}_{\frac{1}{4}(3\cos t+ \cos 3t)}
+\end{align}
+What is dangerous? -- Terms proportional to $ \cos t $, which can blow off when $ t $ is large.  
+Expand these terms to give 
+\begin{align}
+-2 \frac{d B(\tau)}{d\tau}- \frac{3}{4}\left(\frac{\alpha}{\epsilon} \right)B^3(\tau),
+\end{align}
+and put them equal to zero.
+\begin{itemize}
+\item This allows you to determine $ B(\tau) $. 
+\item This ensures the removal of dangerous terms.
+\end{itemize}
+
+Interestingly, the zero-order approximation of this method has given a good approximation to the exact solution. The zero-order approximation gives
+\begin{align}
+x_0(t,\tau)=\frac{\sin t}{\sqrt{\frac{3}{4}\left(\frac{\alpha}{\epsilon} \right)\tau +1}}
+\end{align}
+Now, substitute $ \tau=\epsilon t $, we have
+\begin{align}
+x(t)\approx x_0 = \frac{\sin t}{\sqrt{\frac{3}{4}\alpha t +1}}.
+\end{align}

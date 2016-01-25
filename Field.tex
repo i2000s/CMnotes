@@ -1,0 +1,774 @@
+% Field theory
+\chapter{Many-body systems and field theory}
+
+
+
+\section{Multiple-particle systems}\label{sec:particles}
+\textbf{Oct 9.}
+
+So far, we only studied the system with one variable in  one-dimension. We will study the field of interactions with two or many particles in multiple dimension. The theory can be called as classical field theory. The equations to describe such a multiple particle system are often partial differential equations (PDEs). To make things easy, we limit our discussions in linear regime at the beginning, and will extend to nonlinear regime and nonlinear PDEs. 
+
+Aside on synchronization, a $ N $-particle system may be described as
+\begin{align}
+\dt{\theta_i}=\omega_i -\sum_j \gamma_{ij} f(\theta_i-\theta_j), \quad (i,j=1,2,\ldots,N).
+\end{align}
+To make it simple, let us make $ \gamma=\gamma_{ij} $ and $ f=\sin $ to give
+\begin{align}
+\dt{\theta_i}=\omega_i -\gamma \sum_j  \sin(\theta_i-\theta_j), \quad (i,j=1,2,\ldots,N).
+\end{align}
+In a range of $ \omega $ (see figure below), we can solve this equation system in computer. 
+%\missingfigure{Oct9-1. Range of $ \omega_i $.}
+\scalefig{../Figs/handdraw1009_1}{0.4}{Range of $ \omega_i $.}
+
+This system of equations is an example of the first-order coupled equations
+\begin{align}
+\dt{x_i}=v_i.
+\end{align}
+This set of equations may be used to describe the synchronization movement of a school of fish, where $ v_i $ include the interactions among fish and the rule of movement of individual fish. 
+
+Let us look at two-particle systems
+\begin{align}
+\dt{x_1} &= f(x_1,x_2),\\
+\dt{x_2} &= g(x_2,x_1).
+\end{align}
+We may expect to obtain a set of equations with the combination of $ x_1 $ and $ x_2 $, as before, 
+\begin{align}
+\dt{x_1-x_2} &= F(x_1-x_2),\\
+\dt{x_1+x_2} &= G(x_2+x_1).
+\end{align}
+However, in general case, we can hardly find such a equations set with defined combination of $ x_1 $ and $ x_2 $. 
+
+If we can do so, for example,
+\begin{align}
+\dt{x_1} &= -k(x_1-x_2),\\
+\dt{x_2} &= -k(x_2-x_1).
+\end{align}
+We can make $ x_- = x_1 - x_2 $ and $ x_+ = x_1+x_2 $ to solve and analyze the set of equations.
+
+Another way to solving the coupled equations is by setting a superposition of states
+\begin{align}
+x^q= \sum_m a_m^q x_m,
+\end{align}
+where $ \sdt{x_m}=\ldots $ is known, 
+and obtain a new set of equations
+\begin{align}
+\frac{d^2 x^q}{dt^2}=\ldots.
+\end{align}
+The number of the new set of equations is the same as the original system, but they are easier to solve. 
+
+For instance, a dimer system with a spring can be described by
+\begin{align}
+M_1 \sdt{X_1}= -k (X_1- X_2),\\
+M_2 \sdt{X_2}= -k (X_2- X_1).
+\end{align}
+%\missingfigure{Oct9-2. A dimer with a spring.}
+\scalefig{../Figs/handdraw1009_2}{0.4}{A dimer with a spring.}
+We can add more particles to make is general. When combining, some terms on the right can be
+$ -k (X_m-X_{m-1} +X_m-X_{m-1}) = -2k (X_m-X_{m-1})$ or zero. 
+
+%\missingfigure{Oct9-3. N-particle system connected with springs.}
+\scalefig{../Figs/handdraw1009_3}{0.6}{N-particle system connected with springs.}
+The equation can become
+\begin{align}
+\sdt{X_m}=-\frac{k}{M_m} (2 X_m- X_{m+1}-X_{m-1}), m=1,2,3,\ldots.
+\end{align}
+For springs
+\begin{align}
+\sdt{X_m}=-{\omega^2_m} (2 X_m- X_{m+1}-X_{m-1}), m=2,3,\ldots.
+\end{align}
+For simplicity, we make $ \omega_m=\omega_0 $, such that
+\begin{align}
+\sdt{X_m}=-{\omega^2_0} (2 X_m- X_{m+1}-X_{m-1}), m=2,3,\ldots.
+\end{align}
+
+This is a problem of eigen functions problem. One can solve it using linear algebra. 
+
+We will solve it using the superposition method mentioned before. We make $ x^q=\sum_m X_m e^{iqm} $. We also suppose that the last mass in the chain is connected with the first mass labeled as $ m=1 $. We have
+\begin{align}
+-\frac{d^2 \sum_m X_m e^{iqm}}{\omega^2_0 dt^2}= [\sum_m X_m e^{iqm} - \sum_m X_{m-1} e^{iqm}- \sum_m X_{m+1}e^{iqm}],
+\end{align}
+such that
+\begin{align}
+-\frac{1}{\omega_0^2} \frac{d^2 x^q}{dt^2}= 2x^q - e^{+iq} \sum_m X_{m-1} e^{iq(m-1)}- e^{-iq} \sum_m X_{m+1} e^{iq(m+1)}.
+\end{align}
+Now, 
+\begin{align}
+\sdt{x^q}=-\omega_0^2 [2x^q - e^{iq} x^q -e^{-iq} x^q]= -\omega_0^2 x^q \cdot Q_q,
+\end{align}
+where $Q_q= 2-e^{iq}- e^{-iq}=2-2\cos q=4\sin^2 \frac{q}{2}$. Hence
+\begin{align}
+\sdt{x^q}+4\omega_0^2 \sin^2\frac{q}{2} x^q=0.
+\end{align}
+We can define $ \omega_q^2= 4\omega_0^2 \sin^2\frac{q}{2}$, the equation above can be simplified as
+\begin{align}
+\sdt{x^q}+\omega_q^2 x^q=0.
+\end{align}
+
+Under the boundary condition, $ N+1\rightarrow 1 $, 
+\begin{align}
+e^{iqm}=e^{iq(m+N)},
+\end{align}
+or,
+\begin{align}
+1=e^{iqN},\Rightarrow q=\frac{2\pi}{N} \, \textrm{are integers.}
+\end{align}
+
+\section{Homogeneous $N$-particle chain}
+\textbf{Oct 23.}
+
+The topic of this part is interaction between particles. See the figure below. 
+\scalefig{../Figs/handdraw1023_1}{0.6}{Interacted particles.}
+
+The equation to describe the interaction in the figure above can be given by
+\begin{align}
+M_m \ddot{x}_m =- k(2x_m-x_{m+1}-x_{m-1}).
+\end{align}
+
+We choose independent variables $ x^q=\sum_m a^q_m x_m $, and try derive a new set of equations of $ x^q $. In linear regime, we can always do it. Now, $ a^q_m $ can be very complicated. Usually, we can use $ a^q_m=e^{iqm} $. Here, $ m $ are numbers, the formalism of $ a^q_m $  is similar to Fourier transformation. $ q $ is dimensionless. Let us look at what is $ q $. 
+
+We find that $ q=2\pi n $ ($ n $ is an integer) gives the same $ a^q_m $. Also, the periodical condition gives $ e^{iqm}=e^{iq(m+N)} $, which is a ring with particle number of $ N $. Based on the two facts above, we can write $ q $ as 
+\begin{align}
+q=\frac{2\pi}{N}m\quad (m=0,1,\ldots , N-1).
+\end{align}
+This is the reciprocity relationship between $ m $ and $ q $. It is also a form of discrete Fourier transformation. 
+
+\scalefig{../Figs/handdraw1023_2}{0.6}{Two ways of forming a ring with $ N $ particles. }
+
+As $ N $ becomes larger and larger, $ q $ becomes smaller and smaller. The summation  becomes an integral. So it is a Fourier transformation from $ x_m(t) $ to $ x^q(t) $. In the ring or closed chain. $ q $ is the phase ranging from $ -\pi $ to $ \pi $, or $ 0 $ to $ 2\pi $. 
+
+To solve the motion of particles, we use the idea: since the messy equation of $ x_m $ is so complicated, we convert the $ x_m $ equation to the equation of $ x^q_m $ using the discrete Fourier transformation. Once we obtain the solution of $ x^q_m $, we invert them into $ x_m $ again. And the inverting transformation gives
+\begin{align}
+x_m=\frac{1}{N}\sum_q x^q e^{-iqm}.
+\end{align}
+
+If $ N $ is large, the summation becomes an integral, which gives
+\begin{align}
+x_m=\frac{1}{2\pi}\int_{-\pi}^{\pi} x^q(t) e^{-iqm}dq
+\end{align}
+
+However, the system of equations is still complicated, because each particle has a different frequency. Formally,
+\begin{align}
+\sdt{x^q}+\omega_q^2 x^q=0.
+\end{align}
+$ \omega_q $ is the intrinsic frequency for one particle. What is it? Usually, using the boundary condition, the frequency can be written as $ \omega_q=2\omega_0 \left| \sin \frac{q}{2} \right| $. The frequency band is formed as shown in the figure below. This is called dispersion relations. The shape of the dispersion relation depends on the range of $ N $. 
+
+\scalefig{../Figs/handdraw1023_3}{0.5}{Band structure of collective oscillations. }
+
+Using the expression of $ \omega_q $, the solution of $ x^q $ is usually a Bessel function (in the form of $ \sin\sin(\cdot) $). See Homework8-2 for details. 
+
+Problem: 
+\scalefig{../Figs/handdraw1023_4}{0.5}{A chain of particles in a spring.}
+The initial condition is 
+\begin{align}
+x_1(0)= x_2(0)&= x_3(0)=x_4(0)=0,\\
+v_1(0)=v_0, \quad  v_2(0)=-v_0, &\quad v_3(0)=v_4(0)=0.
+\end{align}
+We want to solve $ x_3(t) $. 
+
+To solve it, we can write down the equation of $ x^q $ as
+\begin{align}
+x^q(0)&= \sum_m x_m(0) e^{iqm}=0.\\
+\dot{x}^q(0) &=\sum_m \dot{x}_m (0) e^{iqm}\nonumber \\
+&= v_0 e^{iq1}+ 0+0-v_0 e^{iq4}\\
+&= v_0(e^{iq1}-e^{iq4}),
+\end{align}
+where $ q=\frac{2\pi}{N}(0,1,2,3)=0,\,\frac{\pi}{2},\,\pi,\,\frac{3\pi}{2} $. For example, for $ q=\pi $, we have
+\begin{align}
+\dot{x} ^\pi (0)=v_0 (e^{i\pi}-e^{i4\pi}).
+\end{align}
+One can solve the other $ x^q $.
+
+Now, from $ \omega_q= 2\omega_0 \left|\sin\frac{q}{2} \right| $, one can solve the individual $ \omega_q $. For instance, 
+\begin{align}
+\omega_{\pi/2}= 2\omega_0 \left|\sin\frac{\pi}{4} \right|.
+\end{align}
+
+Finally, 
+\begin{align}
+x_3(t)=\frac{1}{N} \sum_{q=0,\,\frac{\pi}{2},\,\pi,\,\frac{3\pi}{2} } e^{-iq3}x^q(t)
+\end{align}
+\begin{align}
+x_3(t) &= \frac{1}{4}\left[x^0 (t)+e^{-i\frac{3\pi}{2}}x^{\pi/2}(t) + e^{-i3\pi}x^\pi (t) + e^{-i\frac{9\pi}{2}}x^{3\pi/2}(t) \right]\\
+&= \cdots
+\end{align}
+
+This method can be used to solve similar problems with $ N $ particles in a chain. 
+
+\textbf{Oct 25.}
+
+
+Summary of what we have learnt recently:
+\begin{align}
+x^q=\sum_m x_m e^{iqm},\quad x_m=\frac{1}{N}\sum_q x^q e^{-iqm},
+\end{align}
+where $ q=\frac{2\pi}{N}(0,1,\cdots,N-1) $.
+$ \omega_q $ depends on interactions, \textit{e.g.} 
+\begin{align}
+\omega_q^2=4\omega_0^2 \sin^2 \frac{q}{2}.
+\end{align}
+As $ N\rightarrow \infty $,
+\begin{align}
+x_m=\frac{1}{2\pi} \int_{-\pi}^{+\pi} x^q e^{-iqm} dq.
+\end{align}
+This will lead to Bessel function, \textit{etc.} 
+
+Assume we have a chain of particles connected with springs. 
+\begin{align}
+x_0(t)&=\frac{1}{2\pi} \int_{-\pi}^{+\pi} x^q(t)e^{-iqm} dq|_{m=0}\\
+x_m(t)&=\frac{1}{2\pi} \int_{-\pi}^{+\pi} x^q(t)e^{-iqm} dq \label{eq:xmfromxq}\\
+x^q(t) &=A\cos \omega^q t+ B \sin \omega^q t\\
+x^q(0) &=A,\quad \dot{x}^q(0)=B\omega^q.
+\end{align}
+\begin{align}
+x^q(0)&=0,\\
+\dot{x}^q(0)&=\sum_m \dot{x}_m(0)e^{iqm}\nonumber\\
+&= v_0 \sum_m \delta_{m,0} e^{iqm}=v_0.
+\end{align}
+Suppose
+\begin{align}
+A=0, \quad B=\frac{v_0}{\omega^q},
+\end{align}
+we have
+\begin{align}
+x^q(t)=\frac{v_0}{\omega^q}\sin \omega^q t.
+\end{align}
+Substituting the equation above back into Equ.~\ref{eq:xmfromxq}, we will get the Bessel function expression.
+
+\section{Periodical chain}\label{sec:periodicchain}
+\subsection{Cell method}
+Now we look at a chain with periodical units of small mass and big mass. See figure below.
+
+\scalefig{../Figs/handdraw1025_1}{0.7}{Chain of periodical/alternating masses.}
+
+If the masses of the two particles are the same, we have 
+\begin{align}
+\sdt{x_0}&=-\omega^2 (x_0-x_1)\\
+\sdt{x_1}&=-\omega^2 (x_1-x_0).
+\end{align}
+We consider to make 
+\begin{align}
+x_0+x_1 &=x^+\\
+x_0-x_1 &= x^-.
+\end{align}
+We will have two modes ($0$ and $ 1 $) for the movement of the center and the relative movement. 
+
+If the masses of the two particles are different, the frequencies for the two particles are different, so that
+\begin{align}
+\sdt{x_0}&=-\omega_0^2 (x_0-x_1)\\
+\sdt{x_1}&=-\omega_1^2 (x_1-x_0).
+\end{align}
+We can rewrite it in the form of matrix as 
+\begin{equation}
+\sdt{}\left(\begin{array}{c}
+x_0\\x_1
+\end{array} \right) = -\left( \begin{array}{cc}
+\omega_0^2 & -\omega_0^2\\
+-\omega_1^2 & \omega_1^2
+\end{array}  \right)
+\left( \begin{array}{c}
+x_0\\x_1
+\end{array} \right).
+\end{equation}
+
+A way to look at the equations is to change the variables as shown in Fig.~\ref{../Figs/handdraw1025_1} and treat each unit as an entity. The equations becomes
+\begin{align}
+M_L \ddot{L_m} e^{iqm} &= -\sum_m k(L_m -R_m + L_m -R_{m-1}) e^{iqm} \label{eq:leftm}\\
+{M}_R \ddot{R}_m e^{iqm} &= -\sum_m k (R_m -L_m+R_m -L_{m-1}) e^{iqm} \label{eq:rightm}
+\end{align}
+\begin{align}
+L^q=\sum_m L_m e^{iqm}.
+\end{align}
+
+We only look at Equ.~\ref{eq:leftm}, for example, and obtain
+\begin{align}
+M_ L \ddot{L}^q -2kL^q + kR^q +k\sum_{m=1} R_{m-1}e^{iq(m-1)}\cdot e^{iq}
+\end{align}
+\begin{align}
+\fbox{$M_L\ddot{L}^q=-2kL^q +k(1+e^{iq})R^q$}. 
+\end{align}
+
+This equation shows that we can  transfer the individual equations of particles to two equations only involving the particles on the left and right in the unit. 
+
+The equation set looks like this:
+\begin{align}
+\sdt{}\left(\begin{array}{c}
+L^q\\ R^q
+\end{array} \right) 
+= - \left( \begin{array}{cc}
+a_{11} & a_{12}\\
+a_{21} & a_{22}
+\end{array} \right)\left( \begin{array}{c}
+L^q\\
+R^q
+\end{array} \right)
+\end{align}
+
+The solution gives the dispersion relationships as plotted in the figure below. The feature of the relationship is that there is a forbidden band between the two modes. 
+
+\scalefig{../Figs/handdraw1025_2}{0.5}{A dispersion relationships of periodical oscillations.}
+
+Q: is it possible to have a forbidden gap/band? It happens when the two masses of a unit are equal. See below. The result is that the reflection will go away as well.
+\scalefig{../Figs/handdraw1025_3}{0.5}{Dispersion without a forbidden band.}
+
+Notice that when $ M_L\rightarrow M_R $, the dispersion relationship should become that of homogeneous chain case. That means the upper band is gone in that extreme case. In fact, the upper band curve moves as the extension of the one-particle chain. 
+
+\subsection{Alternating method}
+For the next class: Define a function $ h(m) $ of an integer $ m $ such that 
+\begin{align}
+h(m)= 1 \quad \mathrm{or}\quad  0
+\end{align}
+according as  $ m $ is even or odd. $ h(m) $ can be in the following form
+\begin{align}
+h(m)=\frac{1+(-1)^m}{2}=\frac{1+(\cos \pi)^m}{2}=\frac{1+(\cos \pi+i\sin \pi)^m}{2}=\frac{1+e^{im\pi}}{2}.
+\end{align}
+
+\textbf{Oct 30.}
+
+Suppose the large mass and the small mass are $ M \& \mu $. We have the equation of motion given by
+\begin{align}
+[M+(\mu - M)(\frac{(1+(-1)^m)}{2}) ]\sdt{x_m} &= -k(2x_m - x_{m-1}-x_{m+1})\\
+\Leftrightarrow \frac{\mu + M}{2} \sdt{x_m} + (-1)^m \frac{\mu - M}{2} \sdt{x_m} &= -k(2x_m - x_{m-1}-x_{m+1}).
+\end{align}
+
+Next, we need to perform the discrete Fourier transformation to simplify the equations. Of importance is the terms of 
+\begin{align}
+\sum_m (-1)^m x_m e^{iqm}=\sum_m e^{i\pi m } x_m e^{iqm}.
+\end{align}
+We will get nothing but $ x^{q+\pi} $. And the equation of $ \ddot{x}^q $ will connect with $ x^q $ and $ x^{q+\pi} $. The terms $ \ddot{x}^{q+\pi} \sim x^{q+\pi}\, \& \, x^q$.  
+
+In this form, we can only focus on two samples of normalized particles with masses of $ \mu_+=\frac{\mu + M}{2} $ and $ \mu_-=\frac{\mu-M}{2} $ respectively in the Fourier domain to study the collective movement of all particles. See Homework 8-3 for details. 
+
+Q: what we will do if we have multiple particles in a unit cell. See Fig.~\ref{../Figs/handdraw1030_1}. 
+\scalefig{../Figs/handdraw1030_1}{0.6}{A chain with multiple particle in one unit cell. }
+
+It can be solved in a similar way by focusing on the unit cell under discrete Fourier transformation. 
+
+\section{Defects in a propagating chain}\label{sec:defects}
+Q: Suppose we have a homogeneous chain of masses except for one mass given by $ \mu $ (see Fig.~\ref{../Figs/handdraw1030_2}). 
+\scalefig{../Figs/handdraw1030_2}{0.6}{A chain with a defect mass $ \mu $.}
+The equation of motion can be given by
+\begin{align}
+[M+(\mu - M)\delta_{mn} ]\sdt{x_m} = -k(2x_m - x_{m-1}-x_{m+1})
+\end{align}
+We label the $ \mu  $ mass as number $ n=0 $ mass. That is
+\begin{align}
+M\sdt{x_m}  &= -k (2x_m - x_{m+1}-x_{m-1})\quad \mathrm{if} \, m\neq 0 \\
+\mu \sdt{x_0} &= -k (2x_0 - x_1 - x_{-1}).
+\end{align}
+
+\begin{align}
+\rightarrow \quad \sum_m (\mu - M)\delta_{m,0} x_m e^{iqm}= (\mu-M) x_0.
+\end{align}
+
+Now, it is hard to solve the problem using the FT method mentioned before. To solve it, we should know that the equation can be rewritten in the form of
+\begin{align}
+\fbox{$\dt{y_m}=  \sim_m$} -c \delta_{m,0}y_m. \label{eq:nonhomogeneous}
+\end{align}
+The terms in the frame has the solution in the form of
+\begin{align}
+y_m(t)= \sum_n G_{m-n}(t)y_n (0).
+\end{align}
+This is the solution for a transition of homogeneous propagator problem, in terms of Green's function term $ G_{m-n}(t) $. The $ \delta $ term gives a trouble. 
+
+Note that 
+\begin{align}
+\dt{z(t)}=-\alpha z
+\end{align}
+has a solution of 
+\begin{align}
+z(t)= e^{-\alpha t}z(0),
+\end{align}
+even if $ z $ is an operator. If we change the equation above to be
+\begin{align}
+\dt{z(t)}=-\alpha z +f(t),
+\end{align}
+the solution can be given by
+\begin{align}
+z(t)= e^{-\alpha t}z(0) +\int_0^t dt' e^{-\alpha (t-t')} f(t').
+\end{align}
+
+Analog to the case above, Equ.~\ref{eq:nonhomogeneous} has the solution of
+\begin{align}
+y_m(t)= \sum_n G_{m-n}(t)y_n (0) + \int_0^t dt' \triangle .
+\end{align}
+
+In general, we come to the equation that
+\begin{align}
+\dt{y_m} = \sim_m +g_m (t).
+\end{align}
+We can verify that the solution can be rewritten as
+\begin{align}
+y_m =\sum_n G_{m-n}(t) y_n(0) + \int_0^t dt' \sum_n G_{m-n}(t-t') g_n (t'). 
+\end{align}
+This is a summation of convolutions in space and in time. So, it is a transition of variables in space and so to in time. The first term is a Fourier transformation, while the second term is a Laplace transformation. 
+If $ g_m (t) $ is given, we can solve it in the form above. 
+
+Now, we go back to our defect equation. We write
+\begin{align}
+\tilde{y}_m (\epsilon)= \underbrace{\sum_{n} \tilde{G} _{m-n }(\epsilon) y_n (0)}_{\tilde{\eta}_m(\epsilon)} + \sum_n \tilde{G}_{m-n}(\epsilon) \tilde{g}_n(\epsilon)
+\end{align}
+Therefore,
+\begin{align}
+\tilde{y}_m= \tilde{\eta}_m -c \sum_n \tilde{G}_{m-n}(\epsilon) \delta_{n,0} \tilde{y}_n (\epsilon)=\tilde{\eta}_m-c\tilde{G}_m\tilde{y}_0,
+\end{align}
+where we have made $ \tilde{g}_n(\epsilon)=-c\delta_{n,0}\tilde{y}_n(\epsilon) $.
+
+The solution above is a pseudo-solution, because there are unknown terms. 
+
+If $ c $ is small, we can use the iteration method to solve it. That is
+\begin{align}
+\tilde{y}_m=\tilde{\eta}_m-c\tilde{G}_m[\tilde{\eta}_0-c\tilde{G}_0[\tilde{\eta}_0-c\tilde{G}_0[\cdots]]]
+\end{align}
+Alternatively, we start with $ m=0 $, $\tilde{y}_0=\tilde{\eta}_0-c\tilde{G}_0\tilde{y}_0  $, and solve $ \tilde{y}_0=\frac{\tilde{\eta}_0}{1+c\tilde{G}_0} $ and so on. 
+
+If $ c $ is large or the interaction is strong, 
+\begin{align}
+\tilde{y}_m = \tilde{\eta}_m -c \frac{\tilde{G}_m\tilde{\eta}_0}{1+c\tilde{G}_0}.
+\end{align}
+
+Above, we find a way to solve a first-order equation of Equ.~\ref{eq:nonhomogeneous}. If we want to solve the second-order equation of the chain with a defect, we need to transfer between the two forms of equations. 
+
+
+
+\textbf{Nov 1.}
+
+A summary of technique we learned in the earlier sections: Some techniques to solve this kind of transitions between multiple interacting particles, which has the equation of motion
+\begin{align}
+\sdt{x}+ Ax=0,
+\end{align}
+where 
+\begin{align}
+x=\left( \begin{array}{c}
+x_1\\
+\vdots\\
+x_m\\
+\vdots
+\end{array} \right).
+\end{align}
+This is equivalent to 
+\begin{align}
+\sdt{x_m}+ \sum_n A_{mn}x_n=0.
+\end{align}
+We can use the Fourier transformation of
+\begin{align}
+x^q=\sum_m e^{iqm},
+\end{align}
+so that the equation can be transferred to 
+\begin{align}
+\sdt{x^q}=-A^q x^q.
+\end{align}
+
+Moreover, if we have driving equation
+\begin{align}
+\sdt{x}+ Ax=f,
+\end{align}
+or 
+\begin{align}
+\sdt{x_m}+ \sum_n A_{m-n}x_n=f_m(t),
+\end{align}
+we can write the solution of the Green function with a propagator for the homogeneous equation first, which is
+\begin{align}
+x_m(t) =\sum_n G_{m-n}(t)x_m (0)=\sum_n \eta_m (t)
+\end{align}
+and then plus the driving term to give 
+\begin{align}
+x_m(t) =\sum_n \eta_m (t) + \int_0^t dt' \sum_n G_{m-n}(t-t')f_n(t').
+\end{align}
+
+For the case of defects, if the defect is not ineligible, we can use the formalism of solution to solve the problem explicitly. The key for solving this kind of equations is the Laplace transformation and its inversion, which will be taught in class.
+
+By solving the last part of the solution using Laplace transformation technique, and put the solution back into the equation, we can obtain the full solution of the problem. This is known as \textit{renormalization} technique. 
+
+\section{Field theory}\label{sec:field}
+Now, we start a new topic. We look at the homogeneous chain problem.
+\begin{align}
+\sdt{x_m}= -\omega_0^2 (2x_m-x_{m+1}-x_{m-1} ).\label{eqfield:xm}
+\end{align}
+We rewrite it as
+\begin{align}
+\sdt{x_m}= a \omega_0^2 \left( \frac{(x_{m+1}-x_m)}{a}-\frac{(x_m-x_{m-1})}{a} \right).
+\end{align}
+We rewrite it further more,
+\begin{align}
+\sdt{\Psi_m}= a^2 \omega_0^2 \frac{\left( \frac{(\Psi_{m+1}-\Psi_m)}{a}-\frac{(\Psi_m-\Psi_{m-1})}{a} \right)}{a}.
+\end{align}
+If we take the limit $ a\rightarrow 0$, and treat $ \Psi=\Psi(x,t) $, this equation above may give us the equation of
+\begin{align}
+\spt{\Psi(x,t)}=\diamondsuit  \spp{\Psi(x,t)}{x},
+\end{align}
+which is the wave equation. This works only when we take the limit of $ a $. The term $ \diamondsuit=c^2=a^2\omega_0^2 $ is the square of the speed of wave. Now, we obtain the equation of a field
+\begin{align}
+\spt{\Psi(x,t)}=c^2  \spp{\Psi(x,t)}{x}.
+\end{align}
+
+If we have damping term, we should add the term of $ -B\dt{x_m} $ into Equ.~\ref{eqfield:xm}. Therefore, the field equation becomes
+\begin{align}
+\spt{\Psi(x,t)}+\alpha \pt{\Psi(x,t)}=c^2  \spp{\Psi(x,t)}{x}.
+\end{align}
+This is called the telegrapher's equation. 
+
+When $ \alpha\rightarrow 0 $, the damping terms disappears. When $ \alpha\rightarrow \infty $, only when $ D=\frac{c^2}{\alpha} $ is a constant, the equation of field becomes Fourier equation or diffusion equation:
+\begin{align}
+\pt{\Psi(x,t)}=D\spp{\Psi(x,t)}{x}.
+\end{align}
+This is also a form of Schrodinger equation. More generally, 
+\begin{align}
+\pt{\Psi(x,t)}=D\spp{\Psi(x,t)}{x}+a\Psi(x,t)-b\Psi^2(x,t)
+\end{align}
+is called Fisher's equation. Consider the competition interaction to be non-local in space:
+\begin{align}
+\pt{\Psi(x,t)}=D\spp{\Psi(x,t)}{x}+a\Psi(x,t)-b\Psi(x,t)\int  \underbrace{f(x-y)}_{influence function}\Psi(y,t)dy.
+\end{align}
+The influence function gives rich patterns in nature. To study the characteristic of the equation above, we can put 
+\begin{align}
+\Psi(x,t)= \Psi_0 + c\cos(kx)\exp(\phi t)
+\end{align}
+into the equation to give
+\begin{align}
+\phi=-Dk^2 -a F(k),
+\end{align}
+where 
+\begin{align}
+F(k)=\int \cos(kz) f(z) dz,
+\end{align}
+which is the Fourier transformation of the influence function. Condition for steady state patterns is
+\begin{align}
+\lambda>2\pi \sqrt{\frac{D}{-a F(\lambda)}}.
+\end{align}
+Diffusion if too strong will wash out patterns. Influence function should have a sharp cut-off. Some parameters may influence the pattern: wavelength of the pattern, cut-off length, and so on (the notes on Fisher's equation comes from Friday seminar by Dr. Kenkre). 
+
+
+\textbf{Nov 6.}
+
+Content we discussed for continuum limit can be seen in Fig.~\ref{../Figs/handdraw1106_1}.
+\scalefig{../Figs/handdraw1106_1}{0.6}{ To the continuum limit.}
+
+The equation of field becomes
+\begin{align}
+\spt{\Psi(x,t)} + \alpha \pt{\Psi(x,t)} = c^2 \spp {\Psi(x,t)}{x}.
+\end{align}
+The second term has the following limits:
+\begin{itemize}
+\item $ \alpha\rightarrow 0 $: Wave equation: $ \spt{\Psi}=c^2 \spp{\Psi}{x} $.
+\item $ \alpha,c \rightarrow \infty, \frac{c^2}{\alpha}=D $: Diffusion equation $ \pt{\Psi}=D \spp{\Psi}{x} $. 
+\end{itemize}
+
+Instead of $ \Psi $, we use $ P $ and can obtain the diffusion equation: $ \pt{P(x,t)} = D \spp{P(x,t)}{x} $. 
+
+To solve the equation above, we can use the Laplace/Fourier transformation (trial). We make the following transformation relationships:
+\begin{align}
+\hat{P} (k,t) &= \int_{-\infty}^{\infty} P(x,t) e^{ikx} dx,\\
+P(x,t) &= \frac{1}{2\pi} \int_{-\infty} ^ {\infty} \hat{P}(k,t) e^{-ikx} dk. 
+\end{align}
+
+We also define the $ \delta $-function as
+\begin{align}
+\delta{(k)} &= \frac{1}{2\pi} \int_{-\infty} ^ {\infty} e^{ikx} dx. 
+\end{align}
+
+We disturb the continuum of $ x $ with a bump (See Fig.~\ref{../Figs/handdraw1106_2}). 
+\scalefig{../Figs/handdraw1106_2}{0.6}{ Break of a continuum medium.}
+The Fourier transformation of the diffusion equation gives
+\begin{align}
+\pt{\hat{P}(k,t)} &= -D k^2 \hat{P}(k,t). \label{eq:hatpk}
+\end{align}
+
+Compared with the discrete second-derivative of a similar equation, we found that there is a $ Dk^2 $ term instead of $ \omega ^2 (1-\cos q) $. This is the result of the limit of $ a\rightarrow 0 $. To see this, we write
+\begin{align}
+e^{i\frac{q}{a} ma} \sim e^{ikx}=e^{ikma},
+\end{align}
+and
+\begin{align}
+1-\cos q= 1- \cos\frac{q}{a} a = 1- \cos k\cdot a = 1- (1- \frac{k^2a^2}{2!} +\ldots ) \rightarrow \frac{k^2 a^2}{2}. 
+\end{align}
+
+The equation of \ref{eq:hatpk} has a solution given by
+\begin{align}
+\hat{P}(x,t) &= \hat{P} (k,0) e^{-Dk^2t}\\
+P(x,t) &= \frac{1}{2\pi}\int_{-\infty}^{\infty} \hat{P}(k,0) e^{-Dk^2 t} e^{-ikx} dk,
+\end{align}
+where
+\begin{align}
+\hat{P} (k,0) = \int_{-\infty}^{\infty} P(y,0)e^{iky} dy.
+\end{align}
+
+We can obtain
+\begin{align}
+P(x,t) = \frac{1}{2\pi} \int_{-\infty} ^ {\infty}  dy \int_{-\infty}^{\infty} dk e^{-Dk^2t} e^{-ikx } e^{+iky} P(y,0).
+\end{align}
+If $ P(x,0) = \delta (x) $, the integral gives
+\begin{align}
+G (x-y) =  \frac{1}{2\pi} \int_{-\infty} ^ {\infty} e^{-Dk^2t}e^{-ik(x-y)} dk.
+\end{align}
+We have
+\begin{align}
+\fbox{$ P(x,t) = \int dy G(x-y,t) P(y,0) .$}
+\end{align}
+
+Some details to derive the equation above. 
+
+Job1: To get 
+\begin{align}
+\frac{1}{2\pi} \int_{-\infty}^{\infty} e^{-Dk^2 t } e^{-ikz} dz = \frac{e^{-\frac{z^2}{4Dt}}}{\sqrt{4\pi Dt}}.
+\end{align}
+The solution looks like a Gaussian function ($ e^{-z^2} $). 
+\scalefig{../Figs/handdraw1106_3}{0.6}{ Two Gaussian shape lines with different damping coefficients.}
+
+To obtain the Gaussian integral above, we can complete the function to give
+\begin{align}
+\int \exp\{-Dt[\underbrace{k^2 + \frac{2ikz}{2Dt} + (\frac{iz}{2Dt})^2}_{ (k+ \frac{iz}{2Dt})^2 } - (\frac{iz}{2Dt})^2 ] \} dk,
+\end{align}
+and use the fact that 
+\begin{align}
+\int _{-\infty}^\infty e^{-bz^2} dz = \sqrt{\frac{\pi}{b}}.
+\end{align}
+
+Job2: to solve 
+\begin{align}
+P(x,t) = \int G(x-y) P(y,0) dy = \int \frac{e^{\frac{-(x-y)^2}{4 Dt }}}{\sqrt{4 \pi Dt}} \cdot \sqcap(y) dy.
+\end{align}
+Now we arrive at the error function in the form of
+\begin{align}
+h \int _{-l} ^{+l} \frac{e^{\frac{-(x-y)^2}{4 Dt }}}{\sqrt{4 \pi Dt}} dy.
+\end{align}
+
+Q: How to solve arbitrary problem such as $ \braket{x^2}= \int_{-\infty}^\infty x^2 P(x,t)dx $. 
+
+One way to solve it is to realize that we only need to calculate
+\begin{align}
+\braket{x^2}=-\spp{\hat{P}(k,t)}{k}. 
+\end{align}
+This leads to the famous Einstein equation which gives $ \braket{x^2}\sim t $. 
+
+Totally unrelated way to get the diffusion equation: 
+suppose we go back to the chain of masses, and a person walk through it. Suppose the walker has no goal and is randomly walking back and forth. What is $ \dt{P_m (t)} $? 
+\begin{align}
+\dt{P_m(t)} = F(-P_m -P_m + P_{m+1}+ P_{m-1}).
+\end{align}
+\begin{align}
+\rightarrow \pt{P(x,t)} = D \spp{P(x,t)}{x}, \label{eq:walkereq}
+\end{align}
+where $ D=\lim_{a\rightarrow 0} Fa^2$. See Fig.\ref{../Figs/handdraw1106_4}.
+\scalefig{../Figs/handdraw1106_4}{0.6}{ Walker on a chain as a way to get the Diffusion equaiton.}
+
+\textbf{Nov 8.}
+
+We will continue to discuss Equ.~\ref{eq:walkereq}. It can be used in several scenarios: one is for spring connected masses, another one is a random walker in a chain; also, it can be a string with a raising force at one point (see Fig.~\ref{../Figs/handdraw1108_1}). 
+\scalefig{../Figs/handdraw1108_1}{0.6} {A model of string.}
+
+The solution can be obtained from
+\begin{align}
+\hat{P}(k,t)=\int_{-\infty}^\infty P(x,t)e^{ikx} dx,
+\end{align}
+and 
+\begin{align}
+P(x,t) = \frac{1}{2\pi} \int_{-\infty}^\infty \hat{P}(k,t)e^{-ikx} dk.
+\end{align}
+
+We know that 
+\begin{align}
+\frac{1}{2\pi} \int_{-\infty}^\infty e^{ikx} dk &= \delta(x),\\
+\frac{1}{2\pi} \int_{-\infty}^\infty e^{ikx} dx &= \delta(k),\\
+G(x,t) &= \frac{e^{-\frac{x^2}{4Dt}}}{\sqrt{4\pi Dt}}
+\end{align}
+There will be a homework on solving the equation of diffusion. 
+
+For arbitrary equation with $\braket{x^n}=\int_{-\infty}^\infty x^n P(x,t) dx  $ (take $ n=2 $ for example), we can derivative it to give
+\begin{align}
+\dt{\braket{x^2}} = D \int_{-\infty}^\infty x^2 \spp{P(x,t)}{x} dx . 
+\end{align}
+If the integral above gives $ 2D $, we can get the Einstein equation
+\begin{align}
+\braket{x^2} = \braket{x^2}_{t=0} + 2Dt.
+\end{align}
+Hence, the mean value of $ x^2 $ connected with the initial value and a linear term of $ t $. 
+
+Notice that we have supposed that $ D $ is a constant. Q: what if $ D $ is dependent to $ t $ or space? If $ D=D(t) $, we have
+\begin{align}
+\frac{1}{D(t)} \pt{P(x,t)} = \spp{P(x,t)}{x},
+\end{align}
+or 
+\begin{align}
+\pp{P(x,\tau)}{\tau} = l \spp{P(x,\tau)}{x},
+\end{align}
+where $ d\tau = D(t)dt $, or $ \tau = \int^t D(s) ds $. Therefore, $ \braket{x^2} $ can be solved. 
+
+For $ D=D(x) $, we have
+\begin{align}
+\pt{P} = D(x) \spp{P}{x}.
+\end{align}
+We may want to find out what is the relationship to $ \frac{\partial}{\partial x} \left[ D(x) \pp{P}{x} \right] $. 
+
+All the solving process is based on Fourier transform. Now, let us try using Laplace transform. We have
+\begin{align}
+\epsilon \tilde{P} (x,\epsilon) - P(x,0) -D\spp{\tilde{P}(x,\epsilon)}{x} = 0.
+\end{align}
+\begin{align}
+\spp{\tilde{P}(x,\epsilon)}{x} = \frac{\epsilon}{D}  \tilde{P} (x,\epsilon) - \frac{1}{D} P(x,0).
+\end{align}
+
+We can get
+\begin{align}
+\sdx{Z(x)}{x} = A Z(x) -B (x).
+\end{align}
+Similarly, it can be solved with a given boundary condition. There are detailed discussion in Fetter's book. 
+
+If there is no damping, we have from the telegrapher's equation that
+\begin{align}
+\spt{P(x,t)} = c^2 \spp{P(x,t)}{x}. \label{eq:nodamping}
+\end{align}
+Now, we have
+\begin{align}
+\sdt{\braket{x^2}} = 2c^2.
+\end{align}
+Further, 
+\begin{align}
+\dt{\braket{x^2}} = \underbrace{\left[ \dt{\braket{x^2}} \right]_{t=0}}_{\textrm{initial}} + c^2 t^2. 
+\end{align}
+
+By using Fourier transform, we obtain from Equ.~\ref{eq:nodamping}
+\begin{align}
+\sdt{\hat{P}(k,t)} + k^2 c^2 \hat{P}(k,t) = 0.
+\end{align}
+So,
+\begin{align}
+\hat{P}(k,t) = \hat{P}(k,0) \cos (kct) + B(k) \sin(kct).
+\end{align}
+The $ B(k) $ is related to $ \pt{P(x,t)} $. Because the FT of $ e^{ikct} $ is in the form of $ \delta(x\pm ct) $, and it is a d'Alembert solution of a wave equation with two wave packages moving to the left and right, the question is which part corresponds the the $ \sin $ or $ \cos $ term?
+
+\scalefig{../Figs/handdraw1108_2}{0.6}{ Two propagating wave packages of the d'Alembert solution.}
+
+Hint: We can use
+\begin{align}
+\frac{f(x-ct)+f(x+ct)}{2}\rightarrow +\frac{1}{2} \int_{x-ct}^{x+ct} g(z) \ldots dz.
+\end{align}
+
+Generally, 
+\begin{align}
+\spt{P} + \alpha \pt{P} = c^2 \spp{P}{x}.
+\end{align}
+The FT gives
+\begin{align}
+\sdt{\hat{P}(k,t)} + \alpha \dt{\hat{P}(k,t)} + c^2 k^2 \hat{P}(k,t) = 0.
+\end{align}
+This is a damping pendulum equation. 
+There are two parts of the solution: one is the left-propagator; and the other is the right-propagator. We need to work it out by ourselves. It may give a shape of light-cone. 
+\scalefig{../Figs/handdraw1108_3}{0.6}{ Progagator with different parameters.}
+
+What will happen for this case that
+\begin{align}
+\braket{x^2} = \int_{-\infty}^{\infty} x^2 P(x,t) dx. 
+\end{align}
+It will give
+\begin{align}
+\sdt{\braket{x^2}} + \alpha \dt{\braket{x^2}} = 2c^2. 
+\end{align}
+This can be solved by making $ v=  \dt{\braket{x^2}}$. The solution can be plotted blow. 
+\scalefig{../Figs/handdraw1108_4}{0.6}{ Solution of $ \braket{x^2} $.}
+The first part is a coherent wave; the remaining part is diffusion wave. 
+
+We investigate
+\begin{align}
+\pt{P(x,t)} + c \pp{P(x,t)}{x} = D\spp{P(x,t)}{x}. 
+\end{align}
+It is called advective-diffusion equation or driven diffusion equation. The wave moves in a speed of $ c $ with a driven force. 

@@ -1,0 +1,140 @@
+\chapter{Singulation and bifurcation}\label{chap:bifurcation}
+\textbf {Poincare \& Bruce Lee}
+A little reminder on energy method, which can give a picture of the solution.
+
+Let us look at the equation
+\begin{align}
+\dt{x}=f(x).
+\end{align}
+
+%\missingfigure{927-1}
+\scalefig{../Figs/handdraw927_1}{0.7}{The concept of \textit{fixed} or \textit{stopping} point in the curve of displacement.}
+
+If we look at the curve of $ f(x) $, there may be a fixed point, which is like the eigenvalue in the quantum mechanics, where the object will stop or oscillate around it. 
+
+%\missingfigure{927-2}
+\scalefig{../Figs/handdraw927_2}{0.8}{Linear shifting and nonlinear shifting.}
+In Fig.~\ref{../Figs/handdraw927_2}, a shift in a linear function of $ f(x) $ generates nothing difficult to the equation; a shift in a nonlinear equation can cause some trouble on solving the equation, and can change the behavior of the equation. This is the starting point of \textit{singularization}.
+
+
+\textbf{Oct 1}
+
+\textbf{A discussion on equations in physics. } In quantum mechanics, for example, the quantum state sanwitch $ \bra{\Psi}O\ket{\Psi} $ can be nonlinear to describe a nonlinear property of an object. At the same time, the density operator $ \rho= \ket{\Psi}\bra{\Psi} $ obeys a linear equation,
+\begin{align}
+i\hbar \dt{\rho}=[H,\, \rho],
+\end{align}
+which is similar to the equation of $ \ket{\Psi} $. Now, since the observables are obtained by the trace defined by the density operator, which is $ \tr{\rho O} $, the properties of a quantum system can be linear or nonlinear. 
+
+Now, look at the equation in classical mechanics,
+\begin{align}
+\dt{\rho}=\{H,\, \rho\},
+\end{align}
+which describes the fluid density changes in time (with Poisson brackets). 
+%\missingfigure{Oct1-1. }
+\scalefig{../Figs/handdraw1001_1}{0.6}{Movement of fluid flow described by density function.}
+The movement of the fluid can also be described by a ``trace'' integral with the density function. 
+\begin{align}
+\int O(x,p)\rho(x,p,t)dxdp,
+\end{align}
+where 
+\begin{align}
+\rho(x,p,t)=\delta(x-x(t),p-p(t)).
+\end{align}
+The formalism is linear. 
+
+Let us go back to the two-body coupling problem. 
+\begin{align}
+\dt{\theta}= \Delta -2l \sin \theta,
+\end{align}
+versus
+\begin{align}
+\dt{\theta}= \Delta -2l \theta.
+\end{align}
+One is nonlinear, the other is nonlinear. 
+%\missingfigure{Oct-2.}
+\scalefig{../Figs/handdraw1001_2}{0.7}{ Synchronization with shifts.}
+
+If we regard $ \Delta-2l\sin \theta $ and $ \Delta-2l \theta $ as shifts of $ \dt{\theta} $, the former one cannot synchronize the movement, while latter one can. 
+
+In general, we look at the equation
+\begin{align}
+\dt{x }= -\alpha x+S,\quad \textrm{and} \quad \dt{x}=-\beta x^2+S.
+\end{align}
+The shifts are shown in the figure below. 
+
+%\missingfigure{Oct-3. }
+\scalefig{../Figs/handdraw1001_3}{0.7}{Shifts for linear and nonlinear equations.}
+
+For the shift of the second case (nonlinear case), something suddenly happened. This leads to the \textit{bifurcation} phenomenon. 
+
+The method is that we plot the function of the stimulus, and analyze the property of the system. Let us make $ S=S(x) $. For example, $ S=\gamma x $. The shift is plotted in the figure below. 
+
+%\missingfigure{Oct-4. }
+\scalefig{../Figs/handdraw1001_4}{0.7}{Unstable of shifting.}
+
+The shifts for the linear case are unstable, compared to the shift with a constant $ S $. The shifts for the nonlinear case is analog to the coherent state, or a damping spring (see the figure below). 
+
+%\missingfigure{Oct-5. }  
+\scalefig{../Figs/handdraw1001_5}{0.7}{Shift of spring with a linear force.}
+
+The stable zero as a function of $ \gamma $ for the nonlinear shift is plotted in the figure below. This is called the transition of bifurcation. 
+
+%\missingfigure{Oct-6.}
+\scalefig{../Figs/handdraw1001_6}{0.7}{ Transition of bifurcation.}
+
+Let us consider the equation
+\begin{align}
+\dt{x}=-\delta x^3 + \gamma x.
+\end{align}
+
+The shifts and the stable points changes are shown in the figure below. Not the only one stable zero point changes to three zero points.
+
+%\missingfigure{Oct-7. }
+\scalefig{../Figs/handdraw1001_7}{0.7}{Shifts and transition of bifurcation with cubic terms.}
+
+This change corresponds to some high-density laser and magnetic phenomena. 
+
+References on Bifurcations: Nicolism (Austin, Texas). 
+
+
+\textbf{Oct 4.}
+
+In a general form of a second-order equation
+\begin{align}
+\sdt{y}= F(y,\dt{y},t),
+\end{align}
+we usually have the Aristotal form
+\begin{align}
+\sdt{y} + \alpha \dt{y} =F(\ldots).
+\end{align}
+We can usually remove the second-order term to give the Newton form
+\begin{align}
+\dt{y}=f(y).
+\end{align}
+
+In most cases, we can write
+\begin{align}
+f(y)= \underbrace{f_{system}(y)}_{-\alpha y,\, -\beta y^2,\, -\delta y^3,\, -k\sin y\ldots}+ \underbrace{f_{applied}(y)}_{S\quad \textrm{and} \quad \gamma y}
+\end{align}
+The rich system terms give rich behavior of these differential equations. 
+
+Now, we go to Strogatz's book on \textit{Nonlinear mechanics and Chaots}, Chapter 2. It shows the richness of the behaviors of differential equations. The idea is that we can plot the vector field in a graph, so that we can analyze the equation visibly. Some phrase to emphasize in the book: phase points, fixed points, stable/unstable points, population growth.
+
+Question for the logistic equation under figure 2.3.2 in page 22: how to describe the meeting of two neighboring species in order to produce or kill some species?  Or, how to make it species-related? This is the homework.
+
+The section on existence and uniqueness is optional. 
+
+On the section of potential, there is a little note. From the $ v(t) $ plot we can obtain the potential plot (see below).
+
+%\missingfigure{Oct4-1. }. 
+\scalefig{../Figs/handdraw1004_1}{0.6}{Potential diagram corresponds to Fig.~\ref{../Figs/handdraw1001_7}.}
+
+Exercise 2.3.4 is a homework. Exercise 2.5.6 on leaky bucket is interesting. 
+
+Now go to chapter 3 of Strogatz's book, on bifurcation. On figure 3.4.7, it comes from the combination of $ x^3 $ and $ x^5 $ terms' plots. 
+
+%\missingfigure{Oct4-2. }
+\scalefig{../Figs/handdraw1004_2}{0.5}{Bifurcation diagram with both $ x^3 $ and $ x^5 $ terms. This plot is similar to that of explaining first/second-order phase change.}
+
+Section 3.5 on rotating hoop is highly recommended to read carefully. Section 3.6 is good to read as well. 
+

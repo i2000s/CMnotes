@@ -1,0 +1,135 @@
+\chapter {Synchronization and nonlinear systems}\label{chap:synchronization}
+Q: what is meant by \textit{nonlinearity}? (nonlinear terms in equations). And so what? (the properties are changed, nonlinear phenomenon and their richness.) 
+
+Two aspects to be explored in this section: toughness and richness.
+
+Comparing 2 equaitons--one is linear, the other one is nonlinear:
+\begin{align}
+\dt{x} &=-\alpha x,\label {examplelinear1}\\
+\dt{x} &=-\beta x^2.\label {examplenonlinear2}
+\end{align}
+
+Aside on synchronization. We let
+
+\begin{align}
+\dt{\theta_1} &=\omega_1 + l(\theta_2-\theta_1),\label {coupling1}\\
+\dt{\theta_2} &= \omega_2 + l(\theta_1-\theta_2).\label {coupling2}
+\end{align}
+
+Two of them are coupled together. Add together to give
+\begin{align}
+\dt{(\theta_1+ \theta_2)} = \omega_1 + \omega_2.
+\end{align}
+Subtract them to give
+\begin{align}
+\dt{(\theta_1-\theta_2)}= (\omega_1 - \omega_2) -2l(\theta_1 - \theta_2).
+\end{align}
+Let $ D=\theta_1 - \theta_2  $, then 
+\begin{align}
+\dt{D} + 2lD=\omega_1-\omega_2.
+\end{align}
+If alternating $ \omega_1-\omega_2 \rightarrow \frac{\omega_1-\omega_2}{2l}$, we can write the equation in the form of
+\begin{align}
+\dt{y}+ \alpha y =B.
+\end{align}
+The diagram of $ y(t) $ is shown below.
+%\missingfigure{925-2}
+\scalefig{../Figs/handdraw925_2}{0.5}{Evolution of $ y(t) $.}
+
+This coupling system is studied by Huygens before. If the interaction $ l(\theta_1 - \theta_2) $ is nonlinear, for example, the interaction term is $ \sin(\theta_1- \theta_2) $, there will be rich behaviors of the equation. The synchronization exists or not depends on the interaction term (whether it exists or not). 
+
+The solution of the first equation (Equ.~\eqref{examplelinear1}) is
+\begin{align}
+x(t)= x(0) e^{-\alpha t}.
+\end{align} 
+The solution of the second equation (Equ.~\eqref{examplenonlinear2}) is
+\begin{align}
+x(t)= x(0)\frac{1}{1+x(0)\beta t}.
+\end{align}
+The second one depends on $ x(0) $, the first one does not. So, the second solution cannot be superimposed.
+
+
+\textbf{Sep 27}
+
+In a nonlinear case, for the coupling oscillation case, we can have
+\begin{align}
+\dt{\theta_1} &=\omega_1 - l\sin(\theta_2-\theta_1),\label {coupling1nonlinear}\\
+\dt{\theta_2} &= \omega_2 - l\sin(\theta_1-\theta_2).\label {coupling2nonlinear}
+\end{align}
+Therefore, 
+\begin{align}
+\dt{(\theta_1 + \theta_2)}&= \omega_1+\omega_2\\
+\dt{\theta}+2l\sin\theta &= \Delta,
+\end{align}
+where $ \theta=\theta_1-\theta_2 $ and $ \Delta=\omega_1 -\omega_2 $. 
+
+Let us solve the equation that
+\begin{align}
+\dt{\theta}+2l\sin\theta=0.
+\end{align}
+We obtain 
+\begin{align}
+\int \frac{d\theta}{\sin \theta}=-2l t + const.
+\end{align}
+Now, the integral is
+\begin{align}
+\int \frac{d\theta}{\sin \theta} &= \int \frac{d\left(\theta/2 \right)}{\sin\left(\frac{\theta}{2} \right)\cos\left(\frac{\theta}{2} \right)} \\
+&= \int \frac{d\left(\theta/2 \right) \frac{1}{\cos^2\frac{\theta}{2}}}{\dfrac{\sin\left(\frac{\theta}{2} \right)}{\cos\left(\frac{\theta}{2} \right)}}\\
+&= \int \frac{dy\sec^2 y}{\tan^2 y}\\
+&= \int \frac{d \left(\tan y \right)}{\tan y}\\
+&= \ln \left(\tan y \right) ,\quad (\text{depending on the limits})
+\end{align}
+and the equation can be solved. 
+
+In this lecture, we are going to answer the following questions:
+
+\begin{itemize}
+\item What exactly nonlinearity means?
+\item What is bad about it?
+\item What is good about it?
+\end{itemize}
+
+Back to our equations~\eqref{examplelinear1} and~\eqref{examplelinear2}. The solutions are 
+\begin{equation}
+\begin{array}{ccc}
+\boxed{\frac{x(t)}{x(0)}=e^{-\alpha t}} & \text{versus} & \boxed{\frac{x(t)}{x(0)}=\frac{1}{x(0)\beta t +1}}.
+\end{array}
+\end{equation}
+
+Concepts of Propagators or Green functions are USELESS for the second function case, which is a  nonlinear equation. That means superposition does not work in the nonlinear regime. 
+
+There are two factors affecting the behaviour of the nonlinear equation:
+one is the initial condition, the other is the stimulus response. 
+If the two factors are both linear, the two factors work as the same effect.
+
+This can be seen in as follows.
+\begin{align}
+\dt{\theta}+ 2l \theta &= \Delta\\
+\Rightarrow \varepsilon \tilde{\theta} &= \theta(0)+2l \tilde{\theta}=\frac{\Delta}{\varepsilon}\\
+\tilde{\theta}&= \theta(0)\frac{1}{\varepsilon +2l}+ \frac{\Delta}{\varepsilon}\frac{1}{\varepsilon +2l}
+\end{align}
+where the $ \frac{1}{\varepsilon + 2l} $ is the linear term of the propagator $ e^{-2lt} $.
+\begin{align}
+\Rightarrow \theta(t)= \theta(0) G(t)+ \int_0^t dt' G(t-t')\Delta.
+\end{align}
+The initial condition and the stimulus can be the same if they are linear.
+
+With stimulus, $ S $,
+\begin{align}
+\dt{x}= -\alpha x +S\quad \text{versus} \quad \dt{x}= -\beta x^2 +S.
+\end{align}
+In the limit that $ t\rightarrow \infty $, $ x(\infty)=\frac{S}{\alpha} $. 
+The general solution gives
+\begin{align}
+\int \frac{dx}{1-\dfrac{\beta}{S}x^2}= St+const.
+\end{align}
+The integral can be solved using the following relationship.
+\begin{align}
+\int \frac{dy}{1-y^2}= \int \frac{dy}{(1-y)(1+y)}=\frac{1}{2} \int \left[\frac{1}{1-y}+ \frac{1}{1+y} \right]dy.
+\end{align}
+
+If we have 
+\begin{align}
+\dt{x}=-\alpha x -\beta x^2- \delta x^3,
+\end{align}
+it can be solved similarly. 

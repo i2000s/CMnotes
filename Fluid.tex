@@ -1,0 +1,300 @@
+\chapter{Fluid dynamics}\label{chap:fluid}
+\section{Continuity equation and constructive relations}
+
+\textbf{Nov 29.}
+
+\scalefig{../Figs/handdraw1129_1}{0.4}{Fluid motion.}
+The equation of fluid can be written as
+\begin{align}
+\fbox{$\pt{\rho} + \bigtriangledown \cdot j =0$}.\label{eq:continuity3d}
+\end{align}
+This is the continuity equation of fluid. For 1-D case, 
+\begin{align}
+\pt{\rho} + \px{j} &=0.\label{eq:continuity1d}
+\end{align}
+
+
+Another relationship between $ \rho $ and $ j $ can be given through constitutive relation (we will play with different cases first). 
+
+If we have
+\begin{align}
+\pm c\rho &=j,
+\end{align}
+Equ.~\eqref{eq:continuity1d} gives 
+\begin{align}
+\pt{\rho } \pm \px{c\rho} &=0,\\
+\mathrm{or,}\qquad\qquad \qquad  \spt{\rho} &=c^2 \spx{\rho}.
+\end{align}
+This is the wave equation.
+
+If we have
+\begin{align}
+-D \px{\rho} &=j.
+\end{align}
+Hence
+\begin{align}
+\frac{\partial}{\partial x} \left( -D\px{\rho} \right) + \px{\rho} &=0,\\
+\pt{\rho} &= D\spx{\rho}.
+\end{align}
+This is the diffusion equation. 
+
+If we combine the two cases above and make
+\begin{align}
+j &=\rho c -D \px{\rho}\\
+\Rightarrow \quad \frac{\partial }{\partial x} \left[ \rho c -D\px{\rho } \right] + \pt{\rho} &=0,\\
+\Rightarrow \quad \pt{\rho} + c \px{\rho } &= D\spx{\rho}.
+\end{align}
+Finally, we arrive at the telegrapher's equation.
+
+$ j $ may be like the velocity of a particle, and $ \rho $ may be like the position of a particle. The equation of fluid is like the equation of the movement of a particle. 
+
+
+What constitutive relation can give the telegrapher's equation?
+\begin{align}
+\spt{\rho} +\alpha \pt{\rho} &= c^2 \spx{\rho}.
+\end{align}
+Alternatively, we have the memory equation
+\begin{align}
+\pt{\rho(x,t)} &= D\int_0^t \drv t' \phi (t-t') \spx{\rho(x,t)}, 
+\end{align}
+where $ \phi(t)=\alpha e^{\alpha t} $ and $ D\alpha=c^2 $. 
+
+\section{Smoluchowski equation and methods to solve PDEs}
+Now, we go back to the third case. In that case, the $ \rho $ is given almost as a constant. What will happen if all variables are not constant? This is like a tetherzed game (I have no idea what it is...). 
+
+Firstly, we change the $ c $ in the advective differential equation, and consider $\text{``velocity''}=-\gamma x$. One suggestion:
+\begin{align}
+\sdt{x} +\mathrm{const}\dt{x} + c x&=0.
+\end{align}
+We drop the first and the third terms, 
+\begin{align}
+\dt{x} &= -\mathrm{const}\, x.
+\end{align}
+
+Next, we consider to form a term of $ \px{c\rho} $ in the third case mentioned above. 
+Possibly, we can make
+\begin{align}
+j &= -\gamma x\rho -D\px{\rho},
+\end{align}
+so that
+\begin{align}
+\pt{\rho} &= \frac{\partial}{\partial x} \left( \gamma x\rho \right) + D\spx{\rho},\label{eq:Smoluchowski0}\\
+\Leftrightarrow\quad \pt{\rho} &= \frac{\partial}{\partial x} \left[ \gamma x\rho  + D\px{\rho}\right].\label{eq:Smoluchowski1}
+\end{align}
+The term of $\frac{\partial}{\partial x} \left( \gamma x\rho \right)  $ is tethezing. The term of $ D\spx{\rho} $ is homogeneous. The equation above is called Smoluchowski equation. 
+
+If the fluid is in equillibrium or stable state, then $ \pt{\rho}=0 $. So,
+\begin{align}
+\px{x} + \frac{\gamma x}{D}\rho &=0,\\
+\Rightarrow\quad \frac{\drv \rho}{\rho} &= -\frac{\gamma}{D} x \drv x.
+\end{align}
+It will give a Gaussian solution. 
+
+\scalefig{../Figs/handdraw1129_2}{0.4}{ Flow in stable state.}
+
+Recall that the Fourier transforms give
+\begin{align}
+\hat{f}(k) &= \intf{f(x)e^{ikx}}{x}\\
+f(x) &= \frac{1}{2\pi} \intf{\hat{f}(k)e^{-ikx}}{k}
+\end{align}
+
+We can obtian
+\begin{align}
+\intf{xf(x)e^{ikx}}{x} &= -i \pp{\hat{f}(k)}{k}\\
+\frac{-i}{2\pi} \intf{k\hat{f}(k)e^{-ikx}}{k} &= \px{f(x)}.
+\end{align}
+
+F.T. of 
+\begin{align}
+xf(x) \quad &\mathrm{is}\quad -i\pp{\hat{f}(x)}{k}\\
+\px{f(x)} \quad &\mathrm{is}\quad -ik\hat{f}(k).
+\end{align}
+
+\begin{align}
+\pt{\hat{\rho}} &= -ik \gamma (-i)\pp{\hat{\rho}(k)}{k} -Dk^2 \hat{\rho} (k)\\
+\pt{\hat{\rho}(k,t)} &+ \gamma k \pp{\hat{\rho}(k,t)}{k} + Dk^2 \hat{\rho} (k,t) = 0.
+\end{align}
+
+There are two methods to solve the equation above: one is called brvte force; the other is a clever one. 
+
+The brvte force method is related to the method of characteristics for the first-order PDE's. A good discussion is performed in the first question of Midterm Exam 3. Meanwhile, Ornstern and Vhlenbeck discovered another method of solving the equations above. We will discuss the latter method in the next section (lecture in Dec 4). 
+
+
+\textbf{Dec 4.}
+
+\begin{align}
+\pt{\rho(x,t)} &= \px{} \left[ \gamma x \rho(x,t)\right] + D \spx{\rho(x,t)}\\
+j &= \rho (-\gamma x).\label{eq:Smoluchowski2}
+\end{align}
+We can make $ \gamma = \frac{k}{\Gamma} $, compared to the damped pendulum equation in the form of 
+\begin{align}
+M \sdt{x} + \Gamma \dt{x  } + \frac{kx}{\Gamma} &=0.
+\end{align}
+
+Since the Smoluchowski equation (Equ.~\eqref{eq:Smoluchowski2}) is a second-order PDE, it is hard to solve.  Fortunately, through Fourier Transformation mentioned above, we can transfer it into a first-order PDE so that we can solve it using the method of characteristics. The F.T. yields
+\begin{align}
+\pt{\hat{\rho}(k,t)} + \gamma k \pp{\hat{\rho}(k,t)}{k} + D k^2 \hat{\rho} (k,t) &=0.
+\end{align}
+
+
+In this section, we will play with the equation in another way. 
+Let us make $ U'(x) = \dx{U(x)} $ to replace $ \gamma x $. 
+
+In steady state, we have
+\begin{align}
+0 &= \px{} \left[ U'(x)\overbrace{\rho(x)}^{\rho(x,\infty)}+ D \px{\rho(x)} \right].
+\end{align}
+Hence, we can make
+\begin{align}
+U'(x)\overbrace{\rho(x)}^{\rho(x,\infty)}+ D \px{\rho(x)} &= 0.
+\end{align}
+
+\begin{align}
+\px{\rho(x)} &= - \frac{U'(x)}{D} \rho(x),\\
+\Rightarrow \rho &= \mathrm{const.}\cdot e^{-\frac{U(x)}{D}}
+\end{align}
+This result is similar to Boltzman distribution function in statistaical mechanics. 
+
+Let us try 
+\begin{align}
+\hat{\rho} &= \mathrm{const.} e^{-Dk^2 \underbrace{f(t)}_{\text{instead of $ t $, we use $ f(t) $}}}
+\end{align}
+\begin{align}
+\mathrm{const.} e^{-Dk^2 f(t)} \left[ -Dk^2 \dot{f}(t) \right] &+ \mathrm{const.} e^{-Dk^2 f(t)} \gamma k\left[ -2Dkf(t) \right] + \mathrm{const.} e^{-Dk^2 f(t)} \left[ Dk^2 \right] =0\\
+\Leftrightarrow -\dot{f}(t) - 2\gamma f(t) +1 &=0\\
+\Leftrightarrow \dot{f}(t) + 2\gamma f(t) &=1.
+\end{align}
+It can be solved and give
+\begin{align}
+f(t) &= \frac{1- e^{-2\gamma t}}{2\gamma}\quad\qquad \qquad \mathrm{for } \quad f(0)=0.
+\end{align}
+
+If $ \rho(x,0) =\delta(x) $, then with 
+\begin{align}
+\tau &= \frac{1- e^{-2\gamma t}}{2\gamma}
+\end{align}
+we have 
+\begin{align}
+\rho (x,t) &= \frac{e^{-\frac{x^2}{4D\tau(t)} }}{\sqrt{4\pi D\tau(t)}} 
+= \frac{e^{-\frac{x^2}{4D\frac{1- e^{-2\gamma t}}{2\gamma}} }}{\sqrt{4\pi D\frac{1- e^{-2\gamma t}}{2\gamma}}}
+\end{align}
+
+We look at the relationship between $ \tau  $ and $ t $. If $ t\rightarrow 0 $, $ \tau = \frac{1-(1-2\gamma t+(2\gamma)^2t^2)/2}{2\gamma}\approx t $; if $ t $ is large, $ \tau $ approaches and is stabalized at $ \frac{1}{2\gamma} $. 
+\scalefig{../Figs/handdraw1204_1}{0.5}{ The evolution of $ \tau(t) $.}
+
+This method of solving equations is called Ornstein-Uhlenbeck method. 
+
+Generally, for $ \rho(x,0)=\delta(x-y) $, we can replace $ x^2 $ by $(x-ye^{-\gamma t})^2$. The memory function gives
+\begin{align}
+\rho(x,t) &= \intf{G(x,y,t)\rho(y,0)}{y},
+\end{align}
+where
+\begin{align}
+G(x,y,t) &= \frac{e^{-\frac{(x-ye^{-\gamma t})^2}{4D\tau(t)}}}{\sqrt{4\pi D \tau (t)}}.
+\end{align}
+
+
+Convective differential equation 
+\begin{align}
+\pt{\rho} + c \px{\rho} &= D \spx{\rho}
+\end{align}
+with \begin{align}
+j &= c\rho -D \px{\rho}
+\end{align}
+can be solved in the similar way. We can make a transformation of $ x \rightarrow x- ct $. The behavior of the Gaussian function is determined by the propagator moving in speed $ c $. 
+
+
+\section{Burger's equation and nonlinear cases}
+All the features of the equations above come from the form of $ j $ which may generate diffusion and fluctuations. 
+
+\scalefig{../Figs/handdraw1204_2}{0.6}{Changing $ j $ to give a different equation.}
+Now, we consider a nonlinear $ j=j(\rho) = c\rho -b\rho^2$ (see Fig.~\ref{../Figs/handdraw1204_2}). Using $ \px{j} + \pt{\rho}=0 $ , we have
+\begin{align}
+\pt{\rho} + \pp{\left( c\rho -b\rho^2 \right)}{\rho} \px{\rho} &= 0.
+\end{align}
+
+Alternatively, for a homogeneous system
+\begin{align}
+\pt{\rho} + \left( c-2b\rho \right) \px{\rho} &=0.
+\end{align}
+We have a nonlinear partial differential equation of
+\begin{align}
+\pt{\rho} + \left( c-2b\rho \right) \px{\rho} &= D \spx{\rho}.
+\end{align}
+
+We multiply $ -2b $ and add $ c $ to the $ \rho $ in the equation above, we have
+\begin{align}
+\pt{(c-2b \rho)} + (c- 2b\rho ) \px{}\left[ c-2b\rho \right] &= D\spx{\left[c-2b\rho\right]}\\
+\Leftrightarrow\qquad  \pt{V} + V \px{V} &= D\spx{V},
+\end{align}
+where $ V= c- 2b\rho $. This equation is called Burger's equation. 
+
+Compared with the propagator of $ x\rightarrow x-ct $, the $ V $ has the same form of a propagator with a speed $ 2b $ on $ \rho $ axis. 
+
+This equation has the exact solution as follows. The Cole-Hopb transformation
+\begin{align}
+V(x,t) &= -2D \ln \phi(x,t)
+\end{align}
+is the solution, where $ \phi(x,t) $ obeys
+\begin{align}
+\pt{\phi} &= D \spx{\phi}.
+\end{align}
+
+We discuss the behavior of the solution now. The initial wave can be seen in Fig.~\ref{../Figs/handdraw1204_3}.
+\scalefig{../Figs/handdraw1204_3}{0.4}{ Wave of $ V(x,0) $. It will move and fall down as time marches.} 
+
+If $ D=0 $, the solution will have singularities and shocks. 
+
+The Burger's equation can be used to describe some behaviors of ions in certain crystals. 
+
+\textbf{Dec 6.}
+
+If we start from 
+\begin{align}
+j &= c\rho -b\rho^2 -D \px{\rho},
+\end{align}
+we will get the Burger's equation
+\begin{align}
+\pt{V} + V \px{V} &= D \spx{V}
+\end{align}
+with $ V = c- 2b\rho $. The solution is 
+\begin{align}
+V &= -2D \px{}\left[ \ln \phi(x,t) \right],
+\end{align}
+where $ \phi(x,t) $ comes from the Cole-Hopf transformation:
+\begin{align}
+\pt{\phi} &= D \spx{\phi}.
+\end{align}
+
+If we take an initial wave like the one in Figs.~\ref{../Figs/handdraw1204_3}. This gives the brith of shocks and so on. 
+
+Using the initial value of $ V(x,0) $, we integrate it to give two parts which can be written as 
+\begin{align}
+\int V(x,0)\drv x &= \ln \phi(x,0) + \mathrm{const.} V_0. 
+\end{align}
+\scalefig{../Figs/handdraw1206_1}{.4}{ Initial wave slope of $ V(x,0) $.}
+
+Therefore, we can obtain the initial condition for $ \phi(x,t) $, and solve $ \phi(x,t) $ using the Cole-Hopf transformation equation. Next, we can obtain the solution for $ V(x,t) $. 
+
+Notice that $ D=0 $ and $ D\neq 0 $ can give very different results. 
+
+Nonlinear Schrodinger equation, first introduced in optics, can be solved in the similar way. It can be discussed using eigenfunction techniques, and can be transformed into linear equations used in classical mechanics. Characteristic method is useful in solving similar equations. 
+
+
+
+We look at the equation of 
+\begin{align}
+\pt{\rho} &= \underbrace{D \spx{\rho}}_{diffusion} + \underbrace{a\rho -b\rho^2}_{lvqister}
+\end{align}
+which is called Fisher-*-*-* equation. It can produce or can be transformed into many other forms of equations. So far, it cannot be solved analytically. 
+
+We can solve the steady state equation in terms of elliptic functions based on the pendulium models we discussed in earlier chapters. 
+
+Now, 
+\begin{align}
+D \spx{\rho} + a\rho -b\rho^2 &=0.
+\end{align}
+Suppose $ a=b=0 $, it will give a second-order function of $ \rho $. What if $ a=0 $ but $ b\neq 0 $? It will grow, until it reaches $ \frac{a}{b} $. What if $ a\neq 0 $ but $ b=0 $? It will grow and never reaches a stop value. What if $ a\neq 0 $ and $ b\neq 0 $? It will grow and move like a sunami. See Fig.~\ref{../Figs/handdraw1206_2}. 
+\scalefig{../Figs/handdraw1206_2}{.4}{ Evolution of Fisher's equation.}
+
+Murray's book tells more details on this Fisher's equation. 

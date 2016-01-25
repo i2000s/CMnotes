@@ -1,0 +1,159 @@
+% self-definition for short hand
+
+% symbols and math operators
+\DeclareMathOperator{\spn}{span}
+\DeclareMathOperator{\tr}{tr}
+% definition of grammars % formats related
+\definecolor{MyDarkGreen}{rgb}{0.0,0.4,0.0}
+\newcommand{\greek}[1]{{\selectlanguage{greek}#1}} % will look for grmn font: tlmgr install cbfonts (65 MB)
+
+% functions
+\newcommand{\sn}{\mathrm{sn}}
+\newcommand{\cn}{\mathrm{cn}}
+\newcommand{\dn}{\mathrm{dn}}
+
+% constants
+\newcommand{\invtpi}{\frac{1}{2\pi}}
+
+% vectors and tensors
+\def\en{\mathbf{e}_n}
+\def\eye{\mathbf{I}}
+\newcommand\lvec[1]{\accentset{\leftarrow}{#1}}
+
+% derivatives and integrals
+% ordinary derivatives
+\newcommand{\drv}{\mathrm{d}}
+\newcommand{\dt}[1]{\frac{{\mathrm d} {#1}}{{\mathrm d}t}}
+\newcommand{\dx}[1]{\frac{{\mathrm d} {#1}}{{\mathrm d}x}}
+\newcommand{\dtau}{\frac{{\mathrm d} }{{\mathrm d}\tau}}
+\newcommand{\dd}[2]{\frac{{\mathrm d} {#1}}{{\mathrm d} {#2}}}
+\newcommand{\sdt}[1]{\frac{{\mathrm d}^2 {#1}}{{\mathrm d}t^2}}
+\newcommand{\sdx}[1]{\frac{{\mathrm d}^2 {#1}}{{\mathrm d}x^2}}
+\newcommand{\sdd}[2]{\frac{{\mathrm d}^2 {#1}}{{\mathrm d}{#2}^2}}
+\newcommand{\ddn}[3]{\frac{{\mathrm d}^{#1} #2}{{\mathrm d} #3 ^{#1}}}
+
+% partial derivatives
+\newcommand{\pt}[1]{\frac{\partial {#1}}{\partial t}}
+\newcommand{\px}[1]{\frac{\partial {#1}}{\partial x}}
+\newcommand{\pp}[2]{\frac{\partial {#1}}{\partial {#2}}}
+\newcommand{\spt}[1]{\frac{\partial^2 {#1}}{\partial t^2}}
+\newcommand{\spx}[1]{\frac{\partial^2 {#1}}{\partial x^2}}
+\newcommand{\spp}[2]{\frac{\partial^2 {#1}}{\partial {#2}^2}}
+\newcommand{\ppn}[3]{\frac{\partial^{#1} #2}{\partial #3 ^{#1}}}
+% integrals
+\newcommand{\intl}[2]{\int_0^\infty\! #1 \mathrm{d}#2}
+\newcommand{\intf}[2]{\int_{-\infty}^\infty\! #1 \mathrm{d}#2}
+
+
+% quantum operators
+\newcommand{\ssp}{\braket{\sigma^{+}(t)\sigma^{-}(t)}}
+\newcommand{\aap}{\braket{a^{\dagger}(t)a(t)}}
+\newcommand{\as}{\braket{a^{\dagger}(t)\sigma^{-}(t)}}
+\newcommand{\sa}{\braket{a(t)\sigma^{+}(t)}}
+\newcommand{\Hssp}{\braket{\sigma^{+}\sigma^{-}}}
+\newcommand{\Haap}{\braket{a^{\dagger}a}}
+\newcommand{\Has}{\braket{a^{\dagger}\sigma^{-}}}
+\newcommand{\Hsa}{\braket{a\sigma^{+}}}
+\newcommand{\adag}{a^{\dagger}}
+\newcommand{\sigm}{\sigma^{-}}
+\newcommand{\sigp}{\sigma^{+}}
+\newcommand{\sigz}{\sigma^{z}}
+\newcommand{\gp}{\gamma^{\prime}}
+\newcommand{\oal}{\omega_a-\omega_0}
+\newcommand{\ocl}{\omega_c-\omega_0}
+
+
+% function related
+\def\Gn{\mathbf{G}^n}
+\def\Gm1{\mathbf{G}^{n-1}}
+\def\GN{\mathbf{G}^N}
+\def\G0{\mathbf{G}^0}
+\def\G1{\mathbf{G}^1}
+\def\Gi{\mathbf{G}^i}
+\def\flamr{\mathbf{f}_\lambda(\mathbf{r})}
+\def\rrn{\mathbf{r},\mathbf{r}_n}
+\def\rnrn{\mathbf{r}_n,\mathbf{r}_n}
+\def\rr{\mathbf{r},\mathbf{r}'}
+
+
+% braket.sty          Macros for Dirac bra-ket <|> notation and sets {|}
+%
+\def\bra#1{\mathinner{\langle{#1}|}}
+\def\ket#1{\mathinner{|{#1}\rangle}}
+\def\braket#1{\mathinner{\langle{#1}\rangle}}
+\def\Bra#1{\left<#1\right|}
+\def\Ket#1{\left|#1\right>}
+{\catcode`\|=\active
+  \gdef\Braket#1{\left<\mathcode`\|"8000\let|\BraVert {#1}\right>}}
+\def\BraVert{\egroup\,\mid@vertical\,\bgroup}
+{\catcode`\|=\active
+  \gdef\set#1{\mathinner{\lbrace\,{\mathcode`\|"8000\let|\midvert #1}\,\rbrace}}
+  \gdef\Set#1{\left\{\:{\mathcode`\|"8000\let|\SetVert #1}\:\right\}}}
+\def\midvert{\egroup\mid\bgroup}
+\def\SetVert{\egroup\;\mid@vertical\;\bgroup}
+% Some stuff deleted
+% Macros for Dirac bra-ket <|> notation
+\def\bra#1{\mathinner{\langle{#1}|}}
+\def\ket#1{\mathinner{|{#1}\rangle}}
+\def\Braket#1#2{\mathinner{\langle{#1}\! \mid\! {#2} \rangle}}
+\def\ketbra#1{\ket{#1}\!\!\bra{#1}}
+\newcommand{\Ketbra}[2]{\ket{#1}\!\!\bra{#2}}
+\def\sandwich#1#2{\bra{#1}\! #2 \! \ket{#1}}
+\def\Sandwich#1#2#3{\bra{#1}\! #2\! \ket{#3}}
+%
+% END  braket.sty     Macros for Dirac bra-ket <|> notation and sets {|}
+
+
+
+% For faster processing, load Matlab syntax for listings
+\lstloadlanguages{Matlab}%
+\lstset{language=Matlab,
+        frame=single,
+        basicstyle=\small\ttfamily,
+        keywordstyle=[1]\color{Blue}\bf,
+        keywordstyle=[2]\color{Purple},
+        keywordstyle=[3]\color{Blue}\underbar,
+        identifierstyle=,
+        commentstyle=\usefont{T1}{pcr}{m}{sl}\color{MyDarkGreen}\small,
+        stringstyle=\color{Purple},
+        showstringspaces=false,
+        tabsize=5,
+        % Put standard MATLAB functions not included in the default
+        % language here
+        morekeywords={xlim,ylim,var,alpha,factorial,poissrnd,normpdf,normcdf},
+        % Put MATLAB function parameters here
+        morekeywords=[2]{on, off, interp},
+        % Put user defined functions here
+        morekeywords=[3]{FindESS},
+        morecomment=[l][\color{Blue}]{...},
+        numbers=left,
+        firstnumber=1,
+        numberstyle=\tiny\color{Blue},
+        stepnumber=5
+        }
+        
+        
+        
+% Includes a figure
+% The first parameter is the label, which is also the name of the figure
+%   with or without the extension (e.g., .eps, .fig, .png, .gif, etc.)
+%   IF NO EXTENSION IS GIVEN, LaTeX will look for the most appropriate one.
+%   This means that if a DVI (or PS) is being produced, it will look for
+%   an eps. If a PDF is being produced, it will look for nearly anything
+%   else (gif, jpg, png, et cetera). Because of this, when I generate figures
+%   I typically generate an eps and a png to allow me the most flexibility
+%   when rendering my document.
+% The second parameter is the width of the figure normalized to column width
+%   (e.g. 0.5 for half a column, 0.75 for 75% of the column)
+% The third parameter is the caption.
+\newcommand{\scalefig}[3]{
+  \begin{figure}[ht!]
+    % Requires \usepackage{graphicx}
+    \centering
+    \includegraphics[width=#2\columnwidth]{#1}
+    %%% I think \captionwidth (see above) can go away as long as
+    %%% \centering is above
+    %\captionwidth{#2\columnwidth}%
+    \caption{#3}
+    \label{#1}
+  \end{figure}}

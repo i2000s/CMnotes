@@ -1,0 +1,941 @@
+\chapter{Lagrangian and Hamiltonian mechanics}\label{chap:lagham}
+\section{Some general theories}
+\textbf{This part is lectured by Tzu-Cheng Wu. A part of Eular-Lagrange equation derivation is from Prof. Dunlap's lecture.}
+
+\subsection{The principle of extremum action}\label{sec:action}
+For a particle moving in  a Potential $ U $, the equation of motion can be given by
+\begin{align}
+\sdt{x}=-\pt{U},
+\end{align}
+\begin{align}
+x(0)=x_0,\quad \dot{x}(0)=v_0.
+\end{align}
+\begin{align}
+x(t+dt)\approx x(t)+\dot{x(t)}dt.
+\end{align}
+
+\scalefig{../Figs/handdraw1018_1}{0.5}{$ x(t+dt) $.}
+
+Action is defined as
+\begin{align}
+S(x)= \int_{t_1}^{t_2} L(x,\dot{x},t)dt,
+\end{align}
+which is a functional. 
+\begin{align}
+\delta{S}&=0\\
+&= \delta\int L(x,\dot{x},t)dt\\
+&= \int \delta L(x,\dot{x},t)dt\\
+&= \int [\px{L}\delta x + \pp{L}{\dot{x}}\delta \dot{x}+ \pp{t}{t}\delta t ]dt
+\end{align}
+
+\begin{align}
+\delta S &= \int [\px{L}\delta x + \pp{L}{\dot{x}}\frac{d}{dt}\delta x ]dt\\
+&= \int  [\px{L}\delta x + \frac{d}{dt}\pp{L}{\dot{x}}\delta x ]dt\\
+&=  \int  [\px{L} + \frac{d}{dt}\pp{L}{\dot{x}}]\delta x dt\\
+&=0
+\end{align}
+
+\begin{align}
+\int \pp{L}{\dot{x}} \frac{d}{dt} \delta x dt &= \cancelto{0}{\left.\delta x \pp{L}{\dot{x}}\right|^{t_2}_{t_1}} - \int \frac{d}{dt} \pp{L}{\dot{x}} \delta x dt
+\end{align}
+This leads to the Eular-Lagrange equation:
+\begin{align}
+\pp{L}{x} + \pp{\dot{x}}{t}\pp{L}{\dot{x}}=0.
+\end{align}
+Alternatively,
+\begin{align}
+ & \boxed{\frac{\partial L}{\partial x}-\frac{d}{dt}\frac{\partial L}{\partial x}=0}.
+\end{align}
+
+
+\scalefig{../Figs/handdraw1127_1}{0.4}{Action and least action principle. }
+Here is another way to derive the Eular-Lagrange equation. We let 
+\begin{align}
+S &=\int_{t_1}^{t_2} \drv t L(q,\dot{q},t),\\
+S^i &= \int_{t_1}^{t_2} \drv t L(q+\eta(t),\dot{q}+\dot{\eta}(t),t),
+\end{align}
+where $ L(q+\eta(t),\dot{q}+\dot{\eta}(t),t)=L(q,\dot{q},t)+\pp{L}{q}\eta+\pp{L}{\dot{q}}\dot{\eta} $ is the Lagrangian of the $ i $-th path (see Fig.~\ref{../Figs/handdraw1127_1}). We make 
+\begin{align}
+\Delta S &=S^i-S=\delta S\\
+&= \int_{t_1}^{t_2} \drv t \left( \pp{L}{q}\eta+\pp{L}{\dot{q}}\dot{\eta} \right)\\
+&= 0. 
+\end{align}
+Using that \begin{align}
+\dt{} \left( \pp{L}{q}\eta \right) &= \dt{} \left( \pp{L}{q} \right) \eta + \pp{L}{q}\dot{\eta},
+\end{align}
+we have
+\begin{align}
+\delta S &= \int_{t_1}^{t_2} \drv t \left( \pp{L}{q}\eta + \dt{}\left( \pp{L}{\dot{q} \eta} \right)-\eta \dt{}\left(\pp{L}{\dot{q}} \right) \right)\\
+\implies \qquad 0 &= \cancelto{0}{\left. \pp{L}{\dot{q}} \eta\right|_{t_1}^{t_2}  } + \int_{t_1}^{t_2} \drv t \eta \left(\pp{L}{q}-\dt{}\pp{L}{\dot{q}} \right).\label{eq:inteular}
+\end{align}
+There is a term goes to zero. This is because we always choose $ \eta(t_1)=\eta(t_2)=0 $. 
+
+Immediately, Equ.~\eqref{eq:inteular} leads to the Eular-Lagrange equation
+\begin{align}
+\pp{L}{q} - \dt{} \left(\pp{L}{\dot{q}} \right)=0.
+\end{align}
+
+Now, we define the force as
+\begin{align}
+\vec{F}
+=- \nabla U(x),
+\end{align}
+where $ U(x) $ is the potential energy. 
+
+The kinetic energy and Lagrangian are hence
+\begin{align}
+T =T(\dot{x}) &= \frac{1}{2} m\dot{x}^2,\\
+L \equiv T-U &=T(\dot{x})-U(x).
+\end{align}
+We have
+\begin{align}
+\frac{\partial L}{\partial x} &= - \frac{\partial U}{\partial x},\\
+\frac{d}{dt} \frac{\partial L}{\partial \dot{x}} &= \dt{}  T= \frac{d}{dt} (m\dot{x}) = m\ddot{x},\\
+\frac{\partial L}{\partial \dot{x}} &= P.
+\end{align}
+
+\begin{equation}
+\Rightarrow \fbox{$m\ddot{x}=-\frac{\partial U}{\partial x}$}.
+\end{equation}
+
+\scalefig{../Figs/handdraw1018_2_1}{0.5}{Free paths and functionals.}
+
+Now the derivative of work gives
+\begin{align}
+\delta W= F\delta x= F\pp{x}{q}\delta q \equiv Q\delta q.
+\end{align}
+We have that
+\begin{align}
+\dt{} \pp{T}{q}- \pp{T}{q}=Q.
+\end{align}
+where 
+\begin{align}
+Q &= Q_{con}+Q_{nc}\\
+&= \pp{U(q)}{q}+ Q_{nc}.
+\end{align}
+For general nonconservative
+force field, we have separated the generalized force
+$Q$ into the conservative and nonconservative parts.  For a conservative force field, In contrast, $L=T-U$ leads to the familiar equation
+of motion $m\ddot{x}=-\frac{\partial U}{\partial x}$. 
+
+For nonconservative
+force field, the Euler-Lagrange equation can be modified to take into
+account the nonconservative force.  
+Then
+\begin{align}
+\frac{d}{dt}\frac{\partial T}{\partial\dot{q}}-\frac{\partial T}{\partial q} & =Q\\
+\implies\frac{d}{dt}\frac{\partial L}{\partial\dot{q}}-\frac{\partial L}{\partial q} & =Q_{\mbox{nc}}.
+\end{align}
+
+In an arbitrary coordinate, \textit{e.g.} cyclic coordinate, the Eular-Lagrange equation gives
+\begin{align}
+\pp{L}{q}=\dt {} \pp{L}{\dot{q}}.
+\end{align}
+If
+\begin{align}
+L &=L(\dot{x},t)\\
+0 &=\dt{} \pp{L}{\dot{x}},
+\end{align}
+we have
+\begin{align}
+\pp{L}{\dot{x}}=const.=p.
+\end{align}
+
+\subsection{$ H $ and the energy of a system}
+One question is whether the Hamiltonian $ H $ equals to total energy $ E $? We assume that
+\begin{align}
+L=L(q,\dot{q},t)=L(q,\dot{q})\rightarrow \textrm{Not explicitly change in time.}
+\end{align}
+\begin{align}
+\dt{} L &= \pp{L}{q}\dot{q}+\pp{L}{\dot{q}}\ddot{q}+\cancel{\pt{L}}\\
+&= \dt{} \pp{L}{\dot{q}} \dot
+{q}+ \pp{L}{\dot{q}}\ddot{q}\\
+&= \dt{} \left(\dot{q}\pp{L}{\dot{q}} \right)\quad \textrm{To be checked.}
+\end{align}
+Immediately, we have
+\begin{align}
+ \dt{} \left(\dot{q}\pp{L}{\dot{q}}-L \right)&=0.\\
+\Rightarrow \qquad \qquad \qquad \qquad  \pp{H}{t} &= 0,
+\end{align}
+where we have defined the Hamiltonian 
+\begin{align}
+H\equiv \dot{q}\pp{L}{\dot{q}}-L.
+\end{align}
+It shows that $ H $ is a constant of motion, and usually we think of $ H $ as the energy of the system. The question is then whether $ H $ is actually the energy of the system? The answer is ``not always".
+
+To demonstrate this point, we look at an N-dimensional system. For a N-D case, we can define
+\begin{align}
+H\equiv \sum_i \dot{q_i}\pp{L}{\dot{q}_i}-L. 
+\end{align}
+The kinetic energy term gives
+\begin{align}
+T=T(\dot{q})=\sum_i \frac{1}{2}m \dot{x}_i^2= \sum_{j,k} A_{jk}\dot{q}_j \dot{q}_k,
+\end{align}
+where $ x=x(q,\dot{q},t)=x(q) $ and $ A_{jk}= \frac{1}{2}m \pp{x_i}{q_j}\pp{x_i}{q_k} $. We can replace $ \dot{q}\rightarrow p $. 
+
+Now that 
+\begin{align}
+L &= T(\dot{q})-U(q),\\
+H&= \sum_i \dot{q}_i \pp{T}{\dot{q}_i}-T+U.
+\end{align}
+Therefore, 
+\begin{align}
+\pp{T}{\dot{q}_i}= \sum_k A_{ik} \dot{q}_k+\sum_j A_{ij} \dot{q}_j=2\sum_k A_{ik}\dot{q}_k,
+\end{align}
+\begin{align}
+\Rightarrow \qquad \sum_i \dot{q}_i \pp{T}{\dot{q}_i}= \sum_{ik} A_{ik}\dot{q}_i\dot{q}_k= 2T. 
+\end{align}
+\begin{align}
+\Rightarrow \qquad H=2T-T+U= T+U=E.
+\end{align}
+We see that, in this example, the Hamiltonian is the energy of the system only because
+\begin{itemize}
+\item[(a) ] $ \pt{L}=0 $;
+\item[(b) ] $ U=U(q) $;
+\item[(c) ] $ T=T(\dot{q}) $ is quadratic ($q$ can be in matrix form).
+\end{itemize}
+
+We make $ H=H(q,\dot{q},t) =H(q,p,t)$.
+\begin{align}
+dH &= \pp{H}{q}dq+\pp{H}{p} dp+ \pt{H}dt \label{eq:dH1}\\
+&= d(\dot{q}p-L)\\
+&= pd\dot{q}+ \dot{q}dp - \left( \pp{L}{q}dq + \pp{L}{\dot{q}}d\dot{q}+ \pt{L}dt \right)\\
+&= -\dot{p}dq + \dot{q}dp - \pt{L}dt,\label{eq:dH3}
+\end{align}
+where we have defined $ \fbox{$\pp{L}{\dot{q}}=p$} $.
+
+Comparing each corresponding terms in Equ.~\ref{eq:dH1} and~\ref{eq:dH3},  we have
+\begin{equation}
+\left\{ \begin{array}{l}
+\left. \begin{array}{c}
+\dot{p}= -\pp{H}{q}\\
+\dot{q}=\pp{H}{p}
+\end{array}\right\}\rightarrow \textrm{$p$ and $q$ are conjugate.} \\
+-\pt{L}= \pt{H}\rightarrow \textrm{if }\pt{L}=0=\pt{H}\rightarrow \textrm{conservation of $H$.}
+\end{array} \right.
+\end{equation}
+
+Now, we define the Poisson bracket as
+\begin{align}
+\{ A,B\}= \pp{A}{q}\pp{B}{p}-\pp{A}{p}\pp{B}{q}.
+\end{align}
+The term $ \{q,p \} $ describes kinetic transformation in classical mechanics. For the poison bracket $ \{q',p' \} $, we have
+\begin{equation}
+\left\{ 
+\begin{array}{c}
+\dot{p}'= -\pp{H'}{q'}\\
+\dot{q}'= \pp{H'}{p'}.
+\end{array}\right.
+\end{equation}
+For a given function $ G=G(q,p,t) $, we have
+\begin{align}
+\dt {} G(q,p,t)&= \pp{G}{q}\dot{q} + \pp{G}{p} \dot{p}+ \pt{G}\\
+&= \pp{G}{q}\pp{H}{p}-\pp{G}{p}\pp{H}{q}+\pt{G} \\
+&=\{G,H \}+ \pt{G}.
+\end{align}
+Therefore, the dynamic equation for $ G $ is 
+\begin{equation}
+\fbox{$\dt {} G(q,p,t)=\{G,H \}+ \pt{G}$.}
+\end{equation}
+We know that in quantum mechanics, 
+\begin{align}
+\dt{} \braket{G}=\frac{1}{i\hbar}\braket{[G,H]}+ \braket{\pt{G}}.
+\end{align}
+The two equations above shows that there is a connection between classical and quantum mechanics. 
+
+
+\textbf{Example. }Consider a planar system with a bead confined to
+move only along a hoop of radius $r$ whose center is attached to
+the end of a stick of length $R$. The stick is rotated with a constant
+angular velocity $\omega$ as shown in the picture. There is no gravity.
+
+\scalefig{../Figs/handdraw1018_2_2}{0.8}{An example of using Lagrangian mechanics to solve practical problems.}
+
+In the plane of motion, the coordinate can be given by
+\begin{align}
+(x,y) & =\left(R\cos(\omega t)+r\cos\left(\omega t+\theta\right),R\sin(\omega t)+r\sin\left(\omega t+\theta\right)\right)\\
+\implies\quad  T & =\frac{1}{2}m\left[R^{2}\omega^{2}+r^{2}\left(\omega+\theta\right)^{2}+2R\omega\left(\omega+\dot{\theta}\right)\cos\theta\right]\\
+\implies \quad \ddot{\theta}&+\frac{\omega^{2}R}{r}\sin\theta  =0,
+\end{align}
+which is the equation of motion of the physical pendulum even if there
+is no gravity here. The reason is that an observer sitting at the
+end of the stick would feel a fictitious centrifugal force outward
+having the magnitude of $m\omega^{2}R\sin\theta$.
+
+
+Another important observation is that $H$ is not the energy since
+apparently $T$ is not quadratic. $\frac{\partial H}{\partial t}=0$,
+but the energy $\frac{1}{2}I\omega^{2}$ is not conserved since to
+keep the angular momentum $L$ constant while $\omega$ is also constant,
+the moment of inertia $I$ has to vary in time.
+
+
+%\missingfigure{Oct18-2-2. An example of using Lagrangian mechanics to solve practical problems.}
+
+
+%\clearpage 
+
+\textbf{Sections below in this chapter are taught by Prof. Dunlap. }
+
+
+%\section{Legendre Transformation and Hamiltonian mechanics} 
+
+\textbf{Nov 13.}
+
+
+
+
+
+%\textbf{Following are 3 lectures in handwriting, taught by Dr. Dunlap.}
+%\newpage
+%\includepdf[pages={-}]{CM_1_Nov13.pdf}
+%
+%\includepdf[pages={-}]{CM_2_Nov15.pdf}
+%
+%\includepdf[pages={-}]{CM_3_Nov27.pdf}
+
+%\newpage
+
+
+
+%\section{The principle of extremum action}
+%
+%Newtonian formalism describes a mechanical system as a differential
+%equation and thus is local in time. In Lagrangian formalism, we assume
+%that we are given two times $t_{1}$ and $t_{2}$ with a particle
+%being at the position $x_{1}$ and $x_{2}$ respectively, the path
+%of the system on the configuration space is the one that extremizes
+%the action
+%\begin{align}
+%S & =\int_{t_{1}}^{t_{2}}L\left(x,\dot{x},t\right)dt.\\
+%0=\delta S & =\int_{t_{1}}^{t_{2}}\delta L\left(x,\dot{x},t\right)dt\\
+% & =\int\left(\frac{\partial L}{\partial x}\delta x+\frac{\partial L}{\partial\dot{x}}\underbrace{\delta\dot{x}}_{d\left(\delta x\right)/dt}+\frac{\partial L}{\partial t}\underbrace{\delta t}_{0}\right)dt\\
+% & =\int\left(\frac{\partial L}{\partial x}\delta x+\frac{\partial L}{\partial\dot{x}}\frac{d}{dt}\delta x\right)dt
+%\end{align}
+%Using integration by path, the second term on the RHS can be expressed
+%as
+%\begin{align}
+%\int dt\frac{\partial L}{\partial\dot{x}}\frac{d}{dt}\delta x= & \underbrace{\delta x\frac{\partial L}{\partial\dot{x}}\Biggr|_{t_{1}}^{t_{2}}}_{0}-\int\frac{d}{dt}\frac{\partial L}{\partial x}\delta xdt
+%\end{align}
+%where the first term vanishes because the end points are fixed. Therefore,
+%\begin{align}
+%0 & =\int\left(\frac{\partial L}{\partial x}-\frac{d}{dt}\frac{\partial L}{\partial x}\right)\delta xdt.
+%\end{align}
+%It can be shown that this implies the Euler-Lagrange equation
+%\begin{align}
+% & \boxed{\frac{\partial L}{\partial x}-\frac{d}{dt}\frac{\partial L}{\partial x}=0}.
+%\end{align}
+%For a conservative force field, $L=T-U$ leads to the familiar equation
+%of motion $m\ddot{x}=-\frac{\partial U}{\partial x}$. For nonconservative
+%force field, the Euler-Lagrange equation can be modified to take into
+%account the nonconservative force by separating the generalized force
+%$Q$ into the conservative and nonconservative parts
+%\begin{align}
+%Q & =-\frac{\partial U(q)}{\partial q}+Q_{\mbox{nc}}.
+%\end{align}
+%Then
+%\begin{align}
+%\frac{d}{dt}\frac{\partial T}{\partial\dot{q}}-\frac{\partial T}{\partial q} & =Q\\
+%\implies\frac{d}{dt}\frac{\partial L}{\partial\dot{q}}-\frac{\partial L}{\partial q} & =Q_{\mbox{nc}}.
+%\end{align}
+
+
+
+\section{Legendre transform}
+
+A puzzle: given a function $f(x)$, let $\frac{df}{dx}\Bigr|_{x_{0}}=\phi$.
+Can we find a function $G(\phi)$ such that $\frac{dG}{d\phi}=x$?
+
+If $f(x)=ax^{n}$, then $G(\phi)=F\left(x(\phi)\right)$ works since
+$\frac{dG}{d\phi}=\frac{df}{dx}\frac{dx}{d\phi}=\phi\frac{dx}{d\phi}=\phi\frac{d}{d\phi}\left(\frac{\phi}{an}\right)^{\frac{1}{n-1}}\propto x$.
+Note that we have to invert $\phi(x)$ to find $x(\phi)$. The general
+recipe for any function of $x$ is the \emph{Legendre transform}
+\begin{align}
+ & \boxed{G(\phi)=-\phi x(\phi)-F\left(x(\phi)\right)}
+\end{align}
+since
+\begin{align}
+\frac{dG}{d\phi} & =x(\phi)+\phi\frac{dx}{d\phi}-\phi\frac{dx}{d\phi}=x.
+\end{align}
+Geometrically, $-G(\phi)$ is the intercept of the tangent of $f$ at a point $x_{0}$ with the $x=0$ axis (see Fig.~\ref{../Figs/handdraw1113_1}).
+
+At $x_{0}$,
+\begin{align}
+y-F\left(x_{0}\right) & =\frac{dF}{dx}\Bigr|_{x_{0}}(\overbrace{x}^{0}-x_{0})\\
+y & =F\left(x_{0}\right)-\phi x.
+\end{align}
+
+\scalefig{../Figs/handdraw1113_1}{0.5}{ Functions of variables ($ x,\phi $).}
+
+\textbf{Example:}
+\begin{align}
+\quad F(x)= \frac{ax^2}{2},\quad \dd{F}{x}|_{x_0} = ax|_{x_0} \equiv \phi.
+\end{align}
+Main problem:\begin{align}
+F(x) \Rightarrow \dd{F}{x} = \phi.
+\end{align}
+Can we find $G(\phi )=x$?
+Ex: \begin{align}
+F(x) &= \frac{ax^2}{2}\\
+\dd{F}{x} & = \phi =ax\quad \leftarrow \mathrm{joint}\, x=\frac{1}{a}\phi.
+\end{align}
+What is $ G(\phi) $? 
+\begin{align}
+G(\phi) &= F(x(\phi)),\\
+F(x(\phi)) &= \frac{a}{2}\left( \frac{\phi}{a} \right)^2 = \frac{\phi^2}{2a}=G(\phi).
+\end{align}
+
+\textbf{Example: } $f(x,y)=\frac{ax^{2}}{2}+\frac{by^{2}}{2}+cxy$. We define $ \left( \px{F} \right)_y \equiv \phi $, find $ G(\phi,y) $ so that $ \left( \pp{G}{\phi} \right)_y =x $.
+Then the process of finding $G(\phi,y)$ is the same given that $y$
+is hold constant at all time.
+
+We can define
+\begin{align}
+\left( \px{F} \right)_y &= \phi = ax+cy\\
+\Leftrightarrow\qquad x &= \frac{\phi-cy}{a}.
+\end{align}
+Hence, 
+\begin{align}
+G(\phi) &= \phi \frac{\phi-cy}{a} -\frac{a}{2} \frac{(\phi-cy)^2}{a^2} - \frac{by^2}{2} -cy\frac{\phi-cy}{a}\\
+&= \frac{1}{2} \frac{(\phi-cy)^2}{a} -\frac{by^2}{2}.
+\end{align}
+As expected, this implies to
+\begin{align}
+\left( \pp{G}{\phi} \right)_y &= \frac{\phi-cy}{a}=x. 
+\end{align}
+
+\section{Hamiltonian}
+
+The main idea of this section is this: gievn a Lagrangian $L$, the momentum $p$ canonically conjugated
+to a coordinate $q$ is defined by
+\begin{align}
+p\left(q,\dot{q},t\right) & \equiv\frac{\partial L\left(q,\dot{q},t\right)}{\partial\dot{q}}.
+\end{align}
+Substitute this into the Euler-Lagrange equation gives
+\begin{align}
+\dot{p}\left(q,\dot{q},t\right) & =\frac{\partial L\left(q,\dot{q},t\right)}{\partial q}.
+\end{align}
+Inverting the functions of $\dot{q}$ to functions of $p$ gives the
+Hamilton's equations of motion.
+
+For details, we can describe the motion of a moving particle using a set of first-order equations
+\begin{align}
+\left\{ \begin{array}{l}
+\dot{q} =v\\
+\dot{v} = f(q,v,t).
+\end{array}\right.
+\end{align}
+The second equation above can be written as 
+\begin{align}
+m\ddot{q} &= \mathrm{force}\qquad \mathrm{or}\qquad \ddot{q}= f(q,\dot{q},t).
+\end{align}
+\scalefig{../Figs/handdraw1113_5}{0.4}{Definition of $ q $ and the phase diagram of $ v(q) $.}
+
+Once we know the initial value of $ q(0) $ and $ v(0) $, we will know the $ q(t) $ and $ v(t) $ for all future. The movement of the particle can be described by a phase diagram of $ v(q) $ (see Fig.~\ref{../Figs/handdraw1113_5}). The evolution of the system can be fully described by a function of $ (q,v,t) $, which leads us to introduce the concept of Lagrange, $ L=L(q,\dot{q},t) $. 
+
+Now, the momentum can be defined by
+\begin{align}
+p &\equiv \pp{L}{\dot{q}}\\
+\rightarrow \quad p &= f(q,\dot{q},t).
+\end{align}
+Hence, 
+\begin{align}
+\dot{p}= \dt{}\left( \pp{L}{\dot{q}} \right)=\pp{L}{q} = g(q,\dot{q},t).
+\end{align}
+By inverting the two equations above, we can obtain the Hamilton's equation of motion to be
+\begin{align}
+\dot{q} &= h(q,p,t)\\
+\dot{p} &= r(q,p,t).
+\end{align}
+
+
+
+
+
+\textbf{Example. }A harmonic oscillator has a Lagrangion of  $L=\frac{1}{2}m\dot{q}^{2}-\frac{1}{2}kq^{2}$. What is the Hamilton's equations of motion?
+
+\begin{align}
+\left\{ \begin{array}{ll}
+p=\frac{\partial L}{\partial\dot{q}}=m\dot{q} & \iff\dot{q}=\frac{p}{m},\\
+\dot{p}=\frac{\partial L}{\partial q} & \iff\dot{p}=-kq.
+\end{array}\right.
+\end{align}
+
+There is another way to obtain the Hamilton's equations of motion without inversion (using Legendre Transformation).
+We write
+\begin{align}
+\drv L(q,\dot{q},t) &= \left(\pp{L}{q}\right)\drv q + \left(\pp{L}{\dot{q}} \right)\dot{q} + \left(\pt{L} \right)\drv t,
+\end{align}
+and try 
+\begin{align}
+\boxed{H(q,p,t) = p\dot{q}-L}.
+\end{align}
+We have
+\begin{align}
+\drv H &= \drv p \cdot \dot{q} + p\drv \dot{q} -\left( p\drv \dot{q}-\dot{p}\drv q + \pt{L} \drv t \right)\\
+&= \dot{q} \drv p -\dot{p} \drv q -\pt{L} \drv t.
+\end{align}
+Compared with the fact that
+\begin{align}
+\drv H(q,p,t) &= \pp{H}{p}\drv p + \pp{H}{q}\drv q + \pt{H}\drv t,
+\end{align}
+it implies
+\begin{align}
+\left\{ \begin{array}{ll}
+\dot{q} &=\pp{H}{p}\\
+\dot{p} &= -\pp{H}{q}.
+\end{array}\right.
+\end{align}
+This is the Hamilton's equation of motion as well.
+
+To sum up, we define $H$ to be the Legendre transform
+of $L$: $H(p,q,t)=p\dot{q}-L$. Then the Hamilton's equation of motion
+are
+\begin{align}
+ & \boxed{\dot{q}=\frac{\partial H}{\partial p},\ \dot{p}=-\frac{\partial H}{\partial q}}
+\end{align}
+
+\textbf{Example:}
+For a harmonic oscillator $ L=\frac{1}{2} m\dot{q}^2-\frac{1}{2} kq^2 $, find $ H(q,p,t) $, the Hamilton's equations of motion and the time evolution of the system. 
+
+Answer: 
+\begin{align}
+p &= \pp{L}{\dot{q}}=m\dot{q} \quad \Rightarrow \dot{q} =\frac{p}{m}\\
+L(q,p,t) &= \frac{1}{2} m \left( \frac{p}{m} \right)^2 -\frac{1}{2} kq^2.
+\end{align}
+Hence, 
+\begin{align}
+H(q,p,t) &= p\dot{q}-L \\
+&= p\frac{p}{m} - \left[\frac{1}{2} m \left( \frac{p}{m} \right)^2 -\frac{1}{2} kq^2 \right]\\
+&= \frac{p^2}{2m} + \frac{1}{2} kq^2.
+\end{align}
+
+The Hamilton's equations of motion can be written as
+\begin{align}
+\dot{p} &= -\pp{H}{q}=-kq\\
+\dot{q} &= \pp{H}{p} = \frac{p}{m}.
+\end{align}
+The two equations implies that
+\begin{align}
+\ddot{p} &= -k\dot{q} = -\frac{kp}{m}\\
+\Rightarrow \qquad \ddot{p} &+ \frac{k}{m} p=0\\
+\Rightarrow \qquad p(t) &= p(0)\cos \omega t + \frac{\dot{p}(0)}{\omega} \sin \omega t.
+\end{align}
+Similarly, 
+\begin{align}
+q(t) &= q(0) \cos \omega t + \frac{\dot{q}(0)}{\omega}\sin \omega t,
+\end{align}
+where $ \omega = \sqrt{\frac{k}{m}} $, $ \dot{p}(0) =-kq(0)$ and $ \dot{q}(0)= \frac{p(0)}{m} $. 
+
+Therefore, 
+\begin{align}
+ p(t) & =p(0)\cos(\omega t)-\frac{kq(0)}{\omega}\sin(\omega t),\\
+q(t) & =q(0)\cos(\omega t)+\frac{p(0)}{m\omega}\sin(\omega t).
+\end{align}
+The phase diagram is plotted in Fig.~\ref{../Figs/handdraw1113_6}.
+
+\scalefig{../Figs/handdraw1113_6}{0.4}{Phase diagram of a harmonic oscillator.}
+
+Moreover, you can find that
+\begin{align}
+\frac{1}{2} k q^2(t) + \frac{1}{2} \frac{p^2(t)}{m} &= \frac{1}{2} kq^2(0) + \frac{p^2(0)}{2m} \equiv E\\
+\frac{1}{2} \sqrt{\frac{k}{m}} \left( \underbrace{\sqrt{km} q^2}_{Q^2} + \underbrace{\frac{p^2}{m}}_{P^2} \right) &=E.
+\end{align}
+
+By defining $Q=q(km)^{\frac{1}{4}}$ and $P=\frac{p}{(km)^{\frac{1}{4}}}$,
+the conservation of energy takes on a very simple form
+\begin{align}
+Q^{2}+P^{2} & =\frac{2E}{\omega},
+\end{align}
+where the trajectory in phase space is a circle with radius $\sqrt{\frac{2E}{\omega}}$ (see Fig.~\ref{../Figs/handdraw1113_7}).
+\scalefig{../Figs/handdraw1113_7}{0.4}{The phase diagram of $ Q(P) $.}
+Notice that we have eliminated $q$ first to get the equation of motion
+for $p$. The Hamiltonian treats $q$ and $p$ symmetrically.
+
+\textbf{Exercise:}
+If we know $ H=\frac{p^2}{m} + \frac{1}{2}kq^2 $, what is $ L $? 
+
+Answer: \begin{align}
+\dot{q} &= \pp{H}{p}=\frac{p}{m}\\
+\Rightarrow P &= m\dot{q}\\
+\Rightarrow L(q,\dot{q},t) &= p\dot{q} -L\\
+&= m\dot{q}\dot{q} - \left[\frac{(m\dot{q})^2}{2m} + \frac{1}{2}kq^2 \right]\\
+&= \frac{1}{2} m\dot{q}^2 - \frac{1}{2}kq^2.
+\end{align}
+
+For higher dimensions:
+\begin{align}
+L &= L(q_1,q_2,\ldots,q_N;\dot{q}_1,\dot{q}_2,\ldots,\dot{q}_N;t)\\
+p_i &= \pp{L}{\dot{q}_i}, \quad  H=\sum_{i=1}^{N}p_i\dot{q}_i-L.
+\end{align}
+
+
+\section{Constants of motion}
+
+Suppose that $\frac{df(q,p,t)}{dt}$ is a constant, then
+\begin{align}
+0=\frac{df(q,p,t)}{dt} & =\frac{\partial f}{\partial q}\dot{q}+\frac{\partial f}{\partial p}\dot{p}+\frac{\partial f}{\partial t}\\
+ & =\underbrace{\left(\frac{\partial f}{\partial q}\frac{\partial H}{\partial p}-\frac{\partial f}{\partial p}\frac{\partial H}{\partial q}\right)}_{\mathrm{Poisson \,bracket:\,}\left\{ f,H\right\} }+\frac{\partial f}{\partial t}
+\end{align}
+Useful identities for Poisson brackets:
+\begin{align}
+\left\{ f,gh\right\}  & =g\left\{ f,h\right\} +\left\{ f,g\right\} h.\\
+\left\{ \left\{ f,g\right\} ,h\right\}  & =\left\{ \left\{ h,f\right\} ,g\right\} =\left\{ \left\{ g,h\right\} ,f\right\} .
+\end{align}
+
+The trick to find a constant of motion is to solve $ q_i(0) $ and $ p_i(0) $ in terms of $ q_i(t) $ and $ p_i(t) $ through integrating the differential equations of motion. As can be seen, $ H=H(q,p) $ itself is a constant of motion, because
+\begin{align}
+\cancelto{0}{ \{ H,H \} } \qquad +\quad  \cancelto{0}{ \pt{H} } &=0.
+\end{align}
+Besides itself, any $ H $ should have at least two constants of motion determined by $ q(0) $ and $ p(0) $.
+
+\textbf{Example. }$H=\frac{p^{2}}{2m}-kq$.
+
+Consider an apparently contrived function $f=q-\frac{p}{m}t+\frac{k}{2m}t^{2}$.
+It is a constant of motion;
+\begin{align}
+\frac{df}{dt}=\left\{ f,H\right\} +\frac{\partial f}{\partial t} & =\frac{p}{m}-\left(-\frac{t}{m}\right)\left(-k\right)-\frac{p}{m}+\frac{kt}{m}=0.
+\end{align}
+Consider another function $g=p-kt$. It is also a constant of motion;
+\begin{align}
+\frac{dg}{dt}=\left\{ g,H\right\} +\frac{\partial g}{\partial t} & =0\cdot\frac{\partial H}{\partial p}-(-k)-k=0.
+\end{align}
+In fact, $f$ and $g$ are nothing but initial conditions $q(0)$
+and $p(0)$ respectively. These are called \emph{trajectory constants}.
+Any constant of motion is a combination of trajectory constans. Thus,
+there always exist $2n$ constants of motion whether $H$ depends
+explicitly on time or not.
+
+\textbf{Example. }A free particle $H=\frac{p^{2}}{2m}$. $q$ is a
+\emph{cyclic coordinate}, i.e. $q$ is absent from the Hamiltonian$\implies$$p=-\frac{\partial H}{\partial q}$
+is conserved. 
+
+\textbf{Example. }$H=p_{1}\left(\frac{p_{2}}{m}-\gamma q_{1}\right)$.
+There is no $q_{2}$ in the Hamiltonian, so $p_{2}$ is a constant.
+\begin{align}
+\dot{q}_{1} & =\frac{\partial H}{\partial p_{1}}=\frac{p_{2}(0)}{m}-\gamma q_{1}\\
+\implies q_{1}(t) & =q(0)e^{-\gamma t}+\frac{p_{2}(0)}{m}\frac{1-e^{\gamma t}}{\gamma}.
+\end{align}
+
+
+\textbf{Example. $H=p_{1}\left(\frac{p_{2}}{m}-\gamma q_{1}\right)+m\omega^{2}q_{1}q_{2}$}.
+\begin{align}
+\dot{p}_{2} & =-\frac{\partial H}{\partial q_{2}}=-m\omega^{2}q_{1}\\
+\dot{q}_{1} & =\frac{\partial H}{\partial p_{1}}=\frac{p_{2}}{m}-\gamma q_{1}\\
+\implies & \boxed{\ddot{q}_{1}+\gamma\dot{q}_{1}+m\omega q_{1}=0}.
+\end{align}
+We have obtained the equation of motion of a damped harmonic oscillator
+even though there is no explicit time dependence in the Hamiltonian!
+
+\scalefig{../Figs/handdraw1115_1}{0.8}{Relative movement of two particles.}
+\textbf{Example: }A rotor with two particle (see Fig.~\ref{../Figs/handdraw1115_1}) with masses $m_{1}$ and
+$m_{2}$ and the reduced mass $\mu=\frac{m_{1}m_{2}}{m_{1}+m_{2}}$
+and the Lagrangian
+\begin{align}
+L & =\frac{\mu}{2}\left[\dot{r}^{2}+\left(r\dot{\theta}\right)^{2}+\left(r\sin\theta\dot{\phi}\right)^{2}\right]-U(r).
+\end{align}
+$p_{r}$ is the momentum and $p_{\theta}$ is the angular momentum.
+But it is not obvious by looking at $p_{\phi}=\frac{\partial L}{\partial\dot{\phi}}=\mu r^{2}\sin^{2}\theta\dot{\phi}$
+whether $p_{\phi}$ is a constant of motion or not. We can write down
+the Hamiltonian
+\begin{align}
+H & =p_{r}\dot{r}+p_{\theta}\dot{\theta}+p_{\phi}\dot{\phi}-L\\
+ & =\frac{p_{r}^{2}}{2\mu}+\frac{p_{\theta}^{2}}{2\mu r^{2}}+\frac{p_{\phi}^{2}}{2\mu r^{2}\sin^{2}\theta}+U(r).
+\end{align}
+Consider
+\begin{align}
+p_{\theta}\dot{p}_{\theta} & =p_{\phi}^{2}\frac{\cos\theta}{\sin^{2}\theta}\dot{\theta}\\
+\frac{1}{2}\frac{d}{dt}\left(p_{\theta}^{2}\right) & =-\frac{1}{2}p_{\phi}^{2}\frac{d}{dt}\frac{1}{\sin^{2}\theta}\\
+\implies p_{\theta}^{2}+\frac{p_{\phi}^{2}}{\sin^{2}\theta}\equiv L^{2} & =\mbox{constant}.
+\end{align}
+Using what we just found out, the Hamiltonian can be written in the
+familiar form (as seen in quantum mechanics, for example)
+\begin{align}
+ & \boxed{H_r=\frac{p_{r}^{2}}{2\mu}+\frac{L^{2}}{2\mu r^{2}}+U(r)}
+\end{align}
+
+
+
+
+\section{Liouvillian}
+
+From the Hamilton's equations of motion
+\begin{align}
+\left\{ 
+\begin{array}{rl}
+\dot{p} &= -\pp{H}{q} \\
+\dot{q} &= -\pp{H}{p} 
+\end{array} \right.
+\end{align}
+we have
+\begin{align}
+\left\{ 
+\begin{array}{rl}
+\left\{ p,H \right\} &= \pp{p}{q}\pp{H}{p} - \pp{p}{p}\pp{H}{q}= -\pp{H}{q}=\dot{p} \\
+\left\{ q,H\right\} &= \pp{q}{q}\pp{H}{p} - \pp{q}{p}\pp{H}{q}= \pp{H}{q}= \dot{q}.
+\end{array} \right.
+\end{align}
+Therefore, 
+\begin{align}
+\dot{q} &= \left\{q,H\right\}\\
+\dot{p} &= \left\{ p,H\right\},
+\end{align}
+alternatively, in the form of Liouvillian operator
+\begin{align}
+\dot{q} &= \mathcal{L} q\\
+\dot{p} &= \mathcal{L} p
+\end{align}
+where
+\begin{align}
+\mathcal{L} &= \pp{H}{p}\pp{}{q} - \pp{H}{q}\pp{}{p} 
+\end{align}
+is a differential operator called Liouvillian operator. 
+
+
+Now we can write the time evolution of a Hamiltonian system in terms
+of a linear map that maps the initial $q(0)$ and $p(0)$ to $q(t)$
+and $p(t)$ at later times analogous to the time evolution by a unitary
+in quantum mechanics.
+\begin{align}
+q(t) & =q(0)+\int_{0}^{t}dt^{'}\mathcal{L}\left(t^{'}\right)q\left(t^{'}\right)\\
+ & =q(0)+\int_{0}^{t}dt^{'}\mathcal{L}\left(t^{'}\right)\left(q(0)+\int_{0}^{t^{'}}dt^{''}\mathcal{L}\left(t^{''}\right)q\left(t^{''}\right)\right)+...\\
+ & =\left[1+\underbrace{\int_{0}^{t}dt^{'}\mathcal{L}\left(t^{'}\right)}_{\mathcal{L}}+\underbrace{\int_{0}^{t}dt^{'}\mathcal{L}\left(t^{'}\right)\int_{0}^{t^{'}}dt^{''}\mathcal{L}\left(t^{''}\right)}_{\frac{t^{2}}{2!}\mathcal{L}^{2}}+...\right]q(0)\\
+ &= \left. \left[ 1+ \mathcal{L} t + \frac{\mathcal{L}^2}{2!} t^2 + \ldots \right]q\right|_{t=0}\\
+ & =e^{\mathcal{L}t}q(0)= \left. e^{\mathcal{L}t}q\right|_{t=0},
+\end{align}
+and similarly,
+\begin{align}
+p(t) &= \left. \left[ \underbrace{1}_{\mathcal{L}^0 t^0}+ \mathcal{L} t + \frac{\mathcal{L}^2}{2!} t^2 + \ldots \right]p\right|_{t=0}\\
+& =e^{\mathcal{L}t}p(0)= \left. e^{\mathcal{L}t}p\right|_{t=0}.
+\end{align}
+\textbf{Example. }$H=\frac{p^{2}}{2m}-kq$.
+\begin{align}
+\mathcal{L} & =\frac{p}{m}\frac{\partial}{\partial q}+k\frac{\partial}{\partial p}.
+\end{align}
+$\mathcal{L}(p)=k$, $\mathcal{L}^{2}(p)=\mathcal{L}\left(\mathcal{L}(p)\right)=\mathcal{L}k=0$.
+So the series terminates and we get that
+\begin{align}
+p(t) & =e^{\mathcal{L}t}(p)\Bigr|_{0}=p(0)+kt.
+\end{align}
+$\mathcal{L}(q)=\frac{p}{m}$, $\mathcal{L}^{2}(q)=\frac{k}{m}$,
+$\mathcal{L}^{3}(q)=0$. So
+\begin{align}
+q(t) & =e^{\mathcal{L}t}(q)\Bigr|_{0}=q(0)+\frac{p(0)}{m}t+\frac{k}{2m}t^{2}.
+\end{align}
+We can go further and write the Liouvillian as a superoperator similar
+to the time evolution $A(t)=U^{\dagger}A(0)U$ of an operator $A$
+in the Heisenberg picture.
+
+
+\section{Coordinate transformation}
+\scalefig{../Figs/handdraw1115_3}{0.4}{An example of coordinate transformation.}
+A mass on a spring is attached to a car moving with velocity $v$ (see Fig.~\ref{../Figs/handdraw1115_3})
+such that $H=\frac{p^{2}}{2m}+\frac{1}{2}k(x-vt)^{2}.$ Suppose that
+we want to simplify the problem by going into the moving frame and
+define $X=x-vt$. What is the conjugate momentum $P$?
+
+Go back to the Lagrangian:
+\begin{align}
+L & =\frac{1}{2}m\dot{x}^{2}-\frac{1}{2}k(x-vt)^{2}\\
+X & =x-vt\\
+\dot{X} & =\dot{x}-v.
+\end{align}
+The new Lagrangian is
+\begin{align}
+\tilde{L} & =\frac{1}{2}m\left(\dot{X}+v\right)^{2}-\frac{1}{2}kX^{2}.
+\end{align}
+The new momentum is
+\begin{align}
+P=\frac{\partial\tilde{L}}{\partial\dot{X}} & =m\left(\dot{X}+v\right).
+\end{align}
+Then
+\begin{align}
+\tilde{H}=P\dot{X}-\tilde{L} & =\frac{\left(P-mv\right)^{2}}{2m}+\frac{1}{2}kX^{2}-\underbrace{\frac{1}{2}mv^{2}}_{\mbox{constant}}.
+\end{align}
+Without going back to the Lagrangian, we might be tempt to simply
+write
+\begin{align}
+P & =m\dot{X}=p-mv\\
+\implies\frac{p^{2}}{2m} & =\frac{\left(P+mv\right)^{2}}{2m}.
+\end{align}
+But that would be off by a sign. 
+A correct process of coordinate transformation should be replacing $ x $ and $ \dot{x} $ with $ X\& \dot{X} \Rightarrow \tilde{L}(X,\dot{X},t) \Rightarrow P(\dot{X},t) \rightarrow \dot{X}=\dot{X}(P,t) \rightarrow \tilde{H}(X,P,t)=P\dot{X}-\tilde{L} $. 
+
+
+\subsection{Least action principle for the Hamiltonian}
+
+
+We continue from Section~\ref{sec:action}. In searching for a set of transformations that preserve Hamilton's equations of motion, we go back to the action principle. Can the action principle be formulated in terms of the Hamiltonian alone? The answer is yes. Let the action be
+\begin{align}
+S & =\int_{t_{1}}^{t_{2}}dt\left(p\dot{q}-H(q,p,t)\right).\\
+0=\delta S & =\int_{t_{1}}^{t_{2}}dt\left(\delta p\dot{q}+\underbrace{p\delta\dot{q}}_{\frac{d}{dt}(p\delta q)-\dot{p}\delta q}-\frac{\partial H}{\partial q}\delta q-\frac{\partial H}{\partial p}\delta p\right).
+\end{align}
+Assume that $\delta q$ and $\delta p$ are varied independently.
+\begin{align}
+0 & =p\underbrace{\delta q\Big|_{t_{1}}^{t_{2}}}_{0}+\int_{t_{1}}^{t_{2}}dt\left(\delta p\left(\dot{q}-\frac{\partial H}{\partial p}\right)-\left(\dot{p}+\frac{\partial H}{\partial q}\right)\delta q\right).
+\end{align}
+The demand that the action is extremized ($ \delta p $ and $ \delta q $ vanish at extreme points) is equivalent to Hamilton's
+equations
+\begin{align}
+\dot{q}-\frac{\partial H}{\partial p} & =0,\\
+\dot{p}+\frac{\partial H}{\partial q} & =0.
+\end{align}
+
+Curiously, this does not required the variation in the nomentum at
+the end points to vanish, although we will assume that from now on.
+Then for any scalar function $F(q,p,t)$, the action can be modified
+\begin{align}
+S & =\int_{t_{1}}^{t_{2}}dt\left(p\dot{q}-H(q,p,t)+\frac{\drv F(q,p,t)}{\drv t}\right),
+\end{align}
+where we have added $\dt{} (pq)= \frac{\drv F(q,p,t)}{\drv t}  $ into the original Lagrangian. With this modification, we have actually make 
+\begin{align}
+H_{ef\! f} &= H(q,p,t)+ \frac{\drv F(q,p,t)}{\drv t}
+\end{align}
+as the effective Hamiltonian without changing the Hamilton's equation of motion. 
+
+
+
+\subsection{Canonical transformations}
+
+It is clear from the previous section that, if we demond the action doesn't change in an infinestmal time period, for any new Hamiltonian
+$\mathcal{H}(Q,P,T)$ to give Hamilton's equations, we need
+\begin{align}
+dt\left(p\dot{q}-H(q,p,t)\right) & =dt\left(P\dot{Q}-\mathcal{H}(Q,P,t)+\frac{dF(q,p,Q,P,t)}{dt}\right)\\
+pdq-Hdt-PdQ & =\mathcal{H}dt+dF,
+\end{align}
+where $F(q,p,Q,P,t)$ is the \emph{generating function }for a canonical
+transformation (preserving Hamilton's equations).
+
+The equality above implies to us that we can choose $ F=qQ $ so that
+\begin{align}
+p\drv q-H \drv t  = PQ-\mathcal{H}dt+\frac{\partial F}{\partial q}dq+\frac{\partial F}{\partial Q}dQ=PQ- \mathcal{H} \drv t + \drv q Q+ q\drv Q.
+\end{align}
+So, the new set of Hamiltonian and variables are
+\begin{align}
+\mathcal{H} &= H\\
+Q &= p\\
+P &=-q.
+\end{align}
+This kind of transformation is called Cananical transformation. 
+
+Similarly, we define four types of transformations:
+
+Type-1:\textbf{ }$F=F(q,Q)$
+
+Type-2: $F=F(q,P)$
+
+Type-3: $F=F(p,Q)$
+
+Type-4: $F=F(p,P)$
+
+For example, for the type-2 transformation, we can make $ F=qP $, and then we have
+\begin{align}
+p\drv q-H\drv t &= P \drv Q- \mathcal{H} \drv t-q\drv P -P \drv q\\
+\implies 
+\begin{cases}
+p &= -P\\
+Q &= -q.
+\end{cases}
+\end{align}
+
+Similarly, for type-3 transformation, we make 
+\begin{align}
+F &=pQ\\
+p\drv q -H\drv t &= P\drv Q - \mathcal{H} \drv t-p\drv Q-\drv p Q\\
+\implies \begin{cases}
+P &= p\\
+Q &=Q.
+\end{cases}
+\end{align}
+
+
+
+
+\textbf{Example: }A type-1 transformation of a harmonic oscillator
+$H=\frac{p^{2}}{2m}+\frac{1}{2}m\omega^{2}q^{2}$. It would be nice
+if we could transform the Hamiltonian such that it has no $Q$ dependence.
+That is, 
+\begin{align}
+H & =\frac{f^{2}(p)}{2m}.
+\end{align}
+We therefore consider this transformation
+\begin{align}
+p & =f(p)\sin Q,\\
+q & =\frac{f(p)}{m\omega}\cos Q,
+\end{align}
+and find the generating function $F$. We have the relation that
+\begin{align}
+p\drv q -H\drv t&= P\drv Q -\mathcal{H}\drv t + \pp{F}{q} \drv q + \pp{F}{Q} \drv Q.
+\end{align}
+Hence
+\begin{align}
+\frac{p}{q} & =m\omega\tan Q\\
+p=\left(\frac{\partial F}{\partial q}\right)_{Q} & =m\omega q\tan Q\\
+\implies F & =\frac{m\omega q^{2}}{2}\tan Q+g(Q)
+\end{align}
+Choose $g(Q)=0$. Then
+\begin{align}
+P=-\left(\frac{\partial F}{\partial Q}\right)_{q} & =-\frac{m\omega q^{2}}{2}\sec^{2}Q\\
+ & =-\frac{f^{2}(p)}{2m\omega}\cos^{2}Q\sec^{2}Q\\
+\implies f(p) & =i\sqrt{2m\omega P}
+\end{align}
+\begin{align}
+\implies & \boxed{H=-\omega P}.
+\end{align}
+Test: 
+\begin{align}
+\begin{cases}
+\dot{P} &= -\pp{\mathcal{H}}{Q} = 0\\
+\dot{Q} &= \pp{\mathcal{H}}{P} = -\omega.
+\end{cases}
+\end{align}
+Therefore, the Hamiltonian becomes that of the free particle with $P=P(0)=\text{const.}$ and
+$Q=Q(0)-\omega t$ which is linear function of $ t $! Say, in the study of fluctuation-dissipation relation,
+if you want to phenomenologically put friction in the system, it is
+much easier to put friction in at this level after you have transformed
+the oscillator into a free particle.
+
+\textbf{Example: }A type-2 transformation of a harmonic oscillator
+$H=\frac{p^{2}}{2m}+\frac{1}{2}m\omega^{2}q^{2}$.
+
+Let $P$ be the ``ladder operators''
+\begin{align}
+P & =\frac{p+im\omega q}{\sqrt{2}},
+\end{align}
+and maybe
+\begin{align}
+Q &= \sqrt{2} P-im\omega q. 
+\end{align}
+which we don't know.
+We look for $F(q,P)$.
+
+Now, 
+\begin{align}
+p\drv q-H\drv t+Q\drv P & =P\drv Q-\mathcal{H}dt+\frac{\partial F}{\partial q}\drv q+\frac{\partial F}{\partial P}\drv P\\
+p=\left(\frac{\partial F}{\partial q}\right)_{P} & =\sqrt{2}P-im\omega q\\
+\implies \qquad F & =\sqrt{2}Pq-\frac{im\omega q^{2}}{2}+g(P)\\
+\implies \qquad Q &=\left(\frac{\partial F}{\partial P}\right)_{q}  =\sqrt{2}q+g^{'}(P).
+\end{align}
+Choose $g^{'}(P)=\frac{iP}{m\omega}$. Then
+\begin{align}
+Q & =\sqrt{2}q+\frac{iP}{m\omega}=\sqrt{2}q+\frac{i}{m\omega}\left(\frac{p+im\omega q}{\sqrt{2}}\right)=\sqrt{2}q+\frac{ip}{\sqrt{2}m\omega}-\frac{q}{\sqrt{2}}\\
+&=\frac{q+\frac{ip}{m\omega}}{\sqrt{2}}.
+\end{align}
+We can calculate
+\begin{align}
+PQ &= \frac{p+im\omega q}{\sqrt{2}}\cdot \frac{q+\frac{ip}{m\omega}}{\sqrt{2}}\\
+&= \frac{1}{2}\left(pq + i\frac{p^2}{m\omega}+ im\omega q^2 - pq \right)\\
+&= i\frac{p^2}{2m\omega}+ \frac{1}{2}im\omega q^2\\
+\implies \qquad \frac{p^2}{2m} &+ \frac{1}{2}m\omega^2 q^2  = -i\omega PQ.
+\end{align}
+Therefore, the Hamiltonian is
+\begin{align}
+ & \boxed{\mathcal{H}=-i\omega PQ},
+\end{align}
+which is the analog of $H=\omega a^{\dagger}a$ in quantum mechanics,
+and $P$ and $Q$, like the ladder operators, evolve trivially in
+time.
+\begin{align}
+P(t)=P(0)e^{-i\omega t}, \quad & Q(t)=Q(0)e^{i\omega t}.
+\end{align}
+

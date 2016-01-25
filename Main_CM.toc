@@ -1,0 +1,60 @@
+\contentsline {chapter}{\numberline {1}Introduction}{4}{chapter.1}
+\contentsline {section}{\numberline {1.1}The philosophy of mechanics}{4}{section.1.1}
+\contentsline {section}{\numberline {1.2}Physics equations in mechanics}{4}{section.1.2}
+\contentsline {chapter}{\numberline {2}Damped simple harmonic oscillations}{6}{chapter.2}
+\contentsline {section}{\numberline {2.1}Damped SHO equation and general damping equations}{6}{section.2.1}
+\contentsline {section}{\numberline {2.2}Laplace transformation method}{6}{section.2.2}
+\contentsline {section}{\numberline {2.3}Behaviors of $m \frac {d^2 x}{dt^2}=g\left (\frac {{\mathrm d} {x}}{{\mathrm d}t}\right )$ and variable replacements}{7}{section.2.3}
+\contentsline {subsubsection}{\numberline {.1}\textbf {Case 1: $r=1$.}}{7}{subsubsection.2.3.0.1}
+\contentsline {subsubsection}{\numberline {.2}\textbf {Case 2: $r=3$.}}{8}{subsubsection.2.3.0.2}
+\contentsline {subsubsection}{\numberline {.3}\textbf {Case 3: $r=\frac {1}{2}$.}}{9}{subsubsection.2.3.0.3}
+\contentsline {subsubsection}{\numberline {.4}\textbf {Case 4: $r=-\frac {1}{2}$.}}{9}{subsubsection.2.3.0.4}
+\contentsline {subsubsection}{\numberline {.5}\textbf {Case 5: $r=0$.}}{10}{subsubsection.2.3.0.5}
+\contentsline {subsubsection}{\numberline {.6}Restrict to linear case}{10}{subsubsection.2.3.0.6}
+\contentsline {section}{\numberline {2.4}Energy method for $ \frac {{\mathrm d}^2 {x}}{{\mathrm d}t^2}=f(x) $}{12}{section.2.4}
+\contentsline {section}{\numberline {2.5}Elliptic Equation}{13}{section.2.5}
+\contentsline {subsection}{\numberline {I}Properties of elliptic functions}{15}{subsection.2.5.1}
+\contentsline {section}{\numberline {2.6}Physical pendulum and nonlinear effects}{17}{section.2.6}
+\contentsline {subsection}{\numberline {I}Physics pendulums and the potential of velocity}{19}{subsection.2.6.1}
+\contentsline {subsection}{\numberline {II}Coupled multiple level quantum system and physics pendulums}{22}{subsection.2.6.2}
+\contentsline {chapter}{\numberline {3}Singular perturbation theory}{28}{chapter.3}
+\contentsline {section}{\numberline {3.1}Solving a high-order differential equation using perturbation method}{28}{section.3.1}
+\contentsline {section}{\numberline {3.2}Singular perturbation method}{30}{section.3.2}
+\contentsline {chapter}{\numberline {4}Memory function}{35}{chapter.4}
+\contentsline {chapter}{\numberline {5}Synchronization and nonlinear systems}{40}{chapter.5}
+\contentsline {chapter}{\numberline {6}Singulation and bifurcation}{45}{chapter.6}
+\contentsline {chapter}{\numberline {7}Many-body systems and field theory}{53}{chapter.7}
+\contentsline {section}{\numberline {7.1}Multiple-particle systems}{53}{section.7.1}
+\contentsline {section}{\numberline {7.2}Homogeneous $N$-particle chain}{57}{section.7.2}
+\contentsline {section}{\numberline {7.3}Periodical chain}{62}{section.7.3}
+\contentsline {subsection}{\numberline {I}Cell method}{62}{subsection.7.3.1}
+\contentsline {subsection}{\numberline {II}Alternating method}{65}{subsection.7.3.2}
+\contentsline {section}{\numberline {7.4}Defects in a propagating chain}{66}{section.7.4}
+\contentsline {section}{\numberline {7.5}Field theory}{70}{section.7.5}
+\contentsline {chapter}{\numberline {8}Fluid dynamics}{82}{chapter.8}
+\contentsline {section}{\numberline {8.1}Continuity equation and constructive relations}{82}{section.8.1}
+\contentsline {section}{\numberline {8.2}Smoluchowski equation and methods to solve PDEs}{84}{section.8.2}
+\contentsline {section}{\numberline {8.3}Burger's equation and nonlinear cases}{89}{section.8.3}
+\contentsline {chapter}{\numberline {9}Lagrangian and Hamiltonian mechanics}{94}{chapter.9}
+\contentsline {section}{\numberline {9.1}Some general theories}{94}{section.9.1}
+\contentsline {subsection}{\numberline {I}The principle of extremum action}{94}{subsection.9.1.1}
+\contentsline {subsection}{\numberline {II}$ H $ and the energy of a system}{99}{subsection.9.1.2}
+\contentsline {section}{\numberline {9.2}Legendre transform}{104}{section.9.2}
+\contentsline {section}{\numberline {9.3}Hamiltonian}{106}{section.9.3}
+\contentsline {section}{\numberline {9.4}Constants of motion}{112}{section.9.4}
+\contentsline {section}{\numberline {9.5}Liouvillian}{115}{section.9.5}
+\contentsline {section}{\numberline {9.6}Coordinate transformation}{117}{section.9.6}
+\contentsline {subsection}{\numberline {I}Least action principle for the Hamiltonian}{118}{subsection.9.6.1}
+\contentsline {subsection}{\numberline {II}Canonical transformations}{119}{subsection.9.6.2}
+\contentsline {chapter}{\numberline {A}Modeling classical systems}{124}{appendix.A}
+\contentsline {chapter}{\numberline {B}Methods of solving Differential Equations}{126}{appendix.B}
+\contentsline {section}{\numberline {2.1}Solving ODEs}{126}{section.B.1}
+\contentsline {subsection}{\numberline {I}Laplace transformation}{126}{subsection.B.1.1}
+\contentsline {subsection}{\numberline {II}Lower the order by variable replacements}{127}{subsection.B.1.2}
+\contentsline {subsection}{\numberline {III}Energy method for $ \frac {{\mathrm d}^2 {x}}{{\mathrm d}t^2}=f(x) $}{127}{subsection.B.1.3}
+\contentsline {subsection}{\numberline {IV}Singular perturbation theory to solve high-order equations}{128}{subsection.B.1.4}
+\contentsline {subsection}{\numberline {V}Solving a memory equation}{128}{subsection.B.1.5}
+\contentsline {subsection}{\numberline {VI}Synchronization}{128}{subsection.B.1.6}
+\contentsline {subsection}{\numberline {VII}Analyzing nonlinear equations}{128}{subsection.B.1.7}
+\contentsline {subsection}{\numberline {VIII}Solving many-particle systems}{129}{subsection.B.1.8}
+\contentsline {section}{\numberline {2.2}Solving PDEs}{129}{section.B.2}

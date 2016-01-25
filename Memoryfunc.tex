@@ -1,0 +1,130 @@
+\chapter{Memory function}\label{chap:memoryfunc}
+Now, we look at another equation, which is Equ.~\eqref{sdewithomega}. It approximates to 
+\begin{align}
+\dt{x}+ \Gamma x=0, \label {sdewithomegaapprox}
+\end{align}
+where $ \Gamma= \frac{\omega^2}{\alpha} $. Now, we will go from Equ.~\eqref{sdewithomegaapprox} to Equ.~\eqref{sdewithomega} to study the meaning of the coefficients, and so on. 
+
+Starting from Equ.~\eqref{sdewithomegaapprox}, we add a \textit{delay time} to get a \textit{delay-differential equation}:
+\begin{align}
+\dt{x(t)}= -\Gamma x(t-\tau), 
+\end{align}
+which is equivalent to 
+\begin{align}
+\dt{x(t+\tau)}= -\Gamma x(t).
+\end{align}
+Let us make $ f(t+\tau)= f(t)+ \tau \frac{d f}{dt}+\ldots $, we have
+\begin{align}
+\dt{x(t)}+\tau \sdt{x(t)}= -\Gamma x(t).
+\end{align}
+\begin{align}
+\Rightarrow \sdt{x}+ \frac{1}{\tau} \dt{x}+ \frac{\Gamma}{\tau}x=0.
+\end{align}
+If we make $ \alpha = \frac{1}{\tau} $ and $ \frac{\Gamma}{\tau}=\omega^2 $, the equation above gives
+Equ.~\eqref{sdewithomega}. 
+
+Notice that Equ.~\eqref{sdewithomegaapprox} gives
+\begin{align}
+\epsilon \tilde{x}-x(0)+ \Gamma \tilde{x}&=0, \label {sdewithomegaapprox2}
+\end{align}
+\begin{align}
+\boxed{\tilde{x}= \frac{x(0)}{\epsilon + \Gamma}}.
+\end{align}
+If  $ \Gamma $ were to be replaced by 
+\begin{equation}
+\tilde{\Gamma}(\epsilon)= \Gamma\cdot \frac{\alpha}{\epsilon + \alpha},
+\end{equation}
+\begin{align}
+\Rightarrow \Gamma(t)= \Gamma \cdot \alpha e^{-\alpha t}.
+\end{align}
+As $ e^{-\alpha t}\xrightarrow{\text{Laplace Transform}} \frac{1}{\epsilon + \alpha} $ 
+%(or we have made $ \tilde{\delta(t)} =1 $)
+, we can transform an exponential function to a $\frac{1}{x}$ function. 
+\scalefig{../Figs/handdraw920_1}{0.6}{Evolution of various functions.}
+%\missingfigure{920-1}
+
+Now, Equ.~\eqref{sdewithomegaapprox2} becomes
+\begin{align}
+\varepsilon \tilde{x}(\varepsilon)- x(0) + \frac{\omega^2}{\varepsilon + \alpha}\tilde{x}(\varepsilon)=0, \label {sdewithomegaapprox3} 
+\end{align}
+or, $ \tilde{x}= \frac{x(0)}{\epsilon + \frac{\Gamma \alpha}{\epsilon + \alpha}} $,
+\begin{align}
+\Rightarrow \tilde{x}= \frac{x(0)(\epsilon+ \alpha)}{\epsilon^2 + \epsilon \alpha +\Gamma \alpha}.
+\end{align}
+\begin{align}
+\Rightarrow x(t)= e^{-\alpha t}[\cos \Omega \Gamma + \frac{\alpha}{2\Omega}\sin \Omega t], \label{sdewithomegaapprox4}
+\end{align}
+where $ \Omega= \sqrt{\omega^2 - \frac{\alpha^2}{4}} $, and we have made $ \Gamma \alpha= \omega^2 $ and used the Laplace transformations. 
+
+If using the convolution theory on Equ.~\eqref{sdewithomegaapprox3} to invert
+\begin{align}
+\dt{x(t)}+ \int_0^t dt' \Gamma(t-t')x(t')=0, 
+\end{align}
+rather than Equ.~\eqref{sdewithomegaapprox}, we can get the memory function which we will discuss next. It can be verified by differentiation that this satisfies the
+original differential equation. We have converted a second order equation to a first order
+equation with a memory: this is the connection between the Newtonian second order view
+and Aristotle?s first order view. In the limit $ \alpha\rightarrow \infty $, the memory function becomes a delta
+function and the Aristotle first order equation is recovered.
+%This is the damped harmonic oscillator. 
+
+\textbf{Sep 25}
+
+Recall of the damping oscillation problem we are working on: Equ.~\eqref{sdewithomega} can be approximated to Equ.~\eqref{Gammaapprox}, where $ \Gamma=\frac{\omega^2}{\alpha} $. There are several extreme cases: 
+\begin{itemize}
+\item $ \alpha \rightarrow \infty $
+\item $ \omega \rightarrow \infty $,
+\end{itemize}
+but always $ \frac{\omega^2}{\alpha}=\Gamma $. 
+
+If we want to generalize the equation as
+\begin{align}
+\dt{x(t)}+ \Gamma x(t)=0,
+\end{align}
+and  we have multiple timescales $ t_1,\, t_2, \ldots $ which are the times earlier than $ t $, and $ \Gamma x(t)= \Gamma_1 x(t_1)+ \Gamma_2 x(t_2)+\ldots $.
+Therefore, 
+\begin{align}
+\dt{x(t)}+ \sum_{t_{\text{past}}}^t \Gamma_i x(t_i)=0.
+\end{align}
+
+%\missingfigure{925-1}.
+\scalefig{../Figs/handdraw925_1}{0.5}{Time division before $ t $. }
+
+If the time is continuous, we have
+\begin{align}
+\dt{x(t)}+ \int_0^t \Gamma(t-t') x(t')dt'=0.
+\end{align}
+This equation is called memory-possessing equation. The $ \Gamma(t) $ is called memory function. Through Fourier transformation, we can solve the equation above without knowing $ x(t) $. 
+
+For instance, let $ \Gamma(t) \propto e^{-\alpha t} $, the equation above leads to 
+\begin{align}
+\dt{x(t)}+ \Gamma \alpha \int_0^t e^{-\alpha (t-t')} x(t')dt'=0.
+\end{align}
+This is the Volterra equation. 
+
+By differentiating the equation above, we obtain
+\begin{align}
+\sdt{x(t)}+ \Gamma \alpha x (t)= 0.
+\end{align}
+
+\begin{align}
+\rightarrow \epsilon \tilde{x} &-x(0)+ \frac{\Gamma \alpha}{\epsilon +\alpha}\tilde{x}=0,\\
+\tilde{x} & = \frac{x(0)}{\epsilon + \frac{\Gamma \alpha}{\epsilon + \alpha}},
+\end{align}
+which can recover the result of Equ.~\eqref{sdewithomegaapprox4}.
+
+Now look at the generalized equation
+\begin{align}
+\dt{x(t)}+ \Gamma \int_0^t \underbrace{\phi (t-t')}_{\phi(t)=\alpha e^{-\alpha t}}x(t')dt' =0,
+\end{align}
+where $ \int_0^\infty dt \phi(t)=1 $. Here is one way to solve it:
+We differentiate the equation above to give
+\begin{align}
+\sdt{x(t)}+ \Gamma \int_0^t \dot{\phi}(t-t')x(t')dt'
++ \underbrace{\Gamma \phi(t-t)x(t)}_{\Gamma \phi(0)x(t) \rightarrow \Gamma\alpha x(t)=\omega^2 x(t)}.
+\end{align} 
+Notice that $ \dot{\phi}(t)=const.*\phi(t) $, which implies that $ \phi(t) $ is an exponential function. One possible case is that $ \phi(t) $ is a Gaussian function, whose Fourier transformation is itself. 
+
+Q: can we turn any second-order equations into memory-possessing functions? 
+
+Such equations are Aomeliiues, and are called non-Markoffian equations. These equations are memory-possessing or time non-local equations. 
+

@@ -1,0 +1,81 @@
+%\documentclass[12pt]{report}
+
+\chapter{Methods of solving Differential Equations}
+Since a primary part of this course is to solve differential equations. We summarize as below the methods we have discussed in this course. 
+
+\section{Solving ODEs}
+Ordinary differential equations (ODEs) can usually be solved numerically. For a linear ODE, the analytical solution can be found by combining the general solution of the corresponding homogeneous equation and one special solution of the equation (if it is inhomogeneous). Many differential equation or advanced calculus textbooks have discussed the techniques to solve ODEs. Here, we list a few techniques mentioned in this course of study in classical mechanics. 
+
+\subsection{Laplace transformation}
+This method is suitable for simple equation of $(\vec{x},\vec{v},t)$. Any functions in the equation are better to be of $ t $; otherwise, it will be difficult to solve. See Section~\ref{Sec:Laplace} and HW1. 
+
+\subsection {Lower the order by variable replacements}
+For a function in the form of $f\left(\dt{x},\,\frac{d^2 x}{dt^2},\,\ldots,\,\frac{d^n x}{dt^n},\ldots \right)$, one can replace $ \dt{x} $ by $ v $ so that the order is lowered down. See Section~\ref{sec:vreplace}~\nameref{sec:vreplace}.
+
+\subsection{Energy method for $ \sdt{x}=f(x) $}
+If the DE can be written as $ \sdt{x}=f(x) $, one can apply the energy method to solve it and visualize the behavior of the equation. The solution can be generalized as 
+\begin{align}
+\int{\frac{dx}{\sqrt{2[E-U(x)]}}}=t+const.
+\end{align}
+See Section~\ref{sec:energymethod}.
+
+Because of the formalism of the solution, one can often apply the property of elliptic equations to give the solution of DEs in terms of elliptic functions. See Section~\ref{sec:ellipticequ} and HW2-3. 
+
+Know forms of equations which can be solved in terms of elliptic functions:
+\begin{align}
+\sdt{x}&=f(x) \leftrightarrow \int{\frac{dx}{\sqrt{2[E-U(x)]}}}=t+const.\\
+\frac{dt}{dx} &=\sqrt{1-z^2}\sqrt{1-k^2z^2} \leftrightarrow 
+t=\int^x_0 \frac{dz}{\sqrt{1-z^2}\sqrt{1-k^2z^2}} \\
+\end{align}
+One practical example is the physics pendulum which can be described by
+\begin{align}
+-mg \sin{\theta} &=ml\frac{d^2}{dT^2}\theta\\
+\Rightarrow
+\sdt{x}+\sin{x} &=0,
+\end{align}
+where  $ t=\frac{g}{l}T $ and $ x=\theta $. See Section~\ref{sec:pendulum} and the part before for details.
+
+Another example is the coupled multi-level quantum system which can be simplified as a physics pendulum problem. See Section~\ref{sec:quantumlevels}.
+
+\subsection{Singular perturbation theory to solve high-order equations}
+A typical equation we studied which can be solved using the singular perturbation method is
+\begin{equation}
+\frac{d^2x}{dt^2}+ \alpha \left(\frac{dx}{dt}\right)^{2n+1} + \omega^2 x = 0,\quad n=0,\,1,\,\cdots 
+\end{equation}
+Normal perturbation method generates a dangerous term, while the singular perturbation method can give a high accurate solution. 
+See Chapter~\ref{chap:singularperturbation}. 
+
+\subsection{Solving a memory equation}
+Differentiate to give a second order equation. See Chapter~\ref{chap:memoryfunc}. Usual form: damped pendulum. 
+
+\subsection{Synchronization}
+Coupled equations to rearrange and simplify. See Chapter~\ref{chap:synchronization}. 
+
+\subsection{Analyzing nonlinear equations}
+Since the solution of nonlinear equations usually depends on the initial value and have some issues on uniqueness and stabilization, singularization and bifurcation theory can be used to analyze those properties of an equation system (not limited in nonlinear equations). See Chapter~\ref{chap:bifurcation}. 
+
+\subsection{Solving many-particle systems}
+For discrete many-body systems, coupled equations can be derived to describe the behavior of the system. 
+
+Based on the symmetry/periodicity of equations, we may be able to only look at one cell of the system (see Sections.~\ref{sec:particles} to~\ref{sec:defects}). The basic idea is that we apply Fourier transformation to the equation in real space so that we can get a set of equation in phase space, where the order of the equations is lower. The characteristics of the equations can be obtained through solving the corresponding eigenvalue problem (see cell method in Section~\ref{sec:periodicchain}). 
+
+Alternatively, we can also replace the sinusoidal functions with exponential functions where the characteristic frequencies indicate the spectra. By comparing the coefficients of different spectra, we can also obtain the properties of the system. See the Alternating method in Section~\ref{sec:periodicchain} and corresponding homeworks. 
+
+In the case that the distance of the particle is very small compared to the total length, the problem can be transformed to a field problem. PDEs can be obtained to give a better analysis. 
+
+\section{Solving PDEs}
+Once the object we are analyzing is not as easy as $ x(t) $, or when we step in high-dimensional problems, PDEs are usually used to describe a system of motion. As stated in earlier sections, the object described in PDE systems are usually density function, field function or energy function and so on. 
+
+In physics, the PDEs are usually given respect to time and spatial axis. Therefore, there are boundary problems and initial condition problems. 
+
+The solution of a boundary problem may be derived through expanding the eigenfunctions, or separating variables. Related methods have been widely studied in various textbooks on Mathematical Methods of Physics, etc. 
+
+Generally, the order of a high-order PDE can be 
+lowered through Laplace and Fourier transformations (see Section~\ref{sec:field}). For a first-order PDE, we can use the method of characteristics to transform the PDE problem into ODE problem along characteristic curves. In solving the ODEs, initial conditions may be used to identify unknown coefficients which are generated in the process of integration. Then through the inversion of Fourier and Laplace transformations, we can finally get the solution of a PDE problem. 
+
+There are many well known equations named as, for example, wave equation, diffusion equation, advective-diffusion equation, telegrapher's equation, Smoluchowski equation, Fisher's equation and Burger's equation. They are introduced through Section~\ref{sec:field} to Chapter~\ref{chap:fluid}. 
+
+To my understanding, the art of solving PDEs may be related to transferring coordinates. Take the D'Alambert wave equation and the method of characteristics for example, we find another coordinate so that we can separate variables and transform the PDEs into ODEs which is easier to solve. In this sense, the Lagrange and Hamilton mechanics and coordinate transformation may provide a general way of modeling and solving differential problems in solvable coordinates. 
+
+
+%\end{document}

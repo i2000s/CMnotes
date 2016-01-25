@@ -1,0 +1,358 @@
+\documentclass[12pt]{report}
+
+\usepackage{pdfpages} % to include pdf documents
+\usepackage{titlesec}
+\titleformat{\chapter}
+  {\normalfont\LARGE\bfseries}{\thechapter}{1em}{}
+\titlespacing{\chapter}{0pt}{3.5ex plus 1ex minus .2ex}{2.3ex plus .2ex}
+\setcounter{secnumdepth}{3}
+\renewcommand\thesection{\arabic{chapter}.\arabic{section}}
+\renewcommand\thesubsection{\Roman{subsection}}
+\makeatletter
+\renewcommand\p@subsection{\thesection.}
+\makeatother
+
+
+\usepackage{amsmath}
+\usepackage{bm}
+\usepackage{listings}
+% % \textwidth 16cm \textheight 23.5cm
+% \renewcommand{\baselinestretch}{1.2}
+\usepackage{graphicx}
+\usepackage{graphics}
+\usepackage{epsfig}
+\usepackage{color}
+\usepackage{multirow}
+\usepackage[colorlinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage{calc}
+\usepackage[numbers]{natbib}
+\usepackage{bibentry}
+% underline tool
+\usepackage[normalem]{ulem}
+\usepackage{xcolor}
+%\uline{foo}	Underlines foo
+%\uuline{foo}	Double underlines foo
+%\uwave{foo}	Underlines foo with a wavy line
+%\sout{foo}	Strikesout foo
+%\xout{foo}	Crosses out foo with ‘/​’
+% triple lines in colors
+\makeatletter
+\newcommand\uuuline{\bgroup\markoverwith%
+   {%
+     \textcolor{red}{\rule[-0.5ex]{2pt}{0.4pt}}%
+     \llap{\textcolor{blue}{\rule[-0.7ex]{2pt}{0.4pt}}}%
+     \llap{\textcolor{green}{\rule[-0.9ex]{2pt}{0.4pt}}}%
+   }%
+   \ULon}
+\makeatother
+
+
+\usepackage{amsmath,soul} % underline with a number
+% usage example: $\underset{4}{\text{\ul{This is short text}}}$
+% another package to use, but did not work for me.
+% From: http://tex.stackexchange.com/questions/45341/labeling-underlined-text-over-multiple-lines
+%\usepackage{soulpos}
+%\ulposdef{\ulnumaux}{%
+%   $\underset{\saveulnum}{\rule[-.7ex]{\ulwidth}{.4pt}}$}
+%
+%\newcommand{\ulnum}[2]{%
+%  \def\saveulnum{#1}%
+%  \ulnumaux{#2}}
+
+% todo list and commands
+\usepackage{todonotes}
+%% to avoid the conflict with amths package % not working
+%\makeatletter
+%\providecommand\@dotsep{5}
+%\makeatother
+%\listoftodos\relax
+% my comment
+\newcounter{mycomment}
+\newcommand{\mycomment}[2][]{%
+% initials of the author (optional) + note in the margin
+\refstepcounter{mycomment}%
+{%
+\setstretch{0.7}% spacing
+\todo[color={red!100!green!33},size=\small]{%
+\textbf{[\uppercase{#1}\themycomment]:}~#2}%
+}}
+% colored todo comment
+\newcommand{\todored}[2][]
+{\todo[color=red, #1]{#2}}
+\newcommand{\todogreen}[2][]
+{\todo[color=green, #1]{#2}}
+\newcommand{\todoblue}[2][]
+{\todo[color=blue, #1]{#2}}
+
+% cancel signs
+\usepackage{cancel}
+% empheq
+\usepackage{empheq}
+
+
+
+%%%%%%%%% use pdf and eps at the same time %%%%%%
+%\newif\ifpdf
+%\ifx\pdfoutput\undefined
+%   \pdffalse
+%\else
+%   \pdfoutput=1
+%   \pdftrue
+%\fi
+\usepackage[update,prepend]{epstopdf}
+\usepackage{ifpdf}
+
+\ifpdf
+   \usepackage{graphicx}
+   \usepackage{epstopdf}
+   \epstopdfsetup{suffix=}
+   \DeclareGraphicsRule{.eps}{pdf}{.pdf}{`epstopdf #1}
+   \pdfcompresslevel=9
+\else
+   \usepackage{graphicx}
+\fi
+
+% packages from homework template
+\usepackage{lastpage}
+\usepackage{extramarks}
+\usepackage{chngpage}
+\usepackage{soul}
+\usepackage{courier}
+
+% page setting
+\pagestyle{fancy}
+\headheight = 15pt
+
+\linespread{1.5}
+\fancyhead[R]{\thepage}
+\fancyfoot{}
+\hoffset =-1 cm
+\textwidth 424 pt
+\renewcommand{\headrulewidth}{0.4pt}
+\headwidth 424 pt
+\parindent 1 cm
+% \usepackage[numbers]{natbib}
+
+% % % % % % My definitions of variables % % % % 
+\input{Mydef.tex} % %
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+
+
+% Setup the header and footer
+\pagestyle{fancy}                                                       %
+\lhead{\leftmark }                                                 %
+\chead{}
+\rhead{\firstxmark}                                                      %
+\lfoot{\lastxmark}                                                      %
+\cfoot{}                                                                %
+\rfoot{Page\ \thepage\ of\ \protect\pageref{LastPage}}                  %
+\renewcommand\headrulewidth{0.4pt}                                      %
+\renewcommand\footrulewidth{0.4pt}                                      %
+
+% This is used to trace down (pin point) problems
+% in latexing a document:
+%\tracingall
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Some tools
+% Part of the preample is from a template for exercises/Q&A sheet shared at http://links.tedpavlic.com/tex/homework_new.tex
+% If there is any problem on using the content, please contact the original author.
+\def\changemargin#1#2{\list{}{\rightmargin#2\leftmargin#1}\item[]}
+\let\endchangemargin=\endlist
+
+\newcommand{\enterProblemHeader}[1]{\nobreak\extramarks{#1}{#1 continued on next page\ldots}\nobreak%
+                                    \nobreak\extramarks{#1 (continued)}{#1 continued on next page\ldots}\nobreak}%
+\newcommand{\exitProblemHeader}[1]{\nobreak\extramarks{#1 (continued)}{#1 continued on next page\ldots}\nobreak%
+                                   \nobreak\extramarks{#1}{}\nobreak}%
+
+\newlength{\labelLength}
+\newcommand{\labelAnswer}[2]
+  {\settowidth{\labelLength}{#1}%
+   \addtolength{\labelLength}{0.25in}%
+   \changetext{}{-\labelLength}{}{}{}%
+   \noindent\fbox{\begin{minipage}[c]{\columnwidth}#2\end{minipage}}%
+   \marginpar{\fbox{#1}}%
+
+   % We put the blank space above in order to make sure this
+   % \marginpar gets correctly placed.
+   \changetext{}{+\labelLength}{}{}{}}%
+
+\setcounter{secnumdepth}{3}
+\newcommand{\homeworkProblemName}{}%
+\newcounter{homeworkProblemCounter}%
+\newenvironment{homeworkProblem}[1][Problem \arabic{homeworkProblemCounter}]%
+  {\stepcounter{homeworkProblemCounter}%
+   \renewcommand{\homeworkProblemName}{#1}%
+   \section{\homeworkProblemName}%
+   \enterProblemHeader{\homeworkProblemName}}%
+  {\exitProblemHeader{\homeworkProblemName}}%
+
+\newcommand{\problemAnswer}[1]
+  {\noindent\mbox{\begin{minipage}[c]{\columnwidth}#1\end{minipage}}}
+  % \fbox instead of \mbox can be used to get a frame.
+
+\newcommand{\problemLAnswer}[1]
+  {\labelAnswer{\homeworkProblemName}{#1}}
+
+\newcommand{\homeworkSectionName}{}%
+\newlength{\homeworkSectionLabelLength}{}%
+\newenvironment{homeworkSection}[1]%
+  {% We put this space here to make sure we're not connected to the above.
+   % Otherwise the changetext can do funny things to the other margin
+
+   \begin{changemargin}{0.3in}{.05in}
+   \renewcommand{\homeworkSectionName}{#1}%
+   \settowidth{\homeworkSectionLabelLength}{\homeworkSectionName}%
+   %\addtolength{\homeworkSectionLabelLength}{-0.35in}%
+   \changetext{}{-\homeworkSectionLabelLength}{}{}{}%
+   \subsection{\homeworkSectionName}%
+   \enterProblemHeader{\homeworkProblemName\ [\homeworkSectionName]}}%
+  {\end{changemargin}\exitProblemHeader{\homeworkProblemName }%
+
+   % We put the blank space above in order to make sure this margin
+   % change doesn't happen too soon (otherwise \sectionAnswer's can
+   % get ugly about their \marginpar placement.
+   \changetext{}{+\homeworkSectionLabelLength}{}{}{}}%
+
+\newcommand{\sectionAnswer}[1]
+  {% We put this space here to make sure we're disconnected from the previous
+   % passage
+
+   \noindent\fbox{\begin{minipage}[c]{\columnwidth}#1\end{minipage}}%
+   \enterProblemHeader{\homeworkProblemName}\exitProblemHeader{\homeworkProblemName}%
+   \marginpar{\fbox{\homeworkSectionName}}%
+
+   % We put the blank space above in order to make sure this
+   % \marginpar gets correctly placed.
+   }%
+
+
+
+% Includes a MATLAB script.
+% The first parameter is the label, which also is the name of the script
+%   without the .m.
+% The second parameter is the optional caption.
+\newcommand{\matlabscript}[2]
+  {\begin{itemize}\item[]\lstinputlisting[caption=#2,label=#1]{#1.m}\end{itemize}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{document}
+
+\title{Notes on Classical Mechanics}
+\author{Xiaodong Qi (i2000s@hotmail.com)}
+\date{\today}
+
+
+
+% \pagebreak
+% \tableofcontents
+% \pagebreak
+
+\maketitle
+\begin{abstract}
+These are my notes on Classical Mechanics (advanced level), initially taken for the PHYS503 class lectured by Dr. Kenkre at the University of New Mexico, Fall 2012. \\ 
+
+``Main$\_$CM.tex'' is the TeX code outlined the whole set of notes. The part on Lagrangian and Hamiltonian mechanics (Chapter~\ref{chap:lagham}) was modified from a \LaTeX  source code provided by Ninnat ``Tom'' Dangniam (thank Tom for letting me sharing his works online). \\
+
+
+These notes are now openly shared for academic purpose, and can be redistributed and revised under the MIT license. Because most of the notes were taken on-fly, there are definitely numerous errors. 
+If you find any errors, please help update with a better version by request a Pull Request on the Git repository. Thanks for the contributions to these notes and derived works. Enjoy learning and creating! \\
+
+Xiaodong Qi, 
+
+University of New Mexico 
+
+Jan 25, 2016
+\end{abstract}
+\pagebreak
+ \tableofcontents
+ 
+\chapter{Introduction}
+
+\begin{itemize}\itemsep2pt
+\item[Course]: Classical Mechanics.
+\item[Textbook] Alexander Fetter. Theoretical mechanics of particles and continua.
+\item[Unusual Topics]
+  \begin{itemize}
+    \item Singular perturbation theory.
+    \item Nonlinear damping $\rightarrow$ elliptic functions.
+    \item Bifurcations.
+    \item Synchronization.
+    \item Memory function formalism.
+  \end{itemize}
+\end{itemize}
+
+The role of mechanics in physics: foundation.
+
+\section{The philosophy of mechanics}
+A discussion on mass in the formula of $F=ma$. Is this formula a definition or natural law of mass?
+
+Mechanics reduce the information of describing natural phenomena through physical laws.
+
+\section{Physics equations in mechanics}\label{sec:equationofphysics}
+\begin{itemize}
+\item $\dt{x}=\cdots$
+\item $\frac{d^2 x}{dt^2}=\cdots \rightarrow$ A force depends on the acceleration.
+\item $\frac{d^3 x}{dt^3}=\cdots$
+\item $\cdots$
+\end{itemize}
+In mechanics, we look for the equation up to the second order of $t$, that is $\frac{d^2 x}{dt^2}=\cdots$.
+
+\begin{equation}\label{d2xdt2}
+m \frac{d^2 x}{dt^2}=\left\{
+                    \begin{array}{cl}
+                      0 & \rightarrow \text{e.g. the first law of motion}.\\
+                      const & \rightarrow \text{e.g. the second law of motion}.\\
+                      f(x) & \rightarrow \text{e.g. the spring force}.\\
+                      g\left(\dt{x}\right) & \rightarrow \text{e.g. damping}.\\
+                      \!\! \text{All of the above}\!\! & \rightarrow \!
+                            \text{e.g. damped simple harmonic oscillation:}\\
+                      \quad & \qquad \quad m\frac{d^2 x}{dt^2}=-T\dt{x}-kx+A \cos\omega t.
+                    \end{array}
+                    \right.
+\end{equation}
+
+\include{DampledSHO}
+
+
+\include{SingularPT}
+
+
+\include{Memoryfunc}
+
+
+\include{SynchronizationT}
+
+
+\include{BifurcationT}
+
+
+\include{Field}
+
+
+\include{Fluid}
+
+
+\include{Hamiltonian}
+
+%\clearpage
+%
+%\include{LagrangeHamilton}
+
+
+
+%\bibliographystyle{amsplain}
+% \nocite{*}
+%\bibliography{F:/References/Research/Queen}
+%\bibliography{/home/qxd/Documents/References/Research/Queen}
+
+\appendix
+
+\include{App_Models}
+
+\include{App_SolvingDE}
+
+\end{document} 
